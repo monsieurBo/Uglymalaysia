@@ -5,7 +5,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   # def new
-  #   session
+  #   super
   # end
 
   # POST /resource/sign_in
@@ -14,9 +14,9 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  def destroy
-    user_session.delete
-  end
+  # def destroy
+  #   super
+  # end
 
   # protected
 
