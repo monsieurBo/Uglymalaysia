@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'articles#index'
+  resources :articles
   # get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
   devise_scope :user do

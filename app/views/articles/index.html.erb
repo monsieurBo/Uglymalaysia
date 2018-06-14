@@ -1,4 +1,7 @@
 <h1> Hello </h1>
+
+<%= link_to "Create Post", new_article_path %>
+
 <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget faucibus ex. Aenean eleifend sapien facilisis nisl aliquam, id elementum diam sagittis. Mauris facilisis quis metus ac elementum. Mauris nec erat non dolor lacinia viverra. Etiam nunc libero, tempor sit amet laoreet sit amet, tincidunt id felis. Cras lobortis, turpis eu dapibus semper, augue est sollicitudin nisl, tristique ornare lorem arcu sit amet libero. Cras cursus laoreet odio, id mattis est lobortis sed. Aliquam erat volutpat. Aliquam ex augue, congue at enim eu, mollis commodo sem. Nullam fringilla felis vel aliquet laoreet. Pellentesque sollicitudin maximus neque. Praesent convallis, magna in pulvinar rutrum, magna ante vestibulum ipsum, vitae venenatis odio ex at quam. Suspendisse ac ipsum non neque hendrerit tincidunt ut sed ipsum.
 
 Sed vehicula dui nec mi cursus feugiat. Ut nulla quam, viverra at mattis ut, auctor sed metus. Sed in orci non ante laoreet pulvinar sit amet vitae nibh. Nulla vel quam in leo eleifend convallis eu et felis. Proin nec erat tempus, elementum arcu eget, mattis orci. Duis molestie est et metus posuere, quis cursus lorem interdum. Sed viverra nunc nunc, non placerat arcu viverra sed. Sed erat velit, tincidunt consectetur metus ut, dictum venenatis enim. Nullam libero nisl, congue at congue congue, interdum vitae ligula. Suspendisse pulvinar ornare mauris. Praesent quis nunc sodales, bibendum quam id, viverra ante.
@@ -16,18 +19,28 @@ In rutrum ipsum nisi, ac luctus mi fermentum quis. In lobortis metus vel mi laor
 Nullam semper magna ut leo venenatis pharetra. Donec eu dui vitae ligula pulvinar consequat ac vel eros. Fusce non ultrices nulla. Mauris vel lobortis sem. Nunc vulputate mollis egestas. Suspendisse et rutrum ex, eleifend vehicula lectus. Praesent faucibus eros quis augue vulputate gravida. Ut auctor lorem odio, euismod scelerisque ex pulvinar at. Cras fermentum tellus nec pretium dignissim. Nam vel fringilla quam, at lacinia eros. Mauris in libero vel nisl lacinia sagittis et scelerisque augue. Duis consequat dolor vel dolor lacinia iaculis. Nullam vel mattis arcu.
 
 Duis ac pellentesque neque, non rhoncus neque. Cras luctus dolor efficitur nisi tristique ultrices. Ut et dapibus ex, gravida accumsan mauris. Fusce id laoreet tellus. Ut pharetra lacus at ex cursus, sed iaculis quam dignissim. Praesent odio nibh, dignissim eu efficitur non, convallis ac dui. Praesent pretium lacinia magna a tempus. Aenean hendrerit ultricies dapibus. Aenean facilisis ut urna sed gravida.</p>
+
+<% @articles.each do |post|%>
+  <br>
+  <%= post.title  %>
+  <%= post.description  %>
+  <%=link_to "Show Post", controller: "articles", action: "show", id: post.id %>
+<% end %>
+
 <div id="disqus_thread">
 <script>
+
+
 
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
+
+// var disqus_config = function () {
+// // this.page.url = https://localhost:3000;  // Replace PAGE_URL with your page's canonical URL variable
+// // this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+// };
+
 (function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');
 s.src = 'https://www-uglymalaysia.disqus.com/embed.js';
@@ -35,6 +48,6 @@ s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript#disqus_thread">comments powered by Disqus.</a></noscript>
 <script id="dsq-count-scr" src="//www-uglymalaysia.disqus.com/count.js" async></script>
 </div>
