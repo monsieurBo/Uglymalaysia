@@ -20,4 +20,9 @@ class User < ApplicationRecord
         x = self.authentications.find_by(provider: 'google_oauth2')
         return x.token unless x.nil?
   end
+
+  def twitter_token
+        x = self.authentications.find_by(provider: 'twitter')
+        return x.token unless x.nil?
+  end
 end
