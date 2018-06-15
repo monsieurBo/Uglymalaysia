@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'articles#index'
   resources :articles
   # get "/auth/:provider/callback" => "sessions#create_from_omniauth"
-
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_scope :user do
    get "/auth/:provider/callback", to: "sessions#create_from_omniauth"
 end
