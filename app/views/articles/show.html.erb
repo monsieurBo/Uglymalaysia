@@ -3,6 +3,8 @@
 
 <%= @article.title %>
 <%= @article.description %>
+<%#= @article.images[0] %>
+<%# =# image_tag @article.images %>
 
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
@@ -29,6 +31,7 @@ s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
 </script>
+
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript#disqus_thread">comments powered by Disqus.</a></noscript>
 <script id="dsq-count-scr" src="//www-uglymalaysia.disqus.com/count.js" async></script>
 </div>

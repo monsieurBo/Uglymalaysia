@@ -12,11 +12,11 @@
   </div>
 
   <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
+    <%= f.label :images %>
+    <%= f.file_field :images, multiple: true  %>
   </div>
 
-
+<%= f.hidden_field :user_id, :value => current_user.id %>
 
 
   <div class="actions">
