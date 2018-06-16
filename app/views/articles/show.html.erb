@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
-
-
+<% @art.each do |x| %>
+<%= image_tag x.images[0].url %>
+<hr>
+<%= x.images[1] %>
+<% end %>
+<hr>
 <%= @article.title %>
 <%= @article.description %>
 
