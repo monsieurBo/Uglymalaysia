@@ -1,6 +1,6 @@
 <h1> Hello </h1>
 <% unless current_user %>
-  <%= link_to "Sign in with Facebook", auth_facebook_callback_path %>
+  <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
 <% else %>
   <%= current_user[:name] %>
   <%= link_to "Logout", destroy_user_session_path, method: :delete %>
