@@ -10,6 +10,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @art = Article.where(user_id: current_user.id)
     @article = Article.find(params[:id])
   end
 
@@ -71,6 +72,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title , :description)
+      params.require(:article).permit(:title , :description, {images: []}, :user_id)
     end
 end
