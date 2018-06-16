@@ -1,5 +1,10 @@
 <h1> Hello </h1>
-
+<% unless current_user %>
+  <%= link_to "Sign in with Facebook", auth_facebook_callback_path %>
+<% else %>
+  <%= current_user[:name] %>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<% end %>
 <%= link_to "Create Post", new_article_path %>
 
 
@@ -10,34 +15,7 @@
   <%=link_to "Show Post", controller: "articles", action: "show", id: post.id %>
 <% end %>
 
-<% unless current_user %>
-  <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
-<% else %>
-  <%= current_user[:name] %>
-  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-<% end %>S
 
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '174566583224551',
-      cookie     : true,
-      xfbml      : true,
-      version    : '3.0'
-    });
-
-    FB.AppEvents.logPageView();
-
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>Copy Code
 
 
 <div id="disqus_thread">

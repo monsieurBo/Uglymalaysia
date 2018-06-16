@@ -65,4 +65,6 @@ gem 'figaro'
 gem 'omniauth-google-oauth2'
 gem 'twitter'
 gem 'omniauth-twitter'
+gem 'carrierwave', '~> 1.0'
+gem "mini_magick"
 gem 'omniauth-facebook'
