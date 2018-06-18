@@ -1,3 +1,9 @@
+<%= @browser.device.name %>
+<%= @browser.platform.name %>
+<% if browser.ie?(6) %>
+  <p class="disclaimer">You're running an older IE version. Please update it!</p>
+<% end %>
+
 <h1> Hello </h1>
 <% unless current_user %>
   <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
@@ -19,3 +25,13 @@ Duis ac pellentesque neque, non rhoncus neque. Cras luctus dolor efficitur nisi 
   <%= post.description  %>
   <%=link_to "Show Post", controller: "articles", action: "show", id: post.id %>
 <% end %>
+
+<p id="ipaddress"></p>
+<p id="ipaddress"></p>
+<p id="ipaddress"></p>
+
+<script>
+$.getJSON('https://json.geoiplookup.io/api?callback=?', function(data) {
+  console.log(data);
+});
+</script>

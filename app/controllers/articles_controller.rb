@@ -1,10 +1,12 @@
+require "browser"
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.all 
+    @browser = Browser.new("Some User Agent", accept_language: "en-us")
   end
 
   # GET /articles/1
