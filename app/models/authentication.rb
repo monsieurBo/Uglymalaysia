@@ -1,19 +1,20 @@
 class Authentication < ApplicationRecord
   belongs_to :user
+  validates_presence_of :uid, :provider
+  validates_uniqueness_of :uid, :scope => :provider
 
-
-  def self.create_with_omniauth(auth_hash)
-      self.new(
-        provider: auth_hash["provider"],
-        uid: auth_hash["uid"],
-        token: auth_hash["credentials"]["token"]
-      )
+  def self.find_for_oauth(auth)
+    authentication = find_by(provider: auth.provider, uid: auth.uid)
+    authentication = create(uid: auth.uid, provider: auth.provider) if authentication.nil?
+    authentication.token = auth.credentials.token
+    authentication.save
+    authentication
   end
-
-  def update_token(auth_hash)
-      self.token = auth_hash["credentials"]["token"]
-      self.save
-    end
+  
+  def update_token(auth)
+    self.token = auth.credentials.token
+    self.save
+  end
 
 
 

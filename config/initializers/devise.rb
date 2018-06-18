@@ -10,6 +10,7 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '86125571553c38629831ec0eae4da8a09da0c31c69b7ba71ca4f3a5cb9f62b9228d4927ae396e60f60d0d919f4e56c2735eb7a32f5e2fc5a0ac0dcde7fa26adf'
   config.secret_key = '2253eefd7e456219d7629c18a1fca4d7cbb83f146cb98963c57f3de932f69729f4d6785462430114c3594918b4ffb31eb79b087f3d477d07217f130e214f77d0'
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -257,6 +258,9 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  config.omniauth :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET']
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET']
+  config.omniauth :twitter, ENV['TWITTER_APP_ID'], ENV['TWITTER_APP_SECRET']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
