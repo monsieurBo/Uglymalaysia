@@ -7,15 +7,12 @@
 <% end %>
 <%= link_to "Create Post", new_article_path %>
 
-<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget faucibus ex. Aenean eleifend sapien facilisis nisl aliquam, id elementum diam sagittis. Mauris facilisis quis metus ac elementum. Mauris nec erat non dolor lacinia viverra. Etiam nunc libero, tempor sit amet laoreet sit amet, tincidunt id felis. Cras lobortis, turpis eu dapibus semper, augue est sollicitudin nisl, tristique ornare lorem arcu sit amet libero. Cras cursus laoreet odio, id mattis est lobortis sed. Aliquam erat volutpat. Aliquam ex augue, congue at enim eu, mollis commodo sem. Nullam fringilla felis vel aliquet laoreet. Pellentesque sollicitudin maximus neque. Praesent convallis, magna in pulvinar rutrum, magna ante vestibulum ipsum, vitae venenatis odio ex at quam. Suspendisse ac ipsum non neque hendrerit tincidunt ut sed ipsum.
 
-
-
-Duis ac pellentesque neque, non rhoncus neque. Cras luctus dolor efficitur nisi tristique ultrices. Ut et dapibus ex, gravida accumsan mauris. Fusce id laoreet tellus. Ut pharetra lacus at ex cursus, sed iaculis quam dignissim. Praesent odio nibh, dignissim eu efficitur non, convallis ac dui. Praesent pretium lacinia magna a tempus. Aenean hendrerit ultricies dapibus. Aenean facilisis ut urna sed gravida.</p>
 
 <% @articles.each do |post|%>
   <br>
   <%= post.title  %>
   <%= post.description  %>
   <%=link_to "Show Post", controller: "articles", action: "show", id: post.id %>
+  <br>
 <% end %>
