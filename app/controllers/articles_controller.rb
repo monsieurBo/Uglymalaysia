@@ -10,8 +10,8 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @art = Article.where(user_id: current_user.id)
     @article = Article.find(params[:id])
+
   end
 
   # GET /articles/new
