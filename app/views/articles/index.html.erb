@@ -12,6 +12,7 @@
 <% @articles.each do |post|%>
   <br>
   <%= post.title  %>
+  <br>
   <%= post.description  %>
   <%=link_to "Show Post", controller: "articles", action: "show", id: post.id %>
   <br>
