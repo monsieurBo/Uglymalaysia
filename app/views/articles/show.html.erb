@@ -19,6 +19,7 @@
     	<%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", vote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm" %>
     	<%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", vote_article_votes_path(@article), class: "btn btn-default btn-sm" %>
     <% end %>
+
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
 <%= request.original_url %>
@@ -31,8 +32,8 @@
 
 
 var disqus_config = function () {
-this.page.url =  window.location.href;
-this.page.identifier = 1; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+this.page.url =  "http://localhost:3000/articles/2";
+this.page.identifier = 2; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 
 (function() { // DON'T EDIT BELOW THIS LINE
