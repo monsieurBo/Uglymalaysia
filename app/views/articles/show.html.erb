@@ -1,25 +1,25 @@
 <p id="notice"><%= notice %></p>
-<% @article.images.each do |x| %>
-<%= image_tag x.url %>
-<% end %>
-<hr>
+  <% @article.images.each do |x| %>
+    <%= image_tag x.url %>
+  <% end %>
+  <hr>
 
   <br>
   <%= @article.title  %>
   <%= @article.description  %>
 	<% vote = Vote.find_by(article: @article.id, user_id: current_user.id) %>
 	<% if !vote.nil? %>
-	<% if vote.vote? %>
-		<%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", vote_article_votes_path(@article), class: "btn btn-default btn-sm diabled" %>
-		<%= link_to "DOWNVOTE", vote_article_votes_path(@article), class: "btn btn-default btn-sm" %>
-	<% else %>
-		<%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", vote_article_votes_path(@article), class: "btn btn-outline-default btn-sm" %>
-		<%= link_to "DOWNVOTE", vote_article_votes_path(@article), class: "btn btn-default btn-sm disabled" %>
-	<% end %>
-<% else %>
-	<%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", vote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm" %>
-	<%= link_to "DOWNVOTE", vote_article_votes_path(@article), class: "btn btn-default btn-sm" %>
-<% end %>
+  	<% if vote.vote? %>
+  		<%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", vote_article_votes_path(@article), class: "btn btn-default btn-sm diabled" %>
+  		<%= link_to "DOWNVOTE", vote_article_votes_path(@article), class: "btn btn-default btn-sm" %>
+  	<% else %>
+  		<%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", vote_article_votes_path(@article), class: "btn btn-outline-default btn-sm" %>
+  		<%= link_to "DOWNVOTE", vote_article_votes_path(@article), class: "btn btn-default btn-sm disabled" %>
+  	<% end %>
+  <% else %>
+  	<%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", vote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm" %>
+  	<%= link_to "DOWNVOTE", vote_article_votes_path(@article), class: "btn btn-default btn-sm" %>
+  <% end %>
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
 

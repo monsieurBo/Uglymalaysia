@@ -14,13 +14,13 @@ class VotesController < ApplicationController
 	      @vote.update(vote: false)
 	    else
 	      @vote.update(vote: true)
-	    end 
-	  end  
-  
+	    end
+	  end
+
 	  redirect_to article_path(@article.id)
   end
 
-  private 
+  private
 
   def set_vote
   	@vote = Vote.find_by(article_id: params[:article_id], user_id: current_user.id)
