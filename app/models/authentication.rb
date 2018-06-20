@@ -8,7 +8,6 @@ class Authentication < ApplicationRecord
     authentication = find_by(provider: auth.provider, uid: auth.uid)
     authentication = create(uid: auth.uid, provider: auth.provider) if authentication.nil?
     authentication.token = auth.credentials.token
-    byebug
     authentication.save
     authentication
   end
