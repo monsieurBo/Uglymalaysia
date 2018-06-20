@@ -54,6 +54,10 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+<!-- Field for the recaptcha helper -->
+  <div class="field">
+    <%= recaptcha_tags %>
+  </div>
 <% end %>
 
 <%= render "devise/shared/links" %>

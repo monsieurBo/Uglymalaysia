@@ -1,17 +1,29 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
+  #   super
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    # If captcha passes then carry on devise's super methods.
+    if verify_recaptcha
+      super
+    # else show error and prompt user to validate again.
+    else
+      build_resource(sign_up_params)
+      clean_up_passwords(resource)
+      flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."
+      flash.delete :recaptcha_error
+      render :new
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -36,6 +48,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+
 
   # protected
 
