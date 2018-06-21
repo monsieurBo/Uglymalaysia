@@ -6,21 +6,7 @@ class VotesController < ApplicationController
     if @vote.nil?
        Vote.create(article_id: params[:article_id], user_id: current_user.id)
        redirect_to article_path(@vote.article_id)
-    # else
-    #   @article = @vote.article
-    #   if @vote.vote?
-    #     self.upvote
-    #   elsif @vote.vote.n?
-    #     self.downvote
-    #   end
-
-      # if @vote.vote.nil?
-      #   @vote.update(vote: true)
-      # elsif @vote.vote?
-      #   @vote.update(vote: false)
-      # else
-      #   @vote.update(vote: true)
-      # end 
+   
     end  
   end
 

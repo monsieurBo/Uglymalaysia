@@ -3,9 +3,10 @@ Rails.application.routes.draw do
 
   root 'articles#index'
   resources :articles do
-  	resource :votes, only: [:vote] do
+  	resource :votes, only: [:upvote, :downvote] do
   		member do
-  			get 'vote'
+  			get 'upvote'
+        get 'downvote'
   		end
   	end
   end
