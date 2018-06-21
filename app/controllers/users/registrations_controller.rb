@@ -23,6 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash.delete :recaptcha_error
       render :new
     end
+    
   end
 
   # GET /resource/edit
