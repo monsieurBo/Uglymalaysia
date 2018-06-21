@@ -11,6 +11,8 @@ class User < ApplicationRecord
       email: auth.info.email,
       password: Devise.friendly_token[0,20],
       name: auth.info.name,   # assuming the user model has a name
+      confirmed_at: Time.now.utc,
+      confirmation_token: nil
     )
     user.authentications << authentication
     user

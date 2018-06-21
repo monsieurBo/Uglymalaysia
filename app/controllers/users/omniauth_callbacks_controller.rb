@@ -21,21 +21,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def generic_callback(provider)
-    puts "in omni cntroller!"
     auth_hash = request.env['omniauth.auth']
     @authentication = Authentication.find_for_oauth(auth_hash)
 
     @user = @authentication.user || current_user
-    @user.skip_confirmation!
     # if previously registered and logged in before
     if !@user.nil?
       @authentication.update_token(auth_hash)
     else    #if user sign up/log in for first time
       @user = User.find_by(email: auth_hash.info.email)
-      puts @user
-      puts ""
-    
-      @user.skip_confirmation!
       if !@user.nil?  # creates authentication if registered before
         @user.authentications << @authentication
         @authentication.update_token(auth_hash)
