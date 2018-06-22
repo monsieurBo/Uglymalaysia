@@ -70,3 +70,5 @@ gem "mini_magick"
 gem 'omniauth-facebook'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'impressionist'
+gem 'social-share-button'
+

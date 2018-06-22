@@ -4,6 +4,10 @@
   <% end %>
 <hr>
    <br>
+  <%= social_share_button_tag(@article.title , :url => request.original_url , desc: @article.description) %>
+  <a href="whatsapp://send?text=<%= request.original_url %>">Share on WhatsApp</a>
+
+
   <%= @article.title  %>
   <%= @article.description  %>
   <p>Number of views
@@ -24,6 +28,7 @@
     <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm" %>
   <% end %>
 
+
   <%= link_to 'Edit', edit_article_path(@article) %> |
   <%= link_to 'Back', articles_path %>
 
@@ -32,6 +37,7 @@
   <%= Vote.where(article_id: @article.id, vote: true).count %>
   <%= "DOWNVOTE" %>
   <%= Vote.where(article_id: @article.id, vote: false).count %>
+
 
 <% end %>
 <div id="disqus_thread">
