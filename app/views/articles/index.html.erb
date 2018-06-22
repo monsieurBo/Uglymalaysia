@@ -1,9 +1,11 @@
 <h1> Hello </h1>
   <% unless current_user %>
+  <!-- If no login -->
     <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
     <%= link_to "Create Post", new_user_session_path %>
 
   <% else %>
+  <!-- After login -->
     <%= current_user[:name] %>
     <%= link_to "Create Post", new_article_path %>
 
@@ -27,4 +29,3 @@
       <% end %>
     <%= link_to "Logout", destroy_user_session_path, method: :delete %>
   <% end %>
-
