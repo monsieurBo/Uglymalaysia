@@ -10,24 +10,36 @@
 
   <%= @article.title  %>
   <%= @article.description  %>
-
+  <p>Number of views
+  <%= @article.impressionist_count(:filter=>:ip_address) %>
+  </p>
   <% vote = Vote.find_by(article: @article.id, user_id: current_user.id) %>
-<% if !vote.nil? %> <!-- if vote find_by not nil is true-->
-  <% if vote.vote? %>  <!-- if vote value is true-->
-    <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-default btn-sm disabled" %>
-    <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm" %>
+<% if user_signed_in? %>
+  <% if !vote.nil? %> <!-- if vote find_by not nil is true-->
+    <% if vote.vote? %>  <!-- if vote value is true-->
+      <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-default btn-sm disabled" %>
+      <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm" %>
+    <% else %>
+      <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-default btn-sm" %>
+      <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm disabled" %>
+    <% end %>
   <% else %>
-    <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-default btn-sm" %>
-    <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm disabled" %>
+    <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm" %>
+    <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm" %>
   <% end %>
+
+
+  <%= link_to 'Edit', edit_article_path(@article) %> |
+  <%= link_to 'Back', articles_path %>
+
 <% else %>
-  <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm" %>
-  <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm" %>
+  <%= "UPVOTE" %>
+  <%= Vote.where(article_id: @article.id, vote: true).count %>
+  <%= "DOWNVOTE" %>
+  <%= Vote.where(article_id: @article.id, vote: false).count %>
+
+
 <% end %>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
-
 <div id="disqus_thread">
 <script>
 /**
