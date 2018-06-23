@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
+    @client_ip = remote_ip()
   end
 
   # GET /articles/1

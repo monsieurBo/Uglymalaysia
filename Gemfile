@@ -72,3 +72,12 @@ gem "recaptcha", require: "recaptcha/rails"
 gem 'impressionist'
 gem 'social-share-button'
 gem 'fog-aws'
+
+# include bootstrap
+gem 'bootstrap', '~> 4.1.0'
+
+#include fontawesome
+gem 'font-awesome-rails'
+
+#include jquery & jquery ujs
+gem 'jquery-rails'
