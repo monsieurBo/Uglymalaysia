@@ -8,13 +8,16 @@
   <!-- After login -->
     <%= current_user[:name] %>
     <%= link_to "Create Post", new_article_path %>
+    <hr>
 
     <!-- Display all post -->
       <% @articles.each do |post|%>
         <br>
         <%= post.title  %>
         <%= post.description %>
-        <%= post.impressionist_count(:filter=>:ip_address) %>
+        <p> Comments : <span class="disqus-comment-count" data-disqus-identifier="article-<%= post.id %>">Comment Count</span> </p>
+
+        <p> Views : <%= post.impressionist_count(:filter=>:ip_address) %> </p>
 
         <!-- Variable vote to be used in the if else check -->
         <% vote = Vote.find_by(article: post.id, user_id: current_user.id) %>
@@ -31,3 +34,6 @@
       <% end %>
     <%= link_to "Logout", destroy_user_session_path, method: :delete %>
   <% end %>
+  <script id="dsq-count-scr" src="//uglymy.disqus.com/count.js" async></script>
+
+  <%= request.original_url%>
