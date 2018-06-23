@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
   <% @article.images.each do |x| %>
-    <%= image_tag x.url %>
+    <%= image_tag x.url , size: "100"%>
   <% end %>
 <hr>
+
+  <% @article.videos.each do |y| %>
+    <%= video_tag y.to_s,  controls: true, size: "250"%>
+  <% end %>
+
    <br>
 
 

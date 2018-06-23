@@ -14,3 +14,15 @@
  *= require_self
  *= require social-share-button
  */
+
+/*.navbar-brand{
+ 	color: #e4fde1;
+ }*/
+
+/*.navbar-toggler {
+ background-color: #1bfb00;
+}*/
+.bg {
+  background: #32a85f;
+}
+
