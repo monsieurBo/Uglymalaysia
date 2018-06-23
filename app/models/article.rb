@@ -4,4 +4,5 @@ class Article < ApplicationRecord
 	is_impressionable
 
 	mount_uploaders :images, ImageUploader
+	mount_uploaders :videos, VideoUploader
 end

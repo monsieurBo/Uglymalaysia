@@ -6,6 +6,10 @@
   </div>
 
   <div class="field">
+    <%= f.label :videos %>
+    <%= f.file_field :videos, multiple: true %>
+  </div>
+  <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
