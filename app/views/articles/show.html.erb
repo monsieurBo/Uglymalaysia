@@ -4,42 +4,33 @@
   <% end %>
 <hr>
    <br>
-  <%= social_share_button_tag(@article.title , :url => request.original_url , desc: @article.description) %>
-  <a href="whatsapp://send?text=<%= request.original_url %>">Share on WhatsApp</a>
+
 
 
   <%= @article.title  %>
   <%= @article.description  %>
   <p>Number of views
-  <%= @article.impressionist_count(:filter=>:ip_address) %>
-  </p>
+ <%= @article.impressionist_count(:filter=>:ip_address) %>
+ </p>
+ <%= social_share_button_tag(@article.title , :url => request.original_url , desc: @article.description) %>
+ <a href="whatsapp://send?text=<%= request.original_url %>">Share on WhatsApp</a>
   <% vote = Vote.find_by(article: @article.id, user_id: current_user.id) %>
-<% if user_signed_in? %>
-  <% if !vote.nil? %> <!-- if vote find_by not nil is true-->
-    <% if vote.vote? %>  <!-- if vote value is true-->
-      <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-default btn-sm disabled" %>
-      <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm" %>
-    <% else %>
-      <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-default btn-sm" %>
-      <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm disabled" %>
-    <% end %>
-  <% else %>
-    <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm" %>
+<% if !vote.nil? %> <!-- if vote find_by not nil is true-->
+  <% if vote.vote? %>  <!-- if vote value is true-->
+    <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-default btn-sm disabled" %>
     <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm" %>
+  <% else %>
+    <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-default btn-sm" %>
+    <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm disabled" %>
   <% end %>
-
-
-  <%= link_to 'Edit', edit_article_path(@article) %> |
-  <%= link_to 'Back', articles_path %>
-
 <% else %>
-  <%= "UPVOTE" %>
-  <%= Vote.where(article_id: @article.id, vote: true).count %>
-  <%= "DOWNVOTE" %>
-  <%= Vote.where(article_id: @article.id, vote: false).count %>
-
-
+  <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm" %>
+  <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm" %>
 <% end %>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
+<a href="http://foo.com/bar.html#disqus_thread">Link</a>
 <div id="disqus_thread">
 <script>
 /**
@@ -48,8 +39,9 @@
 
 
 var disqus_config = function () {
-this.page.url =  "http://localhost:3000/articles/2";
-this.page.identifier = 2; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+this.page.url = "<%= request.original_url %>";
+this.page.identifier = 'article-<%= @article.id %>';
+
 };
 
 (function() { // DON'T EDIT BELOW THIS LINE
