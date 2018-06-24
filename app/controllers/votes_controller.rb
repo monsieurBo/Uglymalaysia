@@ -6,48 +6,40 @@ class VotesController < ApplicationController
     if @vote.nil?
        Vote.create(article_id: params[:article_id], user_id: current_user.id)
        redirect_to article_path(@vote.article_id)
-   
-    end  
+
+    end
   end
 
   def upvote
-        if @vote.nil?
-       Vote.create(article_id: params[:article_id], user_id: current_user.id)
-       redirect_to article_path(@vote.article_id)
+    if @vote.nil?
+    	@vote = Vote.create(article_id: params[:article_id], user_id: current_user.id, vote: true)
+      redirect_to article_path(@vote.article_id)
     else
       @article = @vote.article
-    
 
-      if @vote.vote.nil?
+			if @vote.vote == false
         @vote.update(vote: true)
-      else
-        @vote.update(vote: nil)
-      end 
-    end  
-    
-    redirect_to article_path(@article.id)
+				redirect_to article_path(@article.id)
+      end
+    end
   end
 
   def downvote
     if @vote.nil?
-       Vote.create(article_id: params[:article_id], user_id: current_user.id)
+       @vote = Vote.create(article_id: params[:article_id], user_id: current_user.id, vote: false)
        redirect_to article_path(@vote.article_id)
     else
       @article = @vote.article
-    
 
-      if @vote.vote.nil?
+      if @vote.vote == true
         @vote.update(vote: false)
-      else
-        @vote.update(vote: nil)
-      end 
-    end  
-    
-    redirect_to article_path(@article.id)
+				redirect_to article_path(@article.id)
+      end
+    end
   end
 
 
-  private 
+  private
 
   def set_vote
   	@vote = Vote.find_by(article_id: params[:article_id], user_id: current_user.id)
