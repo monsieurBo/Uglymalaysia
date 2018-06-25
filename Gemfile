@@ -72,3 +72,5 @@ gem "recaptcha", require: "recaptcha/rails"
 gem 'impressionist'
 gem 'social-share-button'
 gem 'fog-aws'
+gem 'acts-as-taggable-on', '~> 6.0'
+gem 'will_paginate', '~> 3.1.0'
