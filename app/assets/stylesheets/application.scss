@@ -28,3 +28,30 @@
 .bg {
   background: #32a85f;
 }
+
+.container-a {
+  position: relative;
+  width: 1400;
+  height: auto;
+  margin: 0 auto;
+}
+
+.container-b {
+  width: 1020;
+  height: auto;
+  padding: 0 auto;
+}
+
+.card-main {
+  border: 1px solid black;
+  width: 290px;
+  height: 90px;
+  color: SlateGrey;
+}
+
+.card-list {
+  border: 1px solid black;
+  width: 290px;
+  height: 90px;
+  color: SlateGrey;
+}
