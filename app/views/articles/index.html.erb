@@ -1,6 +1,3 @@
-<h1> Welcome back</h1>
-<p><%= @client_ip %></p>
-
   <% unless current_user %>
   <!-- If no login -->
     <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
@@ -18,6 +15,7 @@
         <%= post.title  %>
         <%= post.description %>
         <%= post.impressionist_count(:filter=>:ip_address) %>
+        <p> Tags:<%= post.tag_list %> </p>
 
         <!-- Variable vote to be used in the if else check -->
         <% vote = Vote.find_by(article: post.id, user_id: current_user.id) %>
@@ -33,45 +31,10 @@
         <%=link_to "Show Post", controller: "articles", action: "show", id: post.id %>
       <% end %>
     <%# link_to "Logout", destroy_user_session_path, method: :delete %>
+
+<%= form_tag("/articles/search", method: "get") do %>
+    <%= label_tag(:search, "Search for tag:") %>
+    <%= text_field_tag(:search) %>
+    <%= submit_tag("Search") %>
+<% end %>
   <% end %>
-
-<div id="form"></div>
-
-  <script>
-  	$(document).ready(function() {
-  		var ip = '<%= @client_ip %>'
-  		access_key = '31e5c96fa25549dcae739e11d47daf20'
-  		console.log(access_key)
-
-    	$.ajax({
-    		type: "GET",
-    		url: "http://api.ipstack.com/"+ip+"?access_key="+access_key,
-    		dataType: "json",
-    		success: function(data){
-          console.log(data)
-          var ip = '<%= @client_ip %>'
-          console.log(ip)
-          console.log('<%= @client_ip %>')
-          var isp = "NA"
-          var city = data.city
-          var state = data.region_name
-          var country = data.country_name
-          var postcode = data.zip
-          var lat = data.latitude
-          var long = data.longitude
-
-    			$('#form').append(data.country_name)
-          $('#form').append("<%= j(render(:partial => 'devices/form')) %>")
-          $('#ip').val(ip);
-          $('#isp').val(isp);
-          $('#city').val(city);
-          $('#state').val(state);
-          $('#country').val(country);
-          $('#postcode').val(postcode);
-          $('#latitude').val(lat);
-          $('#longitude').val(long);
-          $('#device').submit();
-    		}
-    	})
-  	})
-  </script>
