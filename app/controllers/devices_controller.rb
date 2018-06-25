@@ -5,20 +5,10 @@ class DevicesController < ApplicationController
   end
 
   def create
-    if @device.nil? && @device.created_at > 15.minutes.ago
-      @device = Device.new(device_params)
-
-      respond_to do |format|
-        if @device.save
-          format.html { redirect_to @device, notice: 'Device was successfully created.' }
-          format.json { render :show, status: :created, location: @device }
-        else
-          format.html { render :new }
-          format.json { render json: @device.errors, status: :unprocessable_entity }
-        end
-      end
-    end
-  end
+     if @device.nil? || @device.created_at > 15.minutes.ago
+       @device = Device.create(device_params)
+     end
+   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
