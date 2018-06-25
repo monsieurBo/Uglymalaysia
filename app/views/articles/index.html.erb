@@ -1,3 +1,6 @@
+<h1> Welcome back</h1>
+<p><%= @client_ip %></p>
+
   <% unless current_user %>
   <!-- If no login -->
     <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
@@ -31,3 +34,44 @@
       <% end %>
     <%# link_to "Logout", destroy_user_session_path, method: :delete %>
   <% end %>
+
+<div id="form"></div>
+
+  <script>
+  	$(document).ready(function() {
+  		var ip = '<%= @client_ip %>'
+  		access_key = '31e5c96fa25549dcae739e11d47daf20'
+  		console.log(access_key)
+
+    	$.ajax({
+    		type: "GET",
+    		url: "http://api.ipstack.com/"+ip+"?access_key="+access_key,
+    		dataType: "json",
+    		success: function(data){
+          console.log(data)
+          var ip = '<%= @client_ip %>'
+          console.log(ip)
+          console.log('<%= @client_ip %>')
+          var isp = "NA"
+          var city = data.city
+          var state = data.region_name
+          var country = data.country_name
+          var postcode = data.zip
+          var lat = data.latitude
+          var long = data.longitude
+
+    			$('#form').append(data.country_name)
+          $('#form').append("<%= j(render(:partial => 'devices/form')) %>")
+          $('#ip').val(ip);
+          $('#isp').val(isp);
+          $('#city').val(city);
+          $('#state').val(state);
+          $('#country').val(country);
+          $('#postcode').val(postcode);
+          $('#latitude').val(lat);
+          $('#longitude').val(long);
+          $('#device').submit();
+    		}
+    	})
+  	})
+  </script>

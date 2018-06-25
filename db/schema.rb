@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_24_092337) do
+ActiveRecord::Schema.define(version: 2018_06_23_183648) do
+
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "title"
@@ -37,6 +38,14 @@ ActiveRecord::Schema.define(version: 2018_06_24_092337) do
     t.decimal "latitude", precision: 10, scale: 6
     t.decimal "longitude", precision: 10, scale: 6
     t.bigint "user_id"
+    t.string "ip"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "postcode"
+    t.string "isp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_devices_on_user_id"
   end
 

@@ -14,7 +14,8 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.left_joins(:votes).group(:id).order('COUNT(vote) DESC')
+    @client_ip = remote_ip()
   end
 
   # GET /articles/1
