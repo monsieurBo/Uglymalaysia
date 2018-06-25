@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks',registrations: "users/registrations" }
 
+  get 'articles/search', to: 'articles#search'
   root 'articles#index'
   resources :articles do
   	resource :votes, only: [:upvote, :downvote] do
