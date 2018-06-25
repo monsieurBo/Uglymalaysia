@@ -1,6 +1,16 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   impressionist :actions=>[:show,:index]
+
+  def search
+    if params[:search] == ""
+      render :new
+    else
+      @article = Article.tagged_with(params[:search])
+      puts @article
+    end
+  end
+
   # GET /articles
   # GET /articles.json
   def index
@@ -72,6 +82,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title , :description, {images: []}, {videos: []}, :user_id)
+      params.require(:article).permit(:title , :description, {images: []}, {videos: []}, :user_id, :tag_list)
     end
 end
