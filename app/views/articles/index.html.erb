@@ -53,8 +53,15 @@
       <% end %>
     <%# link_to "Logout", destroy_user_session_path, method: :delete %>
   <% end %>
-app
-<div id="form"></div>
+
+
+<div id="form">
+  <%= form_tag("/articles/search", method: "get") do %>
+      <%= label_tag(:search, "Search for tag:") %>
+      <%= text_field_tag(:search) %>
+      <%= submit_tag("Search") %>
+  <% end %>
+</div>
 
   <script>
   	$(document).ready(function() {
