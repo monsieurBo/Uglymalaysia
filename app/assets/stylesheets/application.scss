@@ -81,10 +81,15 @@
 .col-7 {
   background-color: SlateGrey;
   padding: 0;
+  text-align: center;
+  margin: 0;
 }
 
 .col-5 {
   background-color: Grey;
+  padding: 0;
+  text-align: center;
+  margin: 0;
 }
 
 .col-8 {
@@ -96,4 +101,36 @@
   background-color: Grey;
 }
 
-.header .tit
+.header {
+  text-align: center;
+}
+
+.header .title {
+  font-size: $large-size;
+}
+
+.header .subtitle {
+}
+
+.card-featured {
+  width: 815px;
+  height: 515px;
+}
+
+.image-box {
+  width: 815px;
+  height: 465px;
+  position: relative;
+  background: white;
+}
+
+.card-featured .card {
+  width: 755px;
+  height: 180px;
+  margin: 0 auto;
+}
+
+.card-featured .card-header {
+  height: 30px;
+  padding: 3px;
+}
