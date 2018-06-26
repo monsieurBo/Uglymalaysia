@@ -1,6 +1,5 @@
 <h1> Welcome back</h1>
 <p><%= @client_ip %></p>
-
   <% unless current_user %>
   <div class="container-a">
     <div class="featured">
@@ -37,6 +36,7 @@
         <%= post.title  %>
         <%= post.description %>
         <%= post.impressionist_count(:filter=>:ip_address) %>
+        <%= post.tag_list %>
 
         <!-- Variable vote to be used in the if else check -->
         <% vote = Vote.find_by(article: post.id, user_id: current_user.id) %>

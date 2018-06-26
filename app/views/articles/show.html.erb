@@ -1,7 +1,33 @@
+
 <p id="notice"><%= notice %></p>
-  <% @article.images.each do |x| %>
-    <%= image_tag x.url , size: "100"%>
-  <% end %>
+
+<% if @article.images.length != 0 %>
+
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner center-image">
+          <% @article.images.each_with_index do |img, index | %>
+              <% if index == 0 %>
+              <div class="carousel-item active center-item" style="text-align: center;">
+                <%= image_tag(img.url, size: "400x400") %>
+              </div>
+              <% else %>
+              <div class="carousel-item center-item">
+                <%= image_tag(img.url, size: "400x400") %>
+              </div>
+              <% end %>
+            <% end %>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+      </div>
+<% end %>
+
 <hr>
 
   <% @article.videos.each do |y| %>
@@ -11,8 +37,8 @@
 
 
 
-  <%= @article.title  %>
-  <%= @article.description  %>
+  <p><%= @article.title  %></p>
+  <p><%= @article.description  %></p>
   <p>Number of views
  <%= @article.impressionist_count(:filter=>:ip_address) %>
  </p>
