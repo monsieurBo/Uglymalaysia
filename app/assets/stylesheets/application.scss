@@ -13,10 +13,31 @@
  *
  */
 
-
  @import "font-awesome";
  @import "bootstrap";
  @import "social-share-button";
+ @import url('https://fonts.googleapis.com/css?family=Nunito+Sans|Open+Sans|Raleway|Source+Sans+Pro');
+
+
+
+ // color variations
+ $red: #FF3118;
+ $yellow: #FFE900;
+ $dark: #0A2343;
+ $green: #2CA58D;
+ $light: #FFEDDF;
+
+ // font variables
+ $title: "Raleway", "Nunito Sans", sans-serif;
+ $body: "Source Sans Pro", "Open Sans", "Arial", sans-serif;
+ $banner-size: 40px;
+ $xlarge-size: 34px;
+ $large-size: 28px;
+ $medium-size: 20px;
+ $small-size: 16px;
+ $xsmall-size: 14px;
+ $tag-size: 12px;
+
 
 /*.navbar-brand{
  	color: #e4fde1;
@@ -25,9 +46,9 @@
 /*.navbar-toggler {
  background-color: #1bfb00;
 }*/
-.bg {
-  background: #32a85f;
-}
+// .bg {
+//   background: #32a85f;
+// }
 
 .container-a {
   position: relative;
