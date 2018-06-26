@@ -52,15 +52,16 @@
 
 .container-a {
   position: relative;
-  width: 1400;
+  width: 1400px;
   height: auto;
   margin: 0 auto;
 }
 
 .container-b {
-  width: 1020;
+  position: relative;
+  width: 1020px;
   height: auto;
-  padding: 0 auto;
+  margin: 0 auto;
 }
 
 .card-main {
@@ -76,3 +77,23 @@
   height: 90px;
   color: SlateGrey;
 }
+
+.col-7 {
+  background-color: SlateGrey;
+  padding: 0;
+}
+
+.col-5 {
+  background-color: Grey;
+}
+
+.col-8 {
+  background-color: SlateGrey;
+  padding: 0;
+}
+
+.col-4 {
+  background-color: Grey;
+}
+
+.header .tit
