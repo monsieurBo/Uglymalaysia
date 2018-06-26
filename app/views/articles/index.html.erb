@@ -1,14 +1,29 @@
-  <% unless current_user %>
+<% unless current_user %>
   <div class="container-a">
     <div class="featured">
       <div class="header">
         <p class="title">Featured</p>
         <p class="subtitle">Stories you would want to know</p>
       </div>
-      <div class="featured-cards">
+
+
+
+
+
+
         <div class="row">
           <div class="col-7">
-            <div class="card-main featured">
+            <div class="card-featured">
+              <div class="image-box"></div>
+              <div class="card">
+                <div class="card-header">
+                  Featured
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-5">
@@ -18,7 +33,11 @@
         </div>
       </div>
     </div>
-    <div class="latest">
+    <!-- <div class="latest">
+      <div class="header">
+        <p class="title">Latest</p>
+        <p class="subtitle">This just in!</p>
+      </div>
       <div class="featured-cards">
         <div class="row">
           <div class="col-5">
@@ -48,7 +67,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- If no login -->
     <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
     <%= link_to "Create Post", new_user_session_path %>
@@ -129,3 +148,41 @@
     <%= submit_tag("Search") %>
 <% end %>
   <% end %>
+</div>
+  <script>
+  	$(document).ready(function() {
+  		var ip = '<%= @client_ip %>'
+  		access_key = '31e5c96fa25549dcae739e11d47daf20'
+  		console.log(access_key)
+
+    	$.ajax({
+    		type: "GET",
+    		url: "http://api.ipstack.com/"+ip+"?access_key="+access_key,
+    		dataType: "json",
+    		success: function(data){
+          console.log(data)
+          var ip = '<%= @client_ip %>'
+          console.log(ip)
+          console.log('<%= @client_ip %>')
+          var isp = "NA"
+          var city = data.city
+          var state = data.region_name
+          var country = data.country_name
+          var postcode = data.zip
+          var lat = data.latitude
+          var long = data.longitude
+
+          $('#form').append("<%= j(render(:partial => 'devices/form')) %>")
+          $('#ip').val(ip);
+          $('#isp').val(isp);
+          $('#city').val(city);
+          $('#state').val(state);
+          $('#country').val(country);
+          $('#postcode').val(postcode);
+          $('#latitude').val(lat);
+          $('#longitude').val(long);
+          $('#device').submit();
+    		}
+    	})
+  	})
+  </script>

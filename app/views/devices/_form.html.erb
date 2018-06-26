@@ -1,5 +1,5 @@
 <%= form_with(model: @device, url: devices_path, local: false, id: :device) do |f| %>
-  <p>hello</p>
+
   <%= f.hidden_field :user_id, value: current_user %>
   <%= f.hidden_field :ip, id: "ip" %>
   <%= f.hidden_field :isp, id: "isp" %>
