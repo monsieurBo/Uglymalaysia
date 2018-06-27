@@ -2,6 +2,38 @@
   <!-- If no login -->
     <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
     <%= link_to "Create Post", new_user_session_path %>
+    <h1> Hello</h1>
+
+      <%= link_to "Create Post", new_article_path %>
+
+      <!-- Display all post -->
+        <% @articles.each do |post|%>
+          <br>
+          <%= post.title  %>
+          <%= post.description %>
+          <%= post.impressionist_count(:filter=>:ip_address) %>
+          <p> Tags:<%= post.tag_list %> </p>
+
+          <!-- Variable vote to be used in the if else check -->
+          <% vote = Vote.find_by(article: post.id) %>
+            <% if !vote.nil? %>
+            	<% if vote.vote? %>
+            		<%= "UPVOTE" %>
+            		<%= Vote.where(article_id: post.id, vote: true).count %>
+            	<% end %>
+            <% else %>
+            	<%= "UPVOTE" %>
+            	<%= Vote.where(article_id: post.id, vote: true).count %>
+            <% end %>
+          <%=link_to "Show Post", controller: "articles", action: "show", id: post.id %>
+        <% end %>
+      <%# link_to "Logout", destroy_user_session_path, method: :delete %>
+
+  <%= form_tag("/articles/search", method: "get") do %>
+      <%= label_tag(:search, "Search for tag:") %>
+      <%= text_field_tag(:search) %>
+      <%= submit_tag("Search") %>
+  <% end %>
 
   <% else %>
   <!-- After login -->
