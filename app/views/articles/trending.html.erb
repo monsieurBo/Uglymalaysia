@@ -1,0 +1,21 @@
+<!-- Display all post -->
+  <% @output.each do |post|%>
+    <br>
+    <%= post.title  %>
+    <%= post.description %>
+    <%= post.impressionist_count(:filter=>:ip_address) %>
+    <p> Tags:<%= post.tag_list %> </p>
+
+    <!-- Variable vote to be used in the if else check -->
+    <% vote = Vote.find_by(article: post.id, user_id: current_user.id) %>
+      <% if !vote.nil? %>
+        <% if vote.vote? %>
+          <%= "UPVOTE" %>
+          <%= Vote.where(article_id: post.id, vote: true).count %>
+        <% end %>
+      <% else %>
+        <%= "UPVOTE" %>
+        <%= Vote.where(article_id: post.id, vote: true).count %>
+      <% end %>
+    <%=link_to "Show Post", controller: "articles", action: "show", id: post.id %>
+  <% end %>

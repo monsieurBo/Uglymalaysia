@@ -11,6 +11,22 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def trending
+    @all = Article.where("articles.created_at > ?", 7.day.ago)
+    @articles = []
+    @output =  []
+    @all.each do |article|
+      if article.impressionist_count > 5
+        p @articles << article
+      end
+    end
+    @articles.each do |article|
+      if article.votes.count >= 2
+        @output << article
+      end
+    end
+  end
+
   # GET /articles
   # GET /articles.json
   def index
@@ -22,7 +38,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article = Article.find(params[:id])
-    impressionist(@article)
+    # impressionist(@article)
   end
 
   # GET /articles/new
