@@ -10,42 +10,58 @@
 
   <body>
 
-
-      <nav class="navbar navbar-expand-lg navbar-light bg">
-        <a class="navbar-brand font-weight-bold" href="/">Ugly Malaysia</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/articles/trending">Pedas News</a>
-            <a class="nav-item nav-link" href="#">Durian Runtuh</a>
-            <a class="nav-item nav-link" href="#">Hangat News</a>
-            <a class="nav-item nav-link disabled" href="#">Disabled</a>
-          </div>
-        </div>
+    <div class="nvbheight">
+      <nav class="navbar navbar-fiexd-top navbar-expand-lg">
+            <a class="navbar-brand font-weight-bold" href="/">Ugly Malaysia</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav navbar-left">
+                <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="/articles/trending">Pedas News</a>
+                <a class="nav-item nav-link" href="#">Durian Runtuh</a>
+                <a class="nav-item nav-link" href="#">Hangat News</a>
+              </div>
+            </div>
+              <ul class="nav navbar-nav navbar-right">
+                <% if user_signed_in? %>
+                  <li>Logged in as <strong><%= current_user.email %></strong> | </li>
+                  <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> | </li>
+                  <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+                <% else %>
+                  <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |</li>
+                  <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+                <% end %>
+              </ul>
       </nav>
-
+    </div>
       <% if notice %>
-        <p class="alert salert-success"><%= notice %></p>
+        <p class="alert alert-success"><%= notice %></p>
       <% end %>
       <% if alert %>
         <p class="alert alert-danger"><%= alert %></p>
       <% end %>
 
       <p class="navbar-text pull-right">
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-      <% end %>
-      </p>
+
 
       <%= yield %>
 
+
+      <script>
+      $(document).ready(function(){
+      	$(window).on("scroll",function(){
+        	var wn = $(window).scrollTop();
+          if(wn > 120){
+            $(".navbar").css("background","#FF9180");
+          }
+          else{
+            $(".navbar").css("background","#FFD998");
+          }
+        });
+      });
+
+      </script>
   </body>
 </html>
