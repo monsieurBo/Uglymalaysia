@@ -50,6 +50,31 @@
 //   background: #32a85f;
 // }
 
+.navbar-brand {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+    display: block;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3em;
+  width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(to right, #FFD998, #FF9180, #FFD998);
+  padding: 12px 18px;
+  box-shadow: 0px 4px 7px #777;
+  transition: background-color 0.4s ease-out;
+}
+
+.nvbheight {
+  height: 70px;
+  font-size: 16px
+}
+
 .container-a {
   position: relative;
   width: 1400;
