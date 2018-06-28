@@ -49,6 +49,10 @@
    margin: 0;
  }
 
+ .container {
+   // max-width: 1200px;
+ }
+
 // NAVNAR
 .navbar-light .navbar-brand {
     position: fixed;
@@ -245,7 +249,7 @@
 }
 
 .twos {
-  padding-bottom: 15px;
+  // padding-bottom: 15px;
 }
 .twos .col-sm {
   padding: 0;
@@ -302,6 +306,7 @@
 // ADVERTISMENT
 .advertisement .col-sm {
   padding: 0;
+  margin-top: 15px;
 }
 
 // SOCIAL SHARE BUTTONS
