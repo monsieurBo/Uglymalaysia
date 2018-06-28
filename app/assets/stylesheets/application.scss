@@ -38,18 +38,18 @@
  $xsmall-size: 14px;
  $tag-size: 12px;
 
+ img {
+   width: auto;
+   max-height: 100%;
+   height: auto;
+   object-fit: cover;
+ }
 
-/*.navbar-brand{
- 	color: #e4fde1;
- }*/
+ .row {
+   margin: 0;
+ }
 
-/*.navbar-toggler {
- background-color: #1bfb00;
-}*/
-// .bg {
-//   background: #32a85f;
-// }
-
+// NAVNAR
 .navbar-brand {
     position: absolute;
     left: 50%;
@@ -75,29 +75,206 @@
   font-size: 16px
 }
 
+// LANDING PAGE
+//
+// gemeral
 .container-a {
   position: relative;
-  width: 1400;
+  width: 1400px;
   height: auto;
   margin: 0 auto;
 }
 
 .container-b {
-  width: 1020;
+  display: flex;
+  position: relative;
+  width: 1020px;
   height: auto;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.col-md-7 {
+  // background-color: SlateGrey;
+  padding: 0;
+  text-align: center;
+  margin: 0;
+}
+
+.col-md-5 {
+  // background-color: Grey;
+  padding: 0;
+  text-align: center;
+  margin: 0;
+}
+
+.col-md-8 {
+  // background-color: SlateGrey;
+  padding: 0;
+}
+
+.col-md-4 {
+  // background-color: Grey;
+  padding: 0;
+}
+
+// header
+.header {
+  text-align: center;
+}
+
+.header .title {
+  font-size: $large-size;
+}
+
+.header .subtitle {
+}
+
+
+// FEATURED CAARDS
+//
+// general
+.featured {
+  margin-bottom: 5rem;
+}
+
+.featured-link {
+  position: absolute;
+  padding: 5px;
+  bottom: 0;
+  right: 0;
+}
+
+// card featured
+.card-featured {
+  display: block;
+  width: auto;
+  height: 515px;
+  position: relative;
+  // padding-right: 10px;
+  text-align: center;
+}
+
+.image-box {
+  max-height: 465px;
+  position: relative;
+  background: white;
+  margin-bottom: -116px;
+  overflow: hidden;
+}
+
+.image-box img {
+  // width: auto;
+  // height: 100%;
+  // object-fit: cover;
+}
+
+.card-featured .category-tag {
+  // background: transparent;
+  position: absolute;
+  width: auto;
+  bottom: 0;
+  margin: 0 50px;
   padding: 0 auto;
 }
 
-.card-main {
-  border: 1px solid black;
-  width: 290px;
-  height: 90px;
-  color: SlateGrey;
+.card-featured .card-header {
+  height: 30px;
+  padding: 3px;
+  background-color: $red;
+  opacity: .5;
 }
 
+
+// card list
 .card-list {
-  border: 1px solid black;
-  width: 290px;
+  padding-left: 10px;
+}
+
+.card-list .card-body {
+  padding: 0;
+}
+
+.card-list .card-title {
+  padding: 1.25rem;
+}
+
+.card-list img {
+  width: 150px;
+  height: 150px;
+}
+
+
+// LATEST MAIN
+.latest .card-main .card-body {
+
+}
+
+.latest .col-md-7 {
+  padding-left: 15px;
+}
+
+// Latest feed
+.latest-feed .col-md-8 {
+  padding: 0;
+}
+
+.twos {
+  padding-bottom: 15px;
+}
+.twos .col-sm {
+  padding: 0;
+
+}
+
+.threes {
+  background-color: magenta;
+  padding: 15px;
+}
+
+.threes .col {
+  padding: 0;
+}
+
+.regular .card {
+  min-height: 350px;
+}
+
+.regular .card-img-top {
+  min-height: 165px;
+  max-height: 165px;
+}
+
+.small .card {
+  max-width: 325px;
+  max-height: 350px;
+}
+
+// side-nav
+.latest-feed .side-nav {
+  padding: 0 0 0 30px;
+}
+
+.side-nav .card-list {
+  padding: 0;
+}
+
+.side-nav .card-list .card-body {
+  padding: 0;
+}
+
+.side-nav .card-list .card-title {
+  padding: 1.25rem;
+  margin: 0;
+}
+
+.side-nav .card-list img {
+  width: 90px;
   height: 90px;
-  color: SlateGrey;
+}
+
+
+// ADVERTISMENT
+.advertisement .col-sm {
+  padding: 0;
 }
