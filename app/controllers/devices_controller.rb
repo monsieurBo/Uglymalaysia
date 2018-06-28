@@ -8,7 +8,7 @@ class DevicesController < ApplicationController
      if @device.nil? || @device.created_at > 15.minutes.ago
        @device = Device.create(device_params)
      end
-   end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

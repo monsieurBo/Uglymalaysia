@@ -35,8 +35,6 @@
   <% end %>
    <br>
 
-
-
   <p><%= @article.title  %></p>
   <p><%= @article.description  %></p>
   <p>Number of views
@@ -47,15 +45,15 @@
   <% vote = Vote.find_by(article: @article.id, user_id: current_user.id) %>
 <% if !vote.nil? %> <!-- if vote find_by not nil is true-->
   <% if vote.vote? %>  <!-- if vote value is true-->
-    <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-default btn-sm disabled" %>
-    <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm" %>
+    <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-default btn-sm upvote", :remote => true %>
+    <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote", :remote => true %>
   <% else %>
-    <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-default btn-sm" %>
-    <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm disabled" %>
+    <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-default btn-sm upvote", :remote => true %>
+    <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote" , :remote => true%>
   <% end %>
 <% else %>
-  <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm" %>
-  <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm" %>
+  <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm upvote", :remote => true %>
+  <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote" , :remote => true%>
 <% end %>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
