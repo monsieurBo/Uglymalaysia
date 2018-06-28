@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks',registrations: "users/registrations" }
 
   get 'articles/trending', to: 'articles#trending'
-  get 'articles/search', to: 'articles#search'
+  get 'articles/search/:tag', to: 'articles#tag_search'
   root 'articles#index'
   resources :articles do
   	resource :votes, only: [:upvote, :downvote] do

@@ -21,7 +21,12 @@
                 <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="/articles/trending">Pedas News</a>
                 <a class="nav-item nav-link" href="#">Durian Runtuh</a>
-                <a class="nav-item nav-link" href="/articles/new">Create Post</a>
+                <% if current_user %>
+                  <a class="nav-item nav-link" href="/articles/new">Create Post</a>
+                <%else%>
+                  <a class="nav-item nav-link" href="/users/sign_in">Create Post</a>
+                <% end %>
+
               </div>
             </div>
               <ul class="nav navbar-nav navbar-right">
