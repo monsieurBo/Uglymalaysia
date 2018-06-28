@@ -21,20 +21,17 @@
                 <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="/articles/trending">Pedas News</a>
                 <a class="nav-item nav-link" href="/articles/most_views">Hangat News</a>
-                <% if current_user %>
-                  <a class="nav-item nav-link" href="/articles/new">Create Post</a>
-                <%else%>
-                  <a class="nav-item nav-link" href="/users/sign_in">Create Post</a>
-                <% end %>
 
               </div>
             </div>
               <ul class="nav navbar-nav navbar-right">
                 <% if user_signed_in? %>
                   <li>Logged in as <strong><%= current_user.email %></strong> | </li>
+                  <li><%= link_to "Create Post", new_article_path, :class => 'navbar-link'  %> |</li>
                   <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> | </li>
                   <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
                 <% else %>
+                  <li><%= link_to "Create Post", new_user_session_path, :class => 'navbar-link'  %> |</li>
                   <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |</li>
                   <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
                 <% end %>
