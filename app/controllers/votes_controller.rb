@@ -16,7 +16,6 @@ class VotesController < ApplicationController
       redirect_to article_path(@vote.article_id)
     else
       @article = @vote.article
-
 			if @vote.vote == false
         @vote.update(vote: true)
 				redirect_to article_path(@article.id)

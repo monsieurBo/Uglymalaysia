@@ -6,16 +6,7 @@ class ArticlesController < ApplicationController
     if params[:search] == ""
       render :new
     else
-      @article = Article.tagged_with(params[:search], :any => true,:wild => true)
-      puts @article
-    end
-  end
-
-  def tag_search
-    if params[:tag] == ""
-      render :new
-    else
-      @article = Article.tagged_with(params[:tag], :any => true,:wild => true)
+      @article = Article.tagged_with(params[:search])
       puts @article
     end
   end
