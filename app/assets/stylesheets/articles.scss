@@ -2,11 +2,44 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// .center-item{
+//   text-align:center;
+// }
+//
+// .show-head{
+//   text-align: center;
+//   display:block;
+//   // padding: 10 10 10 10;
+// }
+//
+// #posted-by{
+//   font-size: 20px;
+//   display: inline-block;
+// }
+//
+// #created-at{
+//   font-size:14px;
+//   display: inline-block;
+//   left: 50
+// }
+
+/* The grid: Four equal columns that floats next to each other */
 .center-item{
   text-align:center;
 }
 
-.description-field{
-  width: 50%;
-  height: 300px;
+.carousel-area{
+  background-color: black;
+  height: 500px;
+  width: 100%;
+}
+
+.carousel-area img{
+  height: 500px;
+  width: 500px;
+}
+
+.carousel-area video{
+  height: 500px;
+  width: 500px;
 }

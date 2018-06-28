@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 <!-- Carousel start -->
+<div class="carousel-area">
 <% if @article.videos.length != 0 && @article.images.length != 0 %>
   <!-- Show video and image together in carousel -->
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval=false>
       <div class="carousel-inner">
           <% @article.videos.each do |video| %>
             <div class="carousel-item active center-item">
@@ -26,7 +27,7 @@
     </div>
   <% elsif @article.images.length!= 0%>
     <!-- only for image carousel -->
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
       <div class="carousel-inner">
         <% @article.images.each_with_index do |img, index|%>
           <% if index == 0 %>
@@ -57,11 +58,14 @@
       </div>
     <% end %>
   <% end %>
+  </div>
   <!-- carousel end -->
   <hr>
   <br>
-  <p>Posted By: <%= current_user.name%></p>
-  <p>Post Created On: <%= @article.created_at.strftime("%d:%m:%Y")%></p>
+  <div class="show-head">
+    <p id="posted-by">Posted By: <%= current_user.name%></p>
+    <p id="created-at">Post Created On: <%= @article.created_at.strftime("%d:%m:%Y")%></p>
+  </div>
   <p>Title: <%= @article.title %></p>
   <p><%= @article.description %></p>
   <p>Number of views
