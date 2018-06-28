@@ -6,7 +6,16 @@ class ArticlesController < ApplicationController
     if params[:search] == ""
       render :new
     else
-      @article = Article.tagged_with(params[:search])
+      @article = Article.tagged_with(params[:search], :any => true,:wild => true)
+      puts @article
+    end
+  end
+
+  def tag_search
+    if params[:tag] == ""
+      render :new
+    else
+      @article = Article.tagged_with(params[:tag], :any => true,:wild => true)
       puts @article
     end
   end
@@ -16,12 +25,24 @@ class ArticlesController < ApplicationController
     @articles = []
     @output =  []
     @all.each do |article|
+      # change the minimum for views below
       if article.impressionist_count > 5
         p @articles << article
       end
     end
     @articles.each do |article|
+      # Change the limit for vote count below
       if article.votes.count >= 2
+        @output << article
+      end
+    end
+  end
+
+  def most_views
+    @articles = Article.all
+    @output = []
+    @articles.each do |article|
+      if article.impressionist_count > 1
         @output << article
       end
     end
