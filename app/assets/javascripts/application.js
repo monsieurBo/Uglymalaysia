@@ -18,3 +18,7 @@
 //= require turbolinks
 //= require_tree .
 //= require social-share-button
+
+$('.card').on('click', function(event) {
+     alert('You clicked the Bootstrap Card');
+});

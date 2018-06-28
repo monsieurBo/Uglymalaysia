@@ -43,6 +43,12 @@
    max-height: 100%;
    height: auto;
    object-fit: cover;
+   transition: transform .3s;
+ }
+
+ .img-wrap {
+   overflow: hidden;
+   position: relative;
  }
 
  .row {
@@ -51,6 +57,14 @@
 
  .container {
    // max-width: 1200px;
+ }
+
+ .card {
+   margin-bottom: 15px;
+ }
+
+ .stats {
+   color: $green;
  }
 
 // NAVNAR
@@ -108,18 +122,30 @@
 // gemeral
 .container-a {
   position: relative;
-  width: 1400px;
+  max-width: 1400px;
   height: auto;
   margin: 0 auto;
-
+  padding: 0;
 }
 
 .container-b {
   display: flex;
   position: relative;
-  width: 1020px;
+  max-width: 1020px;
   height: auto;
   margin: 0 auto;
+  padding: 0;
+}
+
+.col-8 {
+  padding: 0;
+}
+
+.col-4 {
+  padding: 0;
+}
+
+.col-md {
   padding: 0;
 }
 
@@ -159,12 +185,30 @@
 .header .subtitle {
 }
 
+.card:hover {
+  cursor: pointer;
+}
+
+.card:hover .card-title {
+  text-decoration: underline;
+  text-decoration-color: $red;
+}
+
+.card:hover img {
+  transform: scale(1.2);
+}
+
+// .card-featured:hover .image-box img {
+//   transform: scale(1.2);
+//   cursor: pointer;
+// }
+
 
 // FEATURED CAARDS
 //
 // general
 .featured {
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 
 .featured-link {
@@ -172,6 +216,7 @@
   padding: 5px;
   bottom: 0;
   right: 0;
+  color: $green;
 }
 
 // card featured
@@ -198,6 +243,10 @@
   // object-fit: cover;
 }
 
+.card-featured .card {
+  background: transparent;
+}
+
 .card-featured .category-tag {
   // background: transparent;
   position: absolute;
@@ -214,10 +263,20 @@
   opacity: .5;
 }
 
+.card-featured .card-title {
+  font-size: $large-size;
+  font-family: $title;
+  font-weight: bold;
+}
+
+.card-featured .card-body {
+  background: white;
+}
+
 
 // card list
 .card-list {
-  padding-left: 10px;
+  // padding-left: 10px;
 }
 
 .card-list .card-body {
@@ -226,11 +285,18 @@
 
 .card-list .card-title {
   padding: 1.25rem;
+  font-size: $medium-size;
+  font-family: $title;
+  font-weight: bold;
 }
 
 .card-list img {
   width: 150px;
   height: 150px;
+}
+
+.featured .card-list .stats {
+  padding: 10px 10px 1.25rem 1.25rem;
 }
 
 
@@ -248,20 +314,22 @@
   padding: 0;
 }
 
+// modular card twos
 .twos {
-  // padding-bottom: 15px;
+  // padding-bo   ttom: 15px;
 }
 .twos .col-sm {
   padding: 0;
 
 }
 
+// modular card threes
 .threes {
-  background-color: magenta;
-  padding: 15px;
+  background-color: white;
+  padding: 15px 15px 0 15px;
 }
 
-.threes .col {
+.threes .col-sm {
   padding: 0;
 }
 
@@ -275,8 +343,8 @@
 }
 
 .small .card {
-  max-width: 325px;
-  max-height: 350px;
+  // max-width: 325px;
+  // max-height: 350px;
 }
 
 // side-nav
