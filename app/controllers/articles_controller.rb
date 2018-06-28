@@ -6,7 +6,16 @@ class ArticlesController < ApplicationController
     if params[:search] == ""
       render :new
     else
-      @article = Article.tagged_with(params[:search])
+      @article = Article.tagged_with(params[:search], :any => true,:wild => true)
+      puts @article
+    end
+  end
+
+  def tag_search
+    if params[:tag] == ""
+      render :new
+    else
+      @article = Article.tagged_with(params[:tag], :any => true,:wild => true)
       puts @article
     end
   end
@@ -55,7 +64,6 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
-    byebug
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
