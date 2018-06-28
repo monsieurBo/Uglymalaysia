@@ -50,30 +50,54 @@
  }
 
 // NAVNAR
-.navbar-brand {
-    position: absolute;
+.navbar-light .navbar-brand {
+    position: fixed;
     left: 50%;
     margin-left: -50px;
-    display: block;
+    color: #FFEDDF;
 }
 
+.navbar-light .navbar-nav .nav-link.active {
+  color: #FF3118;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #FFEDDF;
+}
+//
+//
+//
+.circle {
+  height: 20px;
+  width: 20px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%;
+  color: #FFEDDF;
+  background: rgba(255, 255, 255, 0.5);
+}
+//
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3em;
-  width: 100%;
-  box-sizing: border-box;
+  font-family: $title;
+//   top: 0;
+//   left: 0;
+  font-size: 16px;
+//   width: 100%;
+//   box-sizing: border-box;
   background: linear-gradient(to right, #FFD998, #FF9180, #FFD998);
-  padding: 12px 18px;
-  box-shadow: 0px 4px 7px #777;
-  transition: background-color 0.4s ease-out;
+//   padding: 12px 18px;
+  box-shadow: 0px 4px 6px #dddddd;
+//   transition: background-color 0.4s ease-out;
+  z-index: 100;
 }
+//
+// .navbar-toggler {
+//     background-color: #FFD998;
+//     border: 1px solid ;
+// }
 
-.nvbheight {
-  height: 70px;
-  font-size: 16px
-}
+
 
 // LANDING PAGE
 //
@@ -83,6 +107,7 @@
   width: 1400px;
   height: auto;
   margin: 0 auto;
+
 }
 
 .container-b {
@@ -277,4 +302,25 @@
 // ADVERTISMENT
 .advertisement .col-sm {
   padding: 0;
+}
+
+// SOCIAL SHARE BUTTONS
+
+.sticky-social {
+  left: 10px;
+  position: fixed;
+  top: 300px;
+}
+
+.social-share-button .ssb-icon {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+  display: flex;
+  width: 50px;
+  height: 50px;
+}
+
+.whatsapp {
+  width: 50px;
 }
