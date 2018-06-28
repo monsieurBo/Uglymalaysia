@@ -10,7 +10,14 @@
 
   <body>
 
-    <div class="nvbheight">
+<!-- <<<<<<< zeph/sidebarconflict here -->
+      <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <a class="navbar-brand" href="/">Uglymalaysia</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+<!-- conflict begin -->
+<!--     <div class="nvbheight">
       <nav class="navbar navbar-fiexd-top navbar-expand-lg">
             <a class="navbar-brand font-weight-bold" href="/">Ugly Malaysia</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,22 +32,30 @@
                   <a class="nav-item nav-link" href="/articles/new">Create Post</a>
                 <%else%>
                   <a class="nav-item nav-link" href="/users/sign_in">Create Post</a>
-                <% end %>
+                <% end %> -->
+<!-- conflict end -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link light" href="/articles/trending">Pedas News</a></li>
+            <li class="nav-item"><a class="nav-link light" href="/articles/most_views">Durian Runtuh</a></li>
+          </ul>
 
-              </div>
-            </div>
-              <ul class="nav navbar-nav navbar-right">
-                <% if user_signed_in? %>
-                  <li>Logged in as <strong><%= current_user.email %></strong> | </li>
-                  <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> | </li>
-                  <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
-                <% else %>
-                  <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |</li>
-                  <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
-                <% end %>
-              </ul>
+          <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <li class="nav-item"><a class="nav-link light"><strong class="circle"><%= current_user.name[0] %></strong></a></li>
+                <li class="nav-item"><a class="nav-link light" href="/articles/new">Create Post</a></li>
+                <li class="nav-item"><a class="nav-link light" href="/users/edit">Edit Profile</a></li>
+                <li class="nav-item"><%= link_to"Logout",destroy_user_session_path, class: "nav-link light", method: :delete%></li>
+              <% else %>
+                <li class="nav-item"><a class="nav-link light" href="/users/sign_in">Create Post</a></li>
+                <li class="nav-item"><a class="nav-link light" href="/users/sign_up">Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link light" href="/users/sign_in">Login</a></li>
+              <% end %>
+          </ul>
+        </div>
       </nav>
-    </div>
+
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
       <% end %>
@@ -50,11 +65,10 @@
 
       <p class="navbar-text pull-right">
 
-
       <%= yield %>
 
 
-      <script>
+      <!-- <script>
       $(document).ready(function(){
       	$(window).on("scroll",function(){
         	var wn = $(window).scrollTop();
@@ -67,6 +81,6 @@
         });
       });
 
-      </script>
+      </script> -->
   </body>
 </html>
