@@ -22,6 +22,7 @@
 
  // color variations
  $red: #FF3118;
+ $red2:  #FF9180;
  $yellow: #FFE900;
  $dark: #0A2343;
  $green: #2CA58D;
@@ -46,6 +47,13 @@
    transition: transform .3s;
  }
 
+ .background {
+   background-color: teal;
+   max-width: inherit;
+   max-height: 100%;
+   padding-top: -50px;
+ }
+
  .img-wrap {
    overflow: hidden;
    position: relative;
@@ -66,6 +74,24 @@
  .stats {
    color: $green;
  }
+
+ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li {
+  list-style-type: none;
+  padding: 0 5px;
+}
+
+.singles li {
+  list-style-type: none;
+  padding: 0 15px;
+  vertical-align: baseline;
+}
 
 // NAVNAR
 .navbar-light .navbar-brand {
@@ -137,6 +163,10 @@
   padding: 0;
 }
 
+.col-sm-6 {
+  padding: 0 10px;
+}
+
 .col-8 {
   padding: 0;
 }
@@ -180,9 +210,19 @@
 
 .header .title {
   font-size: $large-size;
+  margin-bottom: -20px;
+  margin-top: 2rem;
+  font-family: $title;
+  font-weight: bold;
+  color: $dark;
 }
 
 .header .subtitle {
+  background: linear-gradient($red2, $green);
+  padding: 20px 25px;
+  margin: 0 450px 1.5rem 450px;
+  font-family: $body;
+  color: $light;
 }
 
 .card:hover {
@@ -267,6 +307,7 @@
   font-size: $large-size;
   font-family: $title;
   font-weight: bold;
+  color: $dark;
 }
 
 .card-featured .card-body {
@@ -320,7 +361,10 @@
 }
 .twos .col-sm {
   padding: 0;
+}
 
+.singles .card {
+  max-width: 332.5px;
 }
 
 // modular card threes
@@ -360,9 +404,12 @@
   padding: 0;
 }
 
-.side-nav .card-list .card-title {
-  padding: 1.25rem;
+.side-nav .card-title {
+  // padding: 1.25rem;
   margin: 0;
+  font-size: $small-size;
+  font-family: $title;
+  font-weight: bold;
 }
 
 .side-nav .card-list img {
