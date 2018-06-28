@@ -1,5 +1,23 @@
-<h1> hello </h1>
 <% @output.each do |post|%>
-<%= post.title%>
-<%= post.description%>
+  <br>
+  <%= post.title  %>
+  <%= post.description %>
+  <p> Views: <%= post.impressionist_count(:filter=>:ip_address) %> </p>
+  <p> Tags: <% post.tag_list.each do |tag| %>
+      <a href="articles/search/#{tag}"> <%= puts tag %> </a>
+    <%end%>
+  </p>
+
+  <!-- Variable vote to be used in the if else check -->
+  <% vote = Vote.find_by(article: post.id) %>
+    <% if !vote.nil? %>
+      <% if vote.vote? %>
+        <%= "UPVOTE" %>
+        <%= Vote.where(article_id: post.id, vote: true).count %>
+      <% end %>
+    <% else %>
+      <%= "UPVOTE" %>
+      <%= Vote.where(article_id: post.id, vote: true).count %>
+    <% end %>
+  <%=link_to "Show Post", controller: "articles", action: "show", id: post.id %>
 <% end %>
