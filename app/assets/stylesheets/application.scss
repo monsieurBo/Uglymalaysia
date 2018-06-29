@@ -40,7 +40,7 @@
  $tag-size: 12px;
 
  img {
-   width: auto;
+   width: 100%;
    max-height: 100%;
    height: auto;
    object-fit: cover;
@@ -75,6 +75,10 @@
    color: $green;
  }
 
+a:hover {
+   text-decoration: none;
+ }
+
 ul {
   display: flex;
   list-style-type: none;
@@ -82,7 +86,8 @@ ul {
   padding: 0;
 }
 
-.footer-links li {
+
+li {
   list-style-type: none;
   padding: 0 5px;
 }
@@ -91,6 +96,12 @@ ul {
   list-style-type: none;
   padding: 0 15px;
   vertical-align: baseline;
+}
+
+.card-title {
+  color: $dark;
+  font-family: $title;
+  font-weight: bold;
 }
 
 // NAVNAR
@@ -221,9 +232,10 @@ ul {
 .header .subtitle {
   background:$light;
   padding: 20px 25px;
-  margin: 0 450px 1.5rem 450px;
+  margin: 0 auto 1.5rem auto;
   font-family: $body;
   color: $green;
+  max-width: 500px;
 }
 
 .card:hover {
@@ -311,7 +323,7 @@ ul {
 }
 
 .internal-card .card-title {
-  font-size: $large-size;
+  // font-size: $large-size;
   font-family: $title;
   font-weight: bold;
   color: $dark;
@@ -334,7 +346,7 @@ ul {
 
 .card-list .card-title {
   padding: 1.25rem;
-  font-size: $medium-size;
+  // font-size: $medium-size;
   font-family: $title;
   font-weight: bold;
 }
@@ -344,8 +356,8 @@ ul {
   height: 150px;
 }
 
-.featured .card-list .stats {
-  padding: 10px 10px 1.25rem 1.25rem;
+.card-list .stats {
+  padding: 0 10px 1.25rem 1.25rem;
 }
 
 
@@ -375,6 +387,10 @@ ul {
   max-width: 332.5px;
 }
 
+.singles .img {
+  max-height: 280px;
+}
+
 // modular card threes
 .threes {
   background-color: white;
@@ -385,19 +401,19 @@ ul {
   padding: 0;
 }
 
-.regular .card {
-  min-height: 350px;
-}
+// .regular .card {
+//   min-height: 350px;
+// }
 
-.regular .card-img-top {
-  min-height: 165px;
-  max-height: 165px;
-}
+// .regular .card-img-top {
+//   min-height: 165px;
+//   max-height: 165px;
+// }
 
-.small .card {
-  // max-width: 325px;
-  // max-height: 350px;
-}
+// .small .card {
+//   max-width: 325px;
+//   max-height: 350px;
+// }
 
 // side-nav
 .latest-feed .side-nav {
