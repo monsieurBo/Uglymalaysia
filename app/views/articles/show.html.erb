@@ -79,10 +79,9 @@
 
         <%= link_to 'Edit', edit_article_path(@article) %> |
         <%= link_to 'Back', articles_path %>
-        <a href="http://foo.com/bar.html#disqus_thread">Link</a>
-        <div id="disqus_thread">
-        </div>
-        <script id="dsq-count-scr" src="//www-uglymalaysia.disqus.com/count.js" async></script>
+          <a href="http://foo.com/bar.html#disqus_thread">Link</a>
+          <div id="disqus_thread">
+          </div>
         </div>
 
         <!-- Side bar -->
@@ -122,6 +121,7 @@
       </div>
   </div>
 </div>
+
 <script>
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -129,8 +129,7 @@
 
 var disqus_config = function () {
   this.page.url = "<%= request.original_url %>";
-  this.page.identifier = 'article-<%= @article.id %>';
-
+  this.page.identifier = 'article-<%= @article.id %>'
 };
 
 (function() { // DON'T EDIT BELOW THIS LINE
@@ -141,6 +140,8 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript#disqus_thread">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//www-uglymy.disqus.com/count.js" async></script>
+
 </body>
 
 <!-- <script>
