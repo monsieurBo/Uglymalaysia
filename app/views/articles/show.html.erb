@@ -1,10 +1,4 @@
-<head>
-
-</head>
-<body>
-
-  <div class="container container-a">
-    <p id="notice"><%= notice %></p>
+<div class="container container-a">
     <!-- Header for images/title together -->
       <div class="header">
         <% if @article.images.length != 0 %>
@@ -13,11 +7,11 @@
             <% @article.images.each_with_index do |img, index | %>
               <% if index == 0 %>
                 <div class="carousel-item active center-item" style="text-align: center;">
-                  <%= image_tag(img.url, size: "400x400") %>
+                  <%= image_tag(img.full.url, size: "400x400") %>
                 </div>
               <% else %>
                 <div class="carousel-item center-item">
-                  <%= image_tag(img.url, size: "400x400") %>
+                  <%= image_tag(img.full.url, size: "400x400") %>
                 </div>
               <% end %>
             <% end %>

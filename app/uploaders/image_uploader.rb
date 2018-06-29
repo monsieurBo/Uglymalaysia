@@ -17,7 +17,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   def default_url(*args)
     # For Rails 3.1+ asset pipeline compatibility:
     # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  
+
     "https://s3-ap-southeast-1.amazonaws.com/ugly-my-image/default-avatar-2.jpg"
   end
 
@@ -29,8 +29,38 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :thumb do
-    process resize_to_fit: [50, 50]
+def process_original_version
+        image = ::MiniMagick::Image::read(File.binread(@file.file))
+
+        if image[:width] > image[:height]
+            resize_to_fill 1600, 1200
+        else
+            resize_to_fill 1200, 1600
+        end
+    end
+
+  version :full do
+     process :resize_to_fill => [1200, 800]
+  end
+
+  version :large, :from_version => :full do
+     process :resize_to_fit => [800, 600]
+  end
+
+  version :medium, :from_version => :full do
+     process :resize_to_fit => [600, 400]
+  end
+
+  version :large_thumb, :from_version => :full do
+     process :resize_to_fit => [300, 300]
+  end
+
+  version :thumb, :from_version => :large_thumb do
+     process :resize_to_fit => [150, 150]
+  end
+
+  version :mini_thumb, :from_version => :thumb do
+    process :resize_to_fit => [30,30]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
