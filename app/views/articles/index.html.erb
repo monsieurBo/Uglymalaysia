@@ -132,6 +132,7 @@
         <div class="row">
           <!-- column 1 // latest main card -->
           <div class="col-md-5 d-flex align-items-stretch">
+          <a href="articles/<%= @articles[0].id %>">
             <div class="card shadow-sm">
               <div class="img-wrap">
                 <img class="card-img-top" src="http://via.placeholder.com/1900x1080" alt="Card image cap">
@@ -150,6 +151,7 @@
                 </div>
               </div>
             </div>
+          </a>
           </div>
           <!-- column end // card end -->
           <!-- column 2 -->
@@ -157,6 +159,7 @@
             <div class="row twos d-flex">
               <!-- modular twos card -->
               <div class="col-sm">
+          <a href="articles/<%= @articles[0].id %>">
                 <div class="card shadow-sm">
                   <div class="img-wrap">
                     <img class="card-img-top" src="http://via.placeholder.com/325x165" alt="Card image cap">
@@ -175,11 +178,13 @@
                     </div>
                   </div>
                 </div>
+              </a>
               </div>
               <!-- card end -->
               <div style="min-width: 15px;"></div>
               <!-- modular twos card -->
               <div class="col-sm">
+          <a href="articles/<%= @articles[0].id %>">
                 <div class="card shadow-sm">
                   <div class="img-wrap">
                     <img class="card-img-top" src="http://via.placeholder.com/325x165" alt="Card image cap">
@@ -191,13 +196,14 @@
                       <%end%>
                     </div>
                     <p class="card-title">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <div class="stats">
-                      <i class="fa fa-eye"></i> <%= @articles[0].impressionist_count(:filter=>:ip_address) %>
-                      <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %>
-                      <i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) unless @articles[0].created_at.blank? %> ago
+                    <div class="stats d-flex flex-wrap justify-content-around align-self-end">
+                  <li><i class="fa fa-eye"></i> <%= @articles[0].impressionist_count(:filter=>:ip_address) %></li>
+                  <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %></li>
+                  <li><i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) unless @articles[0].created_at.blank? %> ago</li>
                     </div>
                   </div>
                 </div>
+              </a>
               </div>
               <!-- card end -->
             </div>
@@ -231,7 +237,8 @@
           <div class="row singles d-flex">
             <% @articles.each do |post|%>
             <!-- card -->
-            <div class="col-sm-6">
+            <div class="col-sm-6 col-md-6">
+              <a href="articles/<%= post.id %>">
               <div class="card shadow-sm h-100">
                 <div class="img-wrap">
                   <% if post.images? %>
@@ -245,13 +252,14 @@
                     <%end%>
                   </div>
                   <p class="card-title"><%= post.title  %></p>
-                  <div class="stats d-flex flex-wrap justify-content-center align-self-baseline">
+                  <div class="stats d-flex flex-wrap justify-content-between align-self-end">
                     <li><i class="fa fa-eye"></i> <%= post.impressionist_count(:filter=>:ip_address) %></p></li>
                     <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: post.id, vote: true).count %></li>
                     <li><i class="fa fa-calendar"></i> <%= time_ago_in_words(post.created_at) unless post.created_at.blank? %> ago</li>
                   </div>
                 </div>
               </div>
+            </a>
             </div>
             <!-- card ends -->
             <!-- <div style="min-width: 15px;"></div> -->
