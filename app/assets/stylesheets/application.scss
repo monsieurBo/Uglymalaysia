@@ -435,9 +435,13 @@ ul {
 // SOCIAL SHARE BUTTONS
 
 .sticky-social {
-  left: 10px;
+
+  // top: 100px;
+}
+
+.sticky-social.fixed {
   position: fixed;
-  top: 300px;
+  top: 100px;
 }
 
 .social-share-button .ssb-icon {
@@ -451,4 +455,19 @@ ul {
 
 .whatsapp {
   width: 50px;
+}
+
+
+// SHOW PAGE
+.show .container {
+  display: grid;
+}
+
+.side-feature {
+  position: sticky;
+  position: -webkit-sticky;
+}
+
+.row .col-md-4 {
+  padding-left: 15px;
 }
