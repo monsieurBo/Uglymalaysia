@@ -1,4 +1,4 @@
-<% if @articles %>
+<% if @articles.length > 3%>
   <div class="container container-a">
     <!-- FEATURED MAIN -->
     <div class="featured">
@@ -216,7 +216,6 @@
     <!-- latest main end -->
     <hr/>
   </div>
-
   <!-- LATEST FEED -->
   <div class="container container-b">
     <hr/>
@@ -317,7 +316,6 @@
     </div>
   </div>
   <!-- container end -->
-
 </div>
 <% else %>
   <h1> Sorry, no posts are available. Please feed Ugly Malaysia. </h1>
