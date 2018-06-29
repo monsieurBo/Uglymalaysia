@@ -31,7 +31,7 @@
  // font variables
  $title: "Raleway", "Nunito Sans", sans-serif;
  $body: "Source Sans Pro", "Open Sans", "Arial", sans-serif;
- $banner-size: 40px;
+   $banner-size: 40px;
  $xlarge-size: 34px;
  $large-size: 28px;
  $medium-size: 20px;
@@ -40,7 +40,7 @@
  $tag-size: 12px;
 
  img {
-   width: 100%;
+   width: auto;
    max-height: 100%;
    height: auto;
    object-fit: cover;
@@ -52,6 +52,7 @@
    max-width: inherit;
    max-height: 100%;
    padding-top: -50px;
+   margin: 0;
  }
 
  .img-wrap {
@@ -86,10 +87,9 @@ ul {
   padding: 0;
 }
 
-
 li {
   list-style-type: none;
-  padding: 0 5px;
+  padding: 0 auto;
 }
 
 .singles li {
@@ -102,8 +102,8 @@ li {
   color: $dark;
   font-family: $title;
   font-weight: bold;
+  margin-top: .75rem;
 }
-
 // NAVNAR
 .navbar-light .navbar-brand {
     position: fixed;
@@ -177,6 +177,7 @@ li {
 
 .col-sm-6 {
   padding: 0 10px;
+  margin-bottom: 15px;
 }
 
 .col-8 {
@@ -387,7 +388,7 @@ li {
   max-width: 332.5px;
 }
 
-.singles .img {
+.singles .img-wrap {
   max-height: 280px;
 }
 
@@ -420,28 +421,46 @@ li {
   padding: 0 0 0 30px;
 }
 
+.side-nav .card {
+  margin-bottom: 5px;
+}
+
 .side-nav .card-list {
   padding: 0;
 }
 
-.side-nav .card-list .card-body {
-  padding: 0;
+.side-nav .card-body {
+  padding: auto;
 }
 
 .side-nav .card-title {
   // padding: 1.25rem;
   margin: 0;
-  font-size: $small-size;
+  font-size: $tag-size;
   font-family: $title;
   font-weight: bold;
 }
 
-.side-nav .card-list img {
-  width: 90px;
-  height: 90px;
+.side-nav img {
+  width: 85px;
+  height: 85px;
 }
 
+.side-nav .title {
+  margin: 0;
+}
 
+.side-nav .card-body {
+  padding: 5px;
+}
+
+.side-nav .row .col-md-4 {
+  padding: 0;
+}
+
+.side-nav .stats {
+  font-size: $xsmall-size;
+}
 // ADVERTISMENT
 .advertisement .col-sm {
   padding: 0;
