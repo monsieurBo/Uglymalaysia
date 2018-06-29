@@ -64,7 +64,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "UM_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: 'http://uglymalaysia.vz2k7vdg9a.ap-southeast-1.elasticbeanstalk.com', port: 3306 }
+  config.action_mailer.default_url_options = { host: 'http://uglymalaysia.vz2k7vdg9a.ap-southeast-1.elasticbeanstalk.com'}
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.delivery_method = :smtp
