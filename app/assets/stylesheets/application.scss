@@ -92,12 +92,6 @@ li {
   padding: 0 auto;
 }
 
-.singles li {
-  list-style-type: none;
-  padding: 0 15px;
-  vertical-align: baseline;
-}
-
 .card-title {
   color: $dark;
   font-family: $title;
@@ -451,7 +445,7 @@ li {
 }
 
 .side-nav .card-body {
-  padding: 5px;
+  padding: 10px;
 }
 
 .side-nav .row .col-md-4 {
