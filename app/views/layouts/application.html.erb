@@ -29,16 +29,16 @@
 
               </div>
             </div>
-              <ul class="nav navbar-nav navbar-right">
-                <% if user_signed_in? %>
-                  <li>Logged in as <strong><%= current_user.email %></strong> | </li>
-                  <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> | </li>
-                  <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
-                <% else %>
-                  <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |</li>
-                  <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
-                <% end %>
-              </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <% if user_signed_in? %>
+                <li>Logged in as <strong><%= current_user.email %></strong> | </li>
+                <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> | </li>
+                <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+              <% else %>
+                <li><%= link_to "Sign up", "" , :data => { toggle: 'modal', target: '#signupModal'} %> </li> |
+                <li><%= link_to "Login", "", :data => { toggle: 'modal', target: '#exampleModalCenter'}  %></li>
+              <% end %>
+            </ul>
       </nav>
     </div>
       <% if notice %>
@@ -48,24 +48,90 @@
         <p class="alert alert-danger"><%= alert %></p>
       <% end %>
 
-      <p class="navbar-text pull-right">
 
+<!-- Sign Up Modal -->
+      <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Sign up with email</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h6>Enter your particulars for your account, and we'll send a verification link to your inbox.</h6>
+            <div class="container-fluid">
+              <%= render(template: "devise/registrations/new")%>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- Sign Up Modal End -->
 
+<!-- Login Modal -->
+      <div class="modal fade"  id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" style="text-align:center;" id="exampleModalLongTitle">Welcome Back!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h6  style="text-align:center;">Sign in to access share stories, like articles and leave your thoughts that matters to you.</h6>
+            <div class="container-fluid">
+              <div class="partial">
+                <%= render partial: 'partial/loginlinks'%>
+              </div>
+
+              <p id="loginemail"></p>
+              <%= link_to "Back" ,"", id: "backtomodal"%>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- Login Modal End -->
+
+      <div class="container">
       <%= yield %>
-
+      </div>
 
       <script>
       $(document).ready(function(){
-      	$(window).on("scroll",function(){
-        	var wn = $(window).scrollTop();
-          if(wn > 120){
-            $(".navbar").css("background","#FF9180");
-          }
-          else{
-            $(".navbar").css("background","#FFD998");
-          }
-        });
+        $('#backtomodal').hide();
+          $("#email").on("click", function(event){
+            event.preventDefault();
+            $('.partial').hide();
+            $("#loginemail").append("<%= escape_javascript(render(template: "devise/sessions/new"))%>");
+            $('#backtomodal').show();
+            backtoModal();
+          })
       });
+      function backtoModal(){
+        $("#backtomodal").on("click",function(event){
+          event.preventDefault();
+          console.log("Im in back");
+          $("#loginemail").remove();
+          $('#backtomodal').hide();
+          $('.partial').show();
+        });
+      }
+
+      // $(document).ready(function(){
+      // 	$(window).on("scroll",function(){
+      //   	var wn = $(window).scrollTop();
+      //     if(wn > 120){
+      //       $(".navbar").css("background","#FF9180");
+      //     }
+      //     else{
+      //       $(".navbar").css("background","#FFD998");
+      //     }
+      //   });
+      // });
 
       </script>
   </body>
