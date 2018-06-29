@@ -34,7 +34,7 @@
               </div>
             </div>
           </div>
-
+        </a>
         </div>
         <div style="width: 15px;"></div>
         <!-- column end // card end -->
@@ -43,28 +43,29 @@
           <!-- card deck -->
           <div class="card-list d-flex flex-column justify-content-between">
             <!-- card list -->
-              <a href="articles/<%= @latest[1].id %>">
-            <div class="card shadow-sm row">
-              <div class="card-body d-flex justify-content-between">
-                <div class="col-8 d-flex flex-column">
-                  <div class="tags">
-                    <% @latest[1].tag_list.each do |tag| %>
-                      <a href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </a>
-                    <%end%>
+            <a href="articles/<%= @latest[1].id %>">
+              <div class="card shadow-sm row">
+                <div class="card-body d-flex justify-content-between">
+                  <div class="col-8 d-flex flex-column">
+                    <div class="tags">
+                      <% @latest[1].tag_list.each do |tag| %>
+                        <a href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </a>
+                      <%end%>
+                    </div>
+                    <div class="card-title text-left d-flex row"><%= @latest[1].title %></div>
+                    <div class="stats mt-auto">
+                      <i class="fa fa-eye"></i> <%= @latest[1].impressionist_count(:filter=>:ip_address) %>
+                      <i class="fa fa-heart"></i> <%= Vote.where(article_id: @latest[1].id, vote: true).count %>
+                    </div>
                   </div>
-                  <div class="card-title text-left d-flex row"><%= @latest[1].title %></div>
-                  <div class="stats mt-auto">
-                    <i class="fa fa-eye"></i> <%= @latest[1].impressionist_count(:filter=>:ip_address) %>
-                    <i class="fa fa-heart"></i> <%= Vote.where(article_id: @latest[1].id, vote: true).count %>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <div class="img-wrap">
-                    <img class="card-img-right pull-right" src="<%= @latest[1].images[0].large_thumb if @latest[1].images? %>" alt="Card image cap">
+                  <div class="col-4">
+                    <div class="img-wrap">
+                      <img class="card-img-right pull-right" src="<%= @latest[1].images[0].large_thumb if @latest[1].images? %>" alt="Card image cap">
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
              <!-- card ends -->
             <!-- <div style="min-height: 10px;"></div> -->
             <!-- card list -->
@@ -89,6 +90,7 @@
                 </div>
               </div>
             </div>
+          </a>
             <!-- card ends -->
             <!-- <div style="min-height: 15px;"></div> -->
             <!-- card list -->
@@ -113,6 +115,7 @@
                 </div>
               </div>
             </div>
+          </a>
             <!-- card ends -->
             <%= link_to 'more featured news >>', root_path, class: "featured-link" %>
           </div>
