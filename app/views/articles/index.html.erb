@@ -1,3 +1,4 @@
+<% if @articles %>
   <div class="container container-a">
     <!-- FEATURED MAIN -->
     <div class="featured">
@@ -317,11 +318,10 @@
   </div>
   <!-- container end -->
 
-
-
-
 </div>
-
+<% else %>
+  <h1> Sorry, no posts are available. Please feed Ugly Malaysia. </h1>
+<% end %>
 
   <script>
   $('.card').on('click', function(event) {
