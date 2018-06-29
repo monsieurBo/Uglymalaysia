@@ -146,7 +146,7 @@
                 <div class="stats">
                   <i class="fa fa-eye"></i> <%= @articles[0].impressionist_count(:filter=>:ip_address) %>
                   <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %>
-                  <i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) unless @articles[0].created_at.blank? %> ago
+                  <i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) unless feed_post.created_at.blank? %> ago
                 </div>
               </div>
             </div>
@@ -171,7 +171,7 @@
                     <div class="stats">
                       <i class="fa fa-eye"></i> <%= @articles[0].impressionist_count(:filter=>:ip_address) %>
                       <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %>
-                      <i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) unless @articles[0].created_at.blank? %> ago
+                      <i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) unless feed_post.created_at.blank? %> ago
                     </div>
                   </div>
                 </div>
@@ -194,7 +194,7 @@
                     <div class="stats">
                       <i class="fa fa-eye"></i> <%= @articles[0].impressionist_count(:filter=>:ip_address) %>
                       <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %>
-                      <i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) unless @articles[0].created_at.blank? %> ago
+                      <i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) unless feed_post.created_at.blank? %> ago
                     </div>
                   </div>
                 </div>
@@ -248,7 +248,7 @@
                   <div class="stats d-flex flex-wrap justify-content-center align-self-baseline">
                     <li><i class="fa fa-eye"></i> <%= post.impressionist_count(:filter=>:ip_address) %></p></li>
                     <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: post.id, vote: true).count %></li>
-                    <li><i class="fa fa-calendar"></i> <%= time_ago_in_words(post.created_at) unless post.created_at.blank? %> ago</li>
+                    <li><i class="fa fa-calendar"></i> <%= time_ago_in_words(post.created_at) unless feed_post.created_at.blank? %> ago</li>
                   </div>
                 </div>
               </div>
