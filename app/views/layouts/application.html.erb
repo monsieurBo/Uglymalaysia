@@ -25,9 +25,8 @@
 
           <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
-                <li class="nav-item"><a class="nav-link light"><strong class="circle"><%= current_user.name[0] %></strong></a></li>
+                <li class="nav-item"><a class="nav-link light" href="/users/edit"><strong class="circle" style="color:black;"><%= current_user.name[0] %></strong></a></li>
                 <li class="nav-item"><a class="nav-link light" href="/articles/new">Create Post</a></li>
-                <li class="nav-item"><a class="nav-link light" href="/users/edit">Edit Profile</a></li>
                 <li class="nav-item"><%= link_to"Logout",destroy_user_session_path, class: "nav-link light", method: :delete%></li>
               <% else %>
                 <li class="nav-item"><a class="nav-link light" href="/users/sign_in">Create Post</a></li>
@@ -86,7 +85,7 @@
               <div class="partial">
                 <%= render partial: 'partial/loginlinks'%>
               </div>
-              
+
               <p id="loginemail"></p>
               <%= link_to "Back" ,"", id: "backtomodal"%>
             </div>
@@ -123,6 +122,6 @@
       }
       </script>
 
-      
+
   </body>
 </html>

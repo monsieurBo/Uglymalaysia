@@ -37,7 +37,6 @@ class ArticlesController < ApplicationController
       end
     end
   end
-
   def most_views
     @articles = Article.all
     @output = []
