@@ -146,10 +146,10 @@
                   <%end%>
                 </div>
                 <p class="card-title">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <div class="stats">
-                  <i class="fa fa-eye"></i> <%= @articles[0].impressionist_count(:filter=>:ip_address) %>
-                  <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %>
-                  <i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) %> ago
+                <div class="stats d-flex flex-wrap justify-content-around align-self-end">
+                  <li><i class="fa fa-eye"></i> <%= @articles[0].impressionist_count(:filter=>:ip_address) %></li>
+                  <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %></li>
+                  <li><i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) %> ago</li>
                 </div>
               </div>
             </div>
@@ -173,10 +173,10 @@
                       <%end%>
                     </div>
                     <p class="card-title">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <div class="stats">
-                      <i class="fa fa-eye"></i> <%= @articles[0].impressionist_count(:filter=>:ip_address) %>
-                      <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %>
-                      <i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) %> ago
+                    <div class="stats d-flex flex-wrap justify-content-around align-self-end">
+                      <li><i class="fa fa-eye"></i> <%= @articles[0].impressionist_count(:filter=>:ip_address) %></li>
+                      <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %></li>
+                      <li><i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) %> ago</li>
                     </div>
                   </div>
                 </div>
@@ -198,10 +198,10 @@
                       <%end%>
                     </div>
                     <p class="card-title">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <div class="stats">
-                      <i class="fa fa-eye"></i> <%= @articles[0].impressionist_count(:filter=>:ip_address) %>
-                      <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %>
-                      <i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) %> ago
+                    <div class="stats d-flex flex-wrap justify-content-around align-self-end">
+                      <li><i class="fa fa-eye"></i> <%= @articles[0].impressionist_count(:filter=>:ip_address) %></li>
+                      <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %></li>
+                      <li><i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) %> ago</li>
                     </div>
                   </div>
                 </div>
@@ -240,7 +240,7 @@
           <div class="row singles d-flex">
             <% @articles.each do |post|%>
             <!-- card -->
-            <div class="col-sm-6">
+            <div class="col-sm-6 col-md-6">
               <a href="articles/<%= post.id %>">
               <div class="card shadow-sm h-100">
                 <div class="img-wrap">
@@ -255,7 +255,7 @@
                     <%end%>
                   </div>
                   <p class="card-title"><%= post.title  %></p>
-                  <div class="stats d-flex flex-wrap justify-content-center align-self-baseline">
+                  <div class="stats d-flex flex-wrap justify-content-between align-self-end">
                     <li><i class="fa fa-eye"></i> <%= post.impressionist_count(:filter=>:ip_address) %></p></li>
                     <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: post.id, vote: true).count %></li>
                     <li><i class="fa fa-calendar"></i> <%= time_ago_in_words(post.created_at) %> ago</li>
