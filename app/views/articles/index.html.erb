@@ -11,10 +11,10 @@
           <div class="card featured-main" id="<%= @articles[0].id %>">
             <div class="img-wrap image-box">
               <% if @articles[0].images? %>
-                <img class="card-img-top" src="<%= @articles[0].images[0].url if @articles[0].images? %>" alt="Card image cap">
-                <% else %>
-                  <img class="card-img-top" src="http://via.placeholder.com/1900x1080" alt="Card image cap">
-                <% end %>
+                <img class="card-img-top" src="<%= @articles[0].images.url if @articles[0].images? %>" alt="Card image cap">
+              <% else %>
+                <img class="card-img-top" src="http://via.placeholder.com/1900x1080" alt="Card image cap">
+              <% end %>
             </div>
             <div class="card-body external-card">
               <div class="card internal-card shadow-sm">
@@ -22,10 +22,10 @@
                   Featured
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
+                  <h5 class="card-title"><%= @articles[0].title %></h5>
 
                   <div class="stats mt-auto">
-                    <i class="fa fa-eye"></i> <%= @articles[1].impressionist_count(:filter=>:ip_address) %>
+                    <i class="fa fa-eye"></i> <%= @articles[0].impressionist_count(:filter=>:ip_address) %>
                     <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %>
                   </div>
                 </div>
@@ -41,9 +41,9 @@
           <!-- card deck -->
           <div class="card-list d-flex flex-column justify-content-between">
             <!-- card list -->
-            <div class="card shadow-sm row">
+            <div class="card shadow-sm row align-items-stretch">
               <div class="card-body d-flex justify-content-between">
-                <div class="col-8 d-flex flex-column">
+                <div class="col-md-8 d-flex flex-column">
                   <div class="tags">
                     <% @articles[1].tag_list.each do |tag| %>
                       <a href="articles/search/#{tag}" class="btn btn-sm btn-outline-danger"> <%= puts tag %> </a>
@@ -55,7 +55,7 @@
                     <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %>
                   </div>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4">
                   <div class="img-wrap">
                     <img class="card-img-right pull-right" src="<%= @articles[0].images[0].url if @articles[0].images? %>" alt="Card image cap">
                   </div>
@@ -326,9 +326,9 @@
 </div>
   <script>
 
-  $('.card').on('click', function(event) {
-       alert('You clicked the Bootstrap Card');
-  });
+  // $('.card').on('click', function(event) {
+  //      alert('You clicked the Bootstrap Card');
+  // });
 
   	$(document).ready(function() {
   		var ip = '<%= @client_ip %>'
@@ -340,10 +340,7 @@
     		url: "http://api.ipstack.com/"+ip+"?access_key="+access_key,
     		dataType: "json",
     		success: function(data){
-          console.log(data)
           var ip = '<%= @client_ip %>'
-          console.log(ip)
-          console.log('<%= @client_ip %>')
           var isp = "NA"
           var city = data.city
           var state = data.region_name

@@ -221,9 +221,10 @@ ul {
 .header .subtitle {
   background:$light;
   padding: 20px 25px;
-  margin: 0 450px 1.5rem 450px;
+  margin: 0 auto 1.5rem auto;
   font-family: $body;
   color: $green;
+  max-width: 500px;
 }
 
 .card:hover {
@@ -311,7 +312,7 @@ ul {
 }
 
 .internal-card .card-title {
-  font-size: $large-size;
+  // font-size: $large-size;
   font-family: $title;
   font-weight: bold;
   color: $dark;
@@ -334,14 +335,14 @@ ul {
 
 .card-list .card-title {
   padding: 1.25rem;
-  font-size: $medium-size;
+  // font-size: $medium-size;
   font-family: $title;
   font-weight: bold;
 }
 
 .card-list img {
-  width: 150px;
-  height: 150px;
+  max-width: 150px;
+  max-height: 150px;
 }
 
 .featured .card-list .stats {
