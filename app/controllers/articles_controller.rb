@@ -78,6 +78,7 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
+    @article = Article.new(article_params)
     @article.user_id = current_user.id
     @article.tag_list.add(params[:article][:tag_list], parse: true)
 
