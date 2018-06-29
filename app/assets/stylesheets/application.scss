@@ -17,11 +17,12 @@
  @import "bootstrap";
  @import "social-share-button";
  @import url('https://fonts.googleapis.com/css?family=Nunito+Sans|Open+Sans|Raleway|Source+Sans+Pro');
-
+ @import "articles.scss";
 
 
  // color variations
  $red: #FF3118;
+ $red2:  #FF9180;
  $yellow: #FFE900;
  $dark: #0A2343;
  $green: #2CA58D;
@@ -43,54 +44,139 @@
    max-height: 100%;
    height: auto;
    object-fit: cover;
+   transition: transform .3s;
+ }
+
+ .background {
+   background-color: teal;
+   max-width: inherit;
+   max-height: 100%;
+   padding-top: -50px;
+ }
+
+ .img-wrap {
+   overflow: hidden;
+   position: relative;
  }
 
  .row {
    margin: 0;
  }
 
+ .container {
+   // max-width: 1200px;
+ }
+
+ .card {
+   margin-bottom: 15px;
+ }
+
+ .stats {
+   color: $green;
+ }
+
+ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li {
+  list-style-type: none;
+  padding: 0 5px;
+}
+
+.singles li {
+  list-style-type: none;
+  padding: 0 15px;
+  vertical-align: baseline;
+}
+
 // NAVNAR
-.navbar-brand {
-    position: absolute;
+.navbar-light .navbar-brand {
+    position: fixed;
     left: 50%;
     margin-left: -50px;
-    display: block;
+    color: #FFEDDF;
 }
 
+.navbar-light .navbar-nav .nav-link.active {
+  color: #FF3118;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #FFEDDF;
+}
+//
+//
+//
+.circle {
+  height: 20px;
+  width: 20px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%;
+  color: #FFEDDF;
+  background: rgba(255, 255, 255, 0.5);
+}
+//
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3em;
-  width: 100%;
-  box-sizing: border-box;
+  font-family: $title;
+  font-weight: bold;
+//   top: 0;
+//   left: 0;
+  font-size: 16px;
+//   width: 100%;
+//   box-sizing: border-box;
   background: linear-gradient(to right, #FFD998, #FF9180, #FFD998);
-  padding: 12px 18px;
-  box-shadow: 0px 4px 7px #777;
-  transition: background-color 0.4s ease-out;
+//   padding: 12px 18px;
+  box-shadow: 0px 4px 6px #dddddd;
+//   transition: background-color 0.4s ease-out;
+  z-index: 100;
 }
+//
+// .navbar-toggler {
+//     background-color: #FFD998;
+//     border: 1px solid ;
+// }
 
-.nvbheight {
-  height: 70px;
-  font-size: 16px
-}
+
 
 // LANDING PAGE
 //
 // gemeral
 .container-a {
   position: relative;
-  width: 1400px;
+  max-width: 1400px;
   height: auto;
   margin: 0 auto;
+  padding: 0;
 }
 
 .container-b {
   display: flex;
   position: relative;
-  width: 1020px;
+  max-width: 1020px;
   height: auto;
   margin: 0 auto;
+  padding: 0;
+}
+
+.col-sm-6 {
+  padding: 0 10px;
+}
+
+.col-8 {
+  padding: 0;
+}
+
+.col-4 {
+  padding: 0;
+}
+
+.col-md {
   padding: 0;
 }
 
@@ -125,17 +211,45 @@
 
 .header .title {
   font-size: $large-size;
+  margin-bottom: -20px;
+  margin-top: 2rem;
+  font-family: $title;
+  font-weight: bold;
+  color: $dark;
 }
 
 .header .subtitle {
+  background:$light;
+  padding: 20px 25px;
+  margin: 0 450px 1.5rem 450px;
+  font-family: $body;
+  color: $green;
 }
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card:hover .card-title {
+  text-decoration: underline;
+  text-decoration-color: $red;
+}
+
+.card:hover img {
+  transform: scale(1.2);
+}
+
+// .card-featured:hover .image-box img {
+//   transform: scale(1.2);
+//   cursor: pointer;
+// }
 
 
 // FEATURED CAARDS
 //
 // general
 .featured {
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 
 .featured-link {
@@ -143,13 +257,14 @@
   padding: 5px;
   bottom: 0;
   right: 0;
+  color: $green;
 }
 
 // card featured
-.card-featured {
+.featured-main {
   display: block;
   width: auto;
-  height: 515px;
+  // height: 515px;
   position: relative;
   // padding-right: 10px;
   text-align: center;
@@ -159,7 +274,7 @@
   max-height: 465px;
   position: relative;
   background: white;
-  margin-bottom: -116px;
+  margin-bottom: -60px;
   overflow: hidden;
 }
 
@@ -169,26 +284,48 @@
   // object-fit: cover;
 }
 
-.card-featured .category-tag {
+.featured-main {
+  background: transparent;
+  border: 0;
+}
+
+.internal-card {
   // background: transparent;
-  position: absolute;
+  // position: absolute;
   width: auto;
   bottom: 0;
   margin: 0 50px;
   padding: 0 auto;
+  z-index: 10;
 }
 
-.card-featured .card-header {
+.internal-card .card-body {
+  padding: 15px;
+}
+
+.internal-card .card-header {
   height: 30px;
   padding: 3px;
   background-color: $red;
   opacity: .5;
 }
 
+.internal-card .card-title {
+  font-size: $large-size;
+  font-family: $title;
+  font-weight: bold;
+  color: $dark;
+}
+
+.external-card {
+  background: white;
+  padding: 0;
+}
+
 
 // card list
 .card-list {
-  padding-left: 10px;
+  // padding-left: 10px;
 }
 
 .card-list .card-body {
@@ -197,11 +334,18 @@
 
 .card-list .card-title {
   padding: 1.25rem;
+  font-size: $medium-size;
+  font-family: $title;
+  font-weight: bold;
 }
 
 .card-list img {
   width: 150px;
   height: 150px;
+}
+
+.featured .card-list .stats {
+  padding: 10px 10px 1.25rem 1.25rem;
 }
 
 
@@ -219,20 +363,25 @@
   padding: 0;
 }
 
+// modular card twos
 .twos {
-  padding-bottom: 15px;
+  // padding-bo   ttom: 15px;
 }
 .twos .col-sm {
   padding: 0;
-
 }
 
+.singles .card {
+  max-width: 332.5px;
+}
+
+// modular card threes
 .threes {
-  background-color: magenta;
-  padding: 15px;
+  background-color: white;
+  padding: 15px 15px 0 15px;
 }
 
-.threes .col {
+.threes .col-sm {
   padding: 0;
 }
 
@@ -246,8 +395,8 @@
 }
 
 .small .card {
-  max-width: 325px;
-  max-height: 350px;
+  // max-width: 325px;
+  // max-height: 350px;
 }
 
 // side-nav
@@ -263,9 +412,12 @@
   padding: 0;
 }
 
-.side-nav .card-list .card-title {
-  padding: 1.25rem;
+.side-nav .card-title {
+  // padding: 1.25rem;
   margin: 0;
+  font-size: $small-size;
+  font-family: $title;
+  font-weight: bold;
 }
 
 .side-nav .card-list img {
@@ -277,91 +429,45 @@
 // ADVERTISMENT
 .advertisement .col-sm {
   padding: 0;
+  margin-top: 15px;
 }
 
-.navbar {
-  z-index: 100;
+// SOCIAL SHARE BUTTONS
+
+.sticky-social {
+
+  // top: 100px;
 }
 
-.facebook_login {
-  border-radius: 40px;
-  padding: 10px 120px;
-  background: transparent;
-  color: rgba(58, 133, 191, 0.75);
-  border: 2px solid rgba(58, 133, 191, 0.75);
+.sticky-social.fixed {
+  position: fixed;
+  top: 100px;
 }
 
-.facebook_login:hover {
-  color: #FFF;
-  background: rgba(58, 133, 191, 0.75);
-  border: 2px solid rgba(58, 133, 191, 0.75);
+.social-share-button .ssb-icon {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+  display: flex;
+  width: 50px;
+  height: 50px;
 }
 
-.twitter_login {
-  border-radius: 40px;
-  padding: 10px 120px;
-  background: transparent;
-  color: rgba(91, 192, 222, 0.75);
-  border: 2px solid rgba(91, 192, 222, 0.75);
+.whatsapp {
+  width: 50px;
 }
 
-.twitter_login:hover {
-  color: #FFF;
-  background: rgba(91, 192, 222, 0.75);
-  border: 2px solid rgba(91, 192, 222, 0.75);
+
+// SHOW PAGE
+.show .container {
+  display: grid;
 }
 
-.google_login {
-  border-radius: 40px;
-  padding: 10px 120px;
-  background: transparent;
-  color: rgba(217, 83, 78, 0.75);
-  border: 2px solid rgba(217, 83, 78, 0.75);
+.side-feature {
+  position: sticky;
+  position: -webkit-sticky;
 }
 
-.google_login:hover {
-  color: #FFF;
-  background: rgba(217, 83, 78, 0.75);
-  border: 2px solid rgba(217, 83, 78, 0.75);
-}
-
-.email_login {
-  border-radius: 40px;
-  padding: 10px 120px;
-  background: transparent;
-  color: rgba(108, 88, 179, 0.75);
-  border: 2px solid rgba(108, 89, 179, 0.75);
-}
-
-.email_login:hover {
-  color: #FFF;
-  background: rgba(108, 88, 179, 0.75);
-  border: 2px solid rgba(108, 89, 179, 0.75);
-}
-
-.submitbtn {
-  margin-left: auto;
-}
-
-.sharedlinks {
-  margin-left: auto;
-  width: 290px;
-  text-align: right;
-}
-
-.captcha {
-  margin-right: auto;
-}
-
-.rounded {
-    border-radius: 20px;
-    background: transparent;
-    color: rgba(108, 88, 179, 0.75);
-    border: 2px solid rgba(108, 89, 179, 0.75);
-}
-
-.rounded:hover {
-  color: #FFF;
-  background: rgba(108, 88, 179, 0.75);
-  border: 2px solid rgba(108, 89, 179, 0.75);
+.row .col-md-4 {
+  padding-left: 15px;
 }

@@ -1,18 +1,16 @@
-
+<h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<div class="form-row">
-  <div class="form-group col-md-12">
-    <%= f.label :email , class: "col-form-label-sm"%><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-sm" %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-</div>
-<div class="form-row">
-  <div class="form-group col-md-12">
-    <%= f.label :password, class: "col-form-label-sm" %><br />
-    <%= f.password_field :password, autocomplete: "off", class: "form-control form-control-sm" %>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
   </div>
-</div>
+
   <% if devise_mapping.rememberable? -%>
     <div class="field">
       <%= f.check_box :remember_me %>
@@ -23,8 +21,10 @@
   <div class="actions">
     <%= f.submit "Log in" %>
   </div>
-
 <% end %>
-
+<%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
+<%= link_to "Sign in with Twitter", user_twitter_omniauth_authorize_path %>
+<%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
 
 <%= render "devise/shared/links" %>
+<%= link_to "Home", "/" %>
