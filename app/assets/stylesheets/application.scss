@@ -22,6 +22,7 @@
 
  // color variations
  $red: #FF3118;
+ $red2:  #FF9180;
  $yellow: #FFE900;
  $dark: #0A2343;
  $green: #2CA58D;
@@ -43,11 +44,54 @@
    max-height: 100%;
    height: auto;
    object-fit: cover;
+   transition: transform .3s;
+ }
+
+ .background {
+   background-color: teal;
+   max-width: inherit;
+   max-height: 100%;
+   padding-top: -50px;
+ }
+
+ .img-wrap {
+   overflow: hidden;
+   position: relative;
  }
 
  .row {
    margin: 0;
  }
+
+ .container {
+   // max-width: 1200px;
+ }
+
+ .card {
+   margin-bottom: 15px;
+ }
+
+ .stats {
+   color: $green;
+ }
+
+ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li {
+  list-style-type: none;
+  padding: 0 5px;
+}
+
+.singles li {
+  list-style-type: none;
+  padding: 0 15px;
+  vertical-align: baseline;
+}
 
 // NAVNAR
 .navbar-light .navbar-brand {
@@ -80,6 +124,7 @@
 //
 .navbar {
   font-family: $title;
+  font-weight: bold;
 //   top: 0;
 //   left: 0;
   font-size: 16px;
@@ -104,18 +149,34 @@
 // gemeral
 .container-a {
   position: relative;
-  width: 1400px;
+  max-width: 1400px;
   height: auto;
   margin: 0 auto;
-
+  padding: 0;
 }
 
 .container-b {
   display: flex;
   position: relative;
-  width: 1020px;
+  max-width: 1020px;
   height: auto;
   margin: 0 auto;
+  padding: 0;
+}
+
+.col-sm-6 {
+  padding: 0 10px;
+}
+
+.col-8 {
+  padding: 0;
+}
+
+.col-4 {
+  padding: 0;
+}
+
+.col-md {
   padding: 0;
 }
 
@@ -150,17 +211,45 @@
 
 .header .title {
   font-size: $large-size;
+  margin-bottom: -20px;
+  margin-top: 2rem;
+  font-family: $title;
+  font-weight: bold;
+  color: $dark;
 }
 
 .header .subtitle {
+  background:$light;
+  padding: 20px 25px;
+  margin: 0 450px 1.5rem 450px;
+  font-family: $body;
+  color: $green;
 }
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card:hover .card-title {
+  text-decoration: underline;
+  text-decoration-color: $red;
+}
+
+.card:hover img {
+  transform: scale(1.2);
+}
+
+// .card-featured:hover .image-box img {
+//   transform: scale(1.2);
+//   cursor: pointer;
+// }
 
 
 // FEATURED CAARDS
 //
 // general
 .featured {
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 
 .featured-link {
@@ -168,13 +257,14 @@
   padding: 5px;
   bottom: 0;
   right: 0;
+  color: $green;
 }
 
 // card featured
-.card-featured {
+.featured-main {
   display: block;
   width: auto;
-  height: 515px;
+  // height: 515px;
   position: relative;
   // padding-right: 10px;
   text-align: center;
@@ -184,7 +274,7 @@
   max-height: 465px;
   position: relative;
   background: white;
-  margin-bottom: -116px;
+  margin-bottom: -60px;
   overflow: hidden;
 }
 
@@ -194,26 +284,48 @@
   // object-fit: cover;
 }
 
-.card-featured .category-tag {
+.featured-main {
+  background: transparent;
+  border: 0;
+}
+
+.internal-card {
   // background: transparent;
-  position: absolute;
+  // position: absolute;
   width: auto;
   bottom: 0;
   margin: 0 50px;
   padding: 0 auto;
+  z-index: 10;
 }
 
-.card-featured .card-header {
+.internal-card .card-body {
+  padding: 15px;
+}
+
+.internal-card .card-header {
   height: 30px;
   padding: 3px;
   background-color: $red;
   opacity: .5;
 }
 
+.internal-card .card-title {
+  font-size: $large-size;
+  font-family: $title;
+  font-weight: bold;
+  color: $dark;
+}
+
+.external-card {
+  background: white;
+  padding: 0;
+}
+
 
 // card list
 .card-list {
-  padding-left: 10px;
+  // padding-left: 10px;
 }
 
 .card-list .card-body {
@@ -222,11 +334,18 @@
 
 .card-list .card-title {
   padding: 1.25rem;
+  font-size: $medium-size;
+  font-family: $title;
+  font-weight: bold;
 }
 
 .card-list img {
   width: 150px;
   height: 150px;
+}
+
+.featured .card-list .stats {
+  padding: 10px 10px 1.25rem 1.25rem;
 }
 
 
@@ -244,20 +363,25 @@
   padding: 0;
 }
 
+// modular card twos
 .twos {
-  padding-bottom: 15px;
+  // padding-bo   ttom: 15px;
 }
 .twos .col-sm {
   padding: 0;
-
 }
 
+.singles .card {
+  max-width: 332.5px;
+}
+
+// modular card threes
 .threes {
-  background-color: magenta;
-  padding: 15px;
+  background-color: white;
+  padding: 15px 15px 0 15px;
 }
 
-.threes .col {
+.threes .col-sm {
   padding: 0;
 }
 
@@ -271,8 +395,8 @@
 }
 
 .small .card {
-  max-width: 325px;
-  max-height: 350px;
+  // max-width: 325px;
+  // max-height: 350px;
 }
 
 // side-nav
@@ -288,9 +412,12 @@
   padding: 0;
 }
 
-.side-nav .card-list .card-title {
-  padding: 1.25rem;
+.side-nav .card-title {
+  // padding: 1.25rem;
   margin: 0;
+  font-size: $small-size;
+  font-family: $title;
+  font-weight: bold;
 }
 
 .side-nav .card-list img {
@@ -302,6 +429,7 @@
 // ADVERTISMENT
 .advertisement .col-sm {
   padding: 0;
+  margin-top: 15px;
 }
 
 // SOCIAL SHARE BUTTONS

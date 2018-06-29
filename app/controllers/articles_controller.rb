@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :search]
   impressionist :actions=>[:show,:index]
 
   def search
@@ -51,7 +51,11 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.left_joins(:votes).group(:id).order('COUNT(vote) DESC')
+    if params[:tag]
+      @articles = Article.tagged_with(params[:tag])
+    else
+      @articles = Article.left_joins(:votes).group(:id).order('COUNT(vote) DESC')
+    end
     @client_ip = remote_ip()
   end
 
@@ -74,8 +78,11 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
+    byebug
     @article = Article.new(article_params)
     @article.user_id = current_user.id
+    @article.tag_list.add(params[:article][:tag_list], parse: true)
+
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -119,6 +126,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title , :description, {images: []}, {videos: []}, :user_id, :tag_list)
+      params.require(:article).permit(:title , :description, {images: []}, {videos: []}, :user_id, tag_list: [])
     end
 end
