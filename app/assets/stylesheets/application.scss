@@ -75,6 +75,10 @@
    color: $green;
  }
 
+a:hover {
+   text-decoration: none;
+ }
+
 ul {
   display: flex;
   list-style-type: none;
@@ -82,7 +86,8 @@ ul {
   padding: 0;
 }
 
-.footer-links li {
+
+li {
   list-style-type: none;
   padding: 0 5px;
 }
@@ -91,6 +96,12 @@ ul {
   list-style-type: none;
   padding: 0 15px;
   vertical-align: baseline;
+}
+
+.card-title {
+  color: $dark;
+  font-family: $title;
+  font-weight: bold;
 }
 
 // NAVNAR
@@ -341,12 +352,12 @@ ul {
 }
 
 .card-list img {
-  max-width: 150px;
-  max-height: 150px;
+  width: 150px;
+  height: 150px;
 }
 
-.featured .card-list .stats {
-  padding: 10px 10px 1.25rem 1.25rem;
+.card-list .stats {
+  padding: 0 10px 1.25rem 1.25rem;
 }
 
 
@@ -376,6 +387,10 @@ ul {
   max-width: 332.5px;
 }
 
+.singles .img {
+  max-height: 280px;
+}
+
 // modular card threes
 .threes {
   background-color: white;
@@ -386,19 +401,19 @@ ul {
   padding: 0;
 }
 
-.regular .card {
-  min-height: 350px;
-}
+// .regular .card {
+//   min-height: 350px;
+// }
 
-.regular .card-img-top {
-  min-height: 165px;
-  max-height: 165px;
-}
+// .regular .card-img-top {
+//   min-height: 165px;
+//   max-height: 165px;
+// }
 
-.small .card {
-  // max-width: 325px;
-  // max-height: 350px;
-}
+// .small .card {
+//   max-width: 325px;
+//   max-height: 350px;
+// }
 
 // side-nav
 .latest-feed .side-nav {
