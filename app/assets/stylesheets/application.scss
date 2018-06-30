@@ -480,6 +480,7 @@ li {
 .sticky-social.fixed {
   position: fixed;
   top: 100px;
+  width: 325px;
 }
 
 .social-share-button .ssb-icon {
@@ -497,18 +498,12 @@ li {
 
 
 // SHOW PAGE
-.show .container {
-  display: grid;
-}
-
-.side-feature {
-  position: sticky;
-  position: -webkit-sticky;
-}
 
 .row .col-md-4 {
   padding-left: 15px;
 }
+
+
 
 // modal-css-start
 
