@@ -55,6 +55,7 @@ class ArticlesController < ApplicationController
       @articles = Article.tagged_with(params[:tag])
     else
       @articles = Article.left_joins(:votes).group(:id).order('COUNT(vote) DESC')
+      @latest = Article.order('created_at DESC')
     end
     @client_ip = remote_ip()
   end
@@ -78,6 +79,7 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
+    @article = Article.new(article_params)
     @article.user_id = current_user.id
     @article.tag_list.add(params[:article][:tag_list], parse: true)
 

@@ -31,7 +31,7 @@
  // font variables
  $title: "Raleway", "Nunito Sans", sans-serif;
  $body: "Source Sans Pro", "Open Sans", "Arial", sans-serif;
- $banner-size: 40px;
+   $banner-size: 40px;
  $xlarge-size: 34px;
  $large-size: 28px;
  $medium-size: 20px;
@@ -52,6 +52,7 @@
    max-width: inherit;
    max-height: 100%;
    padding-top: -50px;
+   margin: 0;
  }
 
  .img-wrap {
@@ -75,6 +76,10 @@
    color: $green;
  }
 
+a:hover {
+   text-decoration: none;
+ }
+
 ul {
   display: flex;
   list-style-type: none;
@@ -82,17 +87,17 @@ ul {
   padding: 0;
 }
 
-.footer-links li {
+li {
   list-style-type: none;
-  padding: 0 5px;
+  padding: 0 auto;
 }
 
-.singles li {
-  list-style-type: none;
-  padding: 0 15px;
-  vertical-align: baseline;
+.card-title {
+  color: $dark;
+  font-family: $title;
+  font-weight: bold;
+  // margin-top: .75rem;
 }
-
 // NAVNAR
 .navbar-light .navbar-brand {
     position: fixed;
@@ -166,6 +171,7 @@ ul {
 
 .col-sm-6 {
   padding: 0 10px;
+  margin-bottom: 15px;
 }
 
 .col-8 {
@@ -221,9 +227,10 @@ ul {
 .header .subtitle {
   background:$light;
   padding: 20px 25px;
-  margin: 0 450px 1.5rem 450px;
+  margin: 0 auto 1.5rem auto;
   font-family: $body;
   color: $green;
+  max-width: 500px;
 }
 
 .card:hover {
@@ -276,6 +283,7 @@ ul {
   background: white;
   margin-bottom: -60px;
   overflow: hidden;
+  vertical-align: middle;
 }
 
 .image-box img {
@@ -311,7 +319,7 @@ ul {
 }
 
 .internal-card .card-title {
-  font-size: $large-size;
+  // font-size: $large-size;
   font-family: $title;
   font-weight: bold;
   color: $dark;
@@ -334,7 +342,7 @@ ul {
 
 .card-list .card-title {
   padding: 1.25rem;
-  font-size: $medium-size;
+  // font-size: $medium-size;
   font-family: $title;
   font-weight: bold;
 }
@@ -344,8 +352,12 @@ ul {
   height: 150px;
 }
 
-.featured .card-list .stats {
-  padding: 10px 10px 1.25rem 1.25rem;
+.card-list .stats {
+  padding: 0 10px 1.25rem 1.25rem;
+}
+
+.featured .tags {
+  padding: 15px 0 0 15px;
 }
 
 
@@ -375,6 +387,14 @@ ul {
   max-width: 332.5px;
 }
 
+.singles .img-wrap {
+  max-height: 280px;
+}
+
+.singles .tags {
+  margin-bottom: 15px;
+}
+
 // modular card threes
 .threes {
   background-color: white;
@@ -385,47 +405,65 @@ ul {
   padding: 0;
 }
 
-.regular .card {
-  min-height: 350px;
-}
+// .regular .card {
+//   min-height: 350px;
+// }
 
-.regular .card-img-top {
-  min-height: 165px;
-  max-height: 165px;
-}
+// .regular .card-img-top {
+//   min-height: 165px;
+//   max-height: 165px;
+// }
 
-.small .card {
-  // max-width: 325px;
-  // max-height: 350px;
-}
+// .small .card {
+//   max-width: 325px;
+//   max-height: 350px;
+// }
 
 // side-nav
 .latest-feed .side-nav {
   padding: 0 0 0 30px;
 }
 
+.side-nav .card {
+  margin-bottom: 5px;
+}
+
 .side-nav .card-list {
   padding: 0;
 }
 
-.side-nav .card-list .card-body {
-  padding: 0;
+.side-nav .card-body {
+  padding: auto;
 }
 
 .side-nav .card-title {
   // padding: 1.25rem;
   margin: 0;
-  font-size: $small-size;
+  font-size: $tag-size;
   font-family: $title;
   font-weight: bold;
 }
 
-.side-nav .card-list img {
-  width: 90px;
-  height: 90px;
+.side-nav img {
+  width: 85px;
+  height: 85px;
 }
 
+.side-nav .title {
+  margin: 0;
+}
 
+.side-nav .card-body {
+  padding: 10px;
+}
+
+.side-nav .row .col-md-4 {
+  padding: 0;
+}
+
+.side-nav .stats {
+  font-size: $xsmall-size;
+}
 // ADVERTISMENT
 .advertisement .col-sm {
   padding: 0;
@@ -471,3 +509,90 @@ ul {
 .row .col-md-4 {
   padding-left: 15px;
 }
+
+// modal-css-start
+
+.facebook_login {
+  border-radius: 40px;
+  padding: 10px 120px;
+  background: transparent;
+  color: rgba(58, 133, 191, 0.75);
+  border: 2px solid rgba(58, 133, 191, 0.75);
+}
+
+.facebook_login:hover {
+  color: #FFF;
+  background: rgba(58, 133, 191, 0.75);
+  border: 2px solid rgba(58, 133, 191, 0.75);
+}
+
+.twitter_login {
+  border-radius: 40px;
+  padding: 10px 120px;
+  background: transparent;
+  color: rgba(91, 192, 222, 0.75);
+  border: 2px solid rgba(91, 192, 222, 0.75);
+}
+
+.twitter_login:hover {
+  color: #FFF;
+  background: rgba(91, 192, 222, 0.75);
+  border: 2px solid rgba(91, 192, 222, 0.75);
+}
+
+.google_login {
+  border-radius: 40px;
+  padding: 10px 120px;
+  background: transparent;
+  color: rgba(217, 83, 78, 0.75);
+  border: 2px solid rgba(217, 83, 78, 0.75);
+}
+
+.google_login:hover {
+  color: #FFF;
+  background: rgba(217, 83, 78, 0.75);
+  border: 2px solid rgba(217, 83, 78, 0.75);
+}
+
+.email_login {
+  border-radius: 40px;
+  padding: 10px 120px;
+  background: transparent;
+  color: rgba(108, 88, 179, 0.75);
+  border: 2px solid rgba(108, 89, 179, 0.75);
+}
+
+.email_login:hover {
+  color: #FFF;
+  background: rgba(108, 88, 179, 0.75);
+  border: 2px solid rgba(108, 89, 179, 0.75);
+}
+
+.submitbtn {
+  margin-left: auto;
+}
+
+.sharedlinks {
+  margin-left: auto;
+  width: 290px;
+  text-align: right;
+}
+
+.captcha {
+  margin-right: auto;
+}
+
+.rounded {
+    border-radius: 20px;
+    background: transparent;
+    color: rgba(108, 88, 179, 0.75);
+    border: 2px solid rgba(108, 89, 179, 0.75);
+}
+
+.rounded:hover {
+  color: #FFF;
+  background: rgba(108, 88, 179, 0.75);
+  border: 2px solid rgba(108, 89, 179, 0.75);
+}
+
+// modal-end

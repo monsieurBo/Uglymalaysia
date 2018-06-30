@@ -1,10 +1,4 @@
-<head>
-
-</head>
-<body>
-
-  <div class="container container-a">
-    <p id="notice"><%= notice %></p>
+<div class="container container-a">
     <!-- Header for images/title together -->
       <div class="header">
         <% if @article.images.length != 0 %>
@@ -13,11 +7,11 @@
             <% @article.images.each_with_index do |img, index | %>
               <% if index == 0 %>
                 <div class="carousel-item active center-item" style="text-align: center;">
-                  <%= image_tag(img.url, size: "400x400") %>
+                  <%= image_tag(img.large.url, size: "400x400") %>
                 </div>
               <% else %>
                 <div class="carousel-item center-item">
-                  <%= image_tag(img.url, size: "400x400") %>
+                  <%= image_tag(img.large.url, size: "  400x400") %>
                 </div>
               <% end %>
             <% end %>
@@ -58,18 +52,23 @@
           <p>Number of views
             <%= @article.impressionist_count(:filter=>:ip_address) %>
           </p>
-        <% vote = Vote.find_by(article: @article.id, user_id: current_user.id) %>
-        <% if !vote.nil? %> <!-- if vote find_by not nil is true-->
-          <% if vote.vote? %>  <!-- if vote value is true-->
-            <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-default btn-sm upvote", :remote => true %>
-            <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote", :remote => true %>
+        <% if current_user %>
+          <% vote = Vote.find_by(article: @article.id, user_id: current_user.id) %>
+          <% if !vote.nil? %> <!-- if vote find_by not nil is true-->
+            <% if vote.vote? %>  <!-- if vote value is true-->
+              <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-default btn-sm upvote", :remote => true %>
+              <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote", :remote => true %>
+            <% else %>
+              <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-default btn-sm upvote", :remote => true %>
+              <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote" , :remote => true%>
+            <% end %>
           <% else %>
-            <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-default btn-sm upvote", :remote => true %>
+            <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm upvote", :remote => true %>
             <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote" , :remote => true%>
           <% end %>
         <% else %>
-          <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm upvote", :remote => true %>
-          <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote" , :remote => true%>
+          <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm disabled", :remote => true %>
+          <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote disabled" , :remote => true%>
         <% end %>
 
         <%= link_to 'Edit', edit_article_path(@article) %> |
@@ -130,7 +129,7 @@ var disqus_config = function () {
 
 (function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');
-s.src = 'https://www-uglymalaysia.disqus.com/embed.js';
+s.src = 'https://uglymy.disqus.com/embed.js';
 s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
@@ -138,7 +137,7 @@ s.setAttribute('data-timestamp', +new Date());
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript#disqus_thread">comments powered by Disqus.</a></noscript>
 </body>
 
-<script>
+<!-- <script>
   var header = $(".sticky-social");
     $(window).scroll(function() {
       var scroll = $(window).scrollTop();
@@ -148,4 +147,4 @@ s.setAttribute('data-timestamp', +new Date());
             header.removeClass("fixed");
           }
   });
-</script>
+</script> -->

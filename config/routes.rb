@@ -3,8 +3,7 @@ Rails.application.routes.draw do
 
   get 'articles/most_views', to: 'articles#most_views'
   get 'articles/trending', to: 'articles#trending'
-  get 'articles/search/:tag', to: 'articles#tag_search'
-  get 'tags/:tag', to: 'articles#index', as: :tag
+  get 'articles/search/:tag', to: 'articles#tag_search', as: :tag
   root 'articles#index'
   resources :articles do
   	resource :votes, only: [:upvote, :downvote] do
