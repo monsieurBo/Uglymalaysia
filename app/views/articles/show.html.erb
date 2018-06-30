@@ -1,38 +1,58 @@
 <div class="container container-a">
     <!-- Header for images/title together -->
       <div class="header">
-        <% if @article.images.length != 0 %>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner center-image">
-            <% @article.images.each_with_index do |img, index | %>
-              <% if index == 0 %>
-                <div class="carousel-item active center-item" style="text-align: center;">
-                  <%= image_tag(img.large.url, size: "400x400") %>
-                </div>
-              <% else %>
-                <div class="carousel-item center-item">
-                  <%= image_tag(img.large.url, size: "  400x400") %>
+        <% if @article.videos.length != 0 && @article.images.length != 0 %>
+        <!-- Show video and image together in carousel -->
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <% @article.videos.each do |video| %>
+                <div class="carousel-item active center-item">
+                     <%= video_tag video.to_s, controls: true, size: "250"%>
                 </div>
               <% end %>
-            <% end %>
+              <% @article.images.each do |img|%>
+                 <div class="carousel-item center-item">
+                   <%= image_tag(img.url, size: "600x600") %>
+                 </div>
+              <% end %>
+            </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                   <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
           </div>
-
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
+       <% elsif @article.images.length!= 0%>
+           <!-- only for image carousel -->
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+              <% @article.images.each_with_index do |img, index|%>
+                  <% if index == 0 %>
+                    <div class="carousel-item active center-item">
+                      <%= image_tag(img.url, size: "600x600") %>
+                    </div>
+                  <% else %>
+                    <div class="carousel-item center-item">
+                       <%= image_tag(img.url, size: "600x600") %>
+                     </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  <% end %>
+              <% end %>
+              </div>
+        <% end %>
+          </div>
         </div>
       <hr>
-
-        <% @article.videos.each do |y| %>
-        <%= video_tag y.to_s,  controls: true, size: "250"%>
-        <% end %>
-
-      <% end %>
       <p class="title"><%= @article.title  %></p>
       </div>
     </div>
@@ -41,99 +61,81 @@
     <div class="container container-b">
       <div class="row">
         <!-- Article side column -->
-        <div class="col-md-1 col-sm-1">
+        <div class="col-md-2 col-sm-2">
           <div class="sticky-social">
             <%= social_share_button_tag(@article.title , :url => request.original_url , desc: @article.description) %>
             <a href="whatsapp://send?text=<%= request.original_url %>"><img class="whatsapp" src="https://image.flaticon.com/icons/svg/124/124034.svg"></img></a>
           </div>
         </div>
-        <div class="col-md-7 col-sm-5">
+        <div class="col-md-6 col-sm-5">
           <p><%= @article.description  %></p>
           <p>Number of views
             <%= @article.impressionist_count(:filter=>:ip_address) %>
           </p>
-          <% if current_user %>
-            <% vote = Vote.find_by(article: @article.id, user_id: current_user.id) %>
-            <% if !vote.nil? %> <!-- if vote find_by not nil is true-->
-              <% if vote.vote? %>  <!-- if vote value is true-->
-                <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-default btn-sm upvote", :remote => true %>
-                <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote", :remote => true %>
-              <% else %>
-                <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-default btn-sm upvote", :remote => true %>
-                <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote" , :remote => true%>
-              <% end %>
+        <% if current_user %>
+          <% vote = Vote.find_by(article: @article.id, user_id: current_user.id) %>
+          <% if !vote.nil? %> <!-- if vote find_by not nil is true-->
+            <% if vote.vote? %>  <!-- if vote value is true-->
+              <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-default btn-sm upvote", :remote => true %>
+              <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote", :remote => true %>
             <% else %>
-              <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm upvote", :remote => true %>
+              <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-default btn-sm upvote", :remote => true %>
               <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote" , :remote => true%>
             <% end %>
           <% else %>
-            <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm disabled", :remote => true %>
-            <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote disabled" , :remote => true%>
+            <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm upvote", :remote => true %>
+            <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote" , :remote => true%>
           <% end %>
+        <% else %>
+          <%= link_to "UPVOTE | #{Vote.where(article_id: @article.id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm disabled", :remote => true %>
+          <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote disabled" , :remote => true%>
+        <% end %>
 
-          <%= link_to 'Edit', edit_article_path(@article) %> |
-          <%= link_to 'Back', articles_path %>
-          <a href="http://foo.com/bar.html#disqus_thread">Link</a>
-          <div id="disqus_thread">
-          </div>
-          <script id="dsq-count-scr" src="//www-uglymalaysia.disqus.com/count.js" async></script>
+        <%= link_to 'Edit', edit_article_path(@article) %> |
+        <%= link_to 'Back', articles_path %>
+        <a href="http://foo.com/bar.html#disqus_thread">Link</a>
+        <div id="disqus_thread">
+        </div>
+        <script id="dsq-count-scr" src="//www-uglymalaysia.disqus.com/count.js" async></script>
         </div>
 
         <!-- Side bar -->
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-5 side-feature">
           <!-- sticky -->
-            <div class="sticky-social">
-                  <!-- card list -->
-                    <div class="card">
-                      <div class="row">
-                        <div class="col-8">
-                          <div class="card-body flex-column">
-                            <div class="card-title">absdas</div>
-                          </div>
-                        </div>
-                        <div class="col-4">
-                          <div class="img-wrap">
-                        <img class="card-img-right" src="http://via.placeholder.com/161x161" alt="Card image cap">
-                      </div>
-                    </div>
-                  </div>
+          <div class="sticky-social">
+          <!-- card deck -->
+            <div class="card-list d-flex flex-column justify-content-between">
+              <!-- card list -->
+              <div class="card">
+                <div class="card-body d-flex justify-content-between">
+                  <div class="card-title text-left d-flex">absdas</div>
+                  <img class="card-img-right" src="http://via.placeholder.com/161x161" alt="Card image cap">
                 </div>
-                     <!-- card ends -->
-                     <div class="card">
-                       <div class="row">
-                         <div class="col-8">
-                           <div class="card-body flex-column">
-                             <div class="card-title">absdas</div>
-                           </div>
-                         </div>
-                         <div class="col-4">
-                           <div class="img-wrap">
-                         <img class="card-img-right" src="http://via.placeholder.com/161x161" alt="Card image cap">
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-                    <!-- card ends -->
-                    <div class="card">
-                      <div class="row">
-                        <div class="col-8">
-                          <div class="card-body flex-column">
-                            <div class="card-title">absdas</div>
-                          </div>
-                        </div>
-                        <div class="col-4">
-                          <div class="img-wrap">
-                        <img class="card-img-right" src="http://via.placeholder.com/161x161" alt="Card image cap">
-                      </div>
-                    </div>
-                  </div>
+              </div>
+               <!-- card ends -->
+              <div style="min-height: 10px;"></div>
+              <!-- card list -->
+              <div class="card">
+                <div class="card-body d-flex justify-content-between">
+                  <div class="card-title text-left d-flex">absdas</div>
+                  <img class="card-img-right" src="http://via.placeholder.com/161x161" alt="Card image cap">
                 </div>
+              </div>
+              <!-- card ends -->
+              <div style="min-height: 15px;"></div>
+              <!-- card list -->
+              <div class="card">
+                <div class="card-body d-flex justify-content-between">
+                  <div class="card-title text-left d-flex">absdas</div>
+                  <img class="card-img-right" src="http://via.placeholder.com/161x161" alt="Card image cap">
+                </div>
+              </div>
               <!-- card ends -->
           </div>
         </div>
       </div>
   </div>
-
+</div>
 <script>
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -155,19 +157,14 @@ s.setAttribute('data-timestamp', +new Date());
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript#disqus_thread">comments powered by Disqus.</a></noscript>
 </body>
 
-
-<script>
-$(function () {
-    var sidebar = $('.sticky-social');
-    var top = sidebar.offset().top - parseFloat(sidebar.css('margin-top'));
-
-    $(window).scroll(function (event) {
-      var y = $(this).scrollTop();
-      if (y >= top) {
-        sidebar.addClass('fixed');
-      } else {
-        sidebar.removeClass('fixed');
-      }
-    });
-});
-</script>
+<!-- <script>
+  var header = $(".sticky-social");
+    $(window).scroll(function() {
+      var scroll = $(window).scrollTop();
+         if (scroll >= 400) {
+            header.addClass("fixed");
+          } else {
+            header.removeClass("fixed");
+          }
+  });
+</script> -->
