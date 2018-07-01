@@ -8,7 +8,7 @@
       </div>
       <div class="row">
         <!-- column 1 // main card -->
-        <div class="col-md-7 col-sm-12 align-items-stretch">
+        <div class="col-md-12 col-sm-12 col-lg-7 align-items-stretch">
           <a href="articles/<%= @latest[0].id %>">
             <div class="card featured-main" id="<%= @articles[0].id %>">
               <div class="img-wrap image-box">
@@ -115,7 +115,9 @@
               </div>
             </a>
             <!-- card ends -->
-            <%= link_to 'more featured news >>', root_path, class: "featured-link" %>
+            <div class="featured-link text-right">
+              <%= link_to 'more featured news >>', root_path %>
+            </div>
           </div>
           <!-- deck end -->
         </div>
@@ -158,6 +160,7 @@
           <!-- column 2 -->
           <div class="col-md-7">
             <div class="row twos d-flex">
+              <div style="min-width: 15px; min-height: 15px;"></div>
               <!-- modular twos card -->
               <div class="col-sm">
                 <a href="articles/<%= @articles[0].id %>">
@@ -210,6 +213,7 @@
             </div>
             <div class="row advertisement">
               <!-- advertisement card -->
+                <div style="min-width: 15px; min-height: 15px;"></div>
               <div class="col-sm">
                 <div class="card shadow-sm">
                   <div class="card-body">

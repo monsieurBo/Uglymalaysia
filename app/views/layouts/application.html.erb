@@ -4,40 +4,13 @@
     <title>UM</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
-      <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-        <a class="navbar-brand" href="/">Uglymalaysia</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active"><a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a></li>
-            <li class="nav-item"><a class="nav-link light" href="/articles/trending">Pedas News</a></li>
-            <li class="nav-item"><a class="nav-link light" href="/articles/most_views">Durian Runtuh</a></li>
-          </ul>
-
-          <ul class="navbar-nav ml-auto">
-              <% if user_signed_in? %>
-                <li class="nav-item"><a class="nav-link light"><strong class="circle"><%= current_user.name[0] %></strong></a></li>
-                <li class="nav-item"><a class="nav-link light" href="/articles/new">Create Post</a></li>
-                <li class="nav-item"><a class="nav-link light" href="/users/edit">Edit Profile</a></li>
-                <li class="nav-item"><%= link_to"Logout",destroy_user_session_path, class: "nav-link light", method: :delete%></li>
-              <% else %>
-                <li class="nav-item"><a class="nav-link light" href="/users/sign_in">Create Post</a></li>
-                <li class="nav-item"><a class="nav-link light" href="" data-toggle="modal" data-target="#signupModal">Sign Up</a></li>
-                <li class="nav-item"><a class="nav-link light" href="" data-toggle="modal" data-target="#exampleModalCenter">Login</a></li>
-              <% end %>
-          </ul>
-        </div>
-
-      </nav>
+      <%= render partial: '/layouts/nav' %>
 
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
@@ -123,6 +96,17 @@
 
 
       <script>
+      $(document).ready(function() {
+      	// get current URL path and assign 'active' class
+        var pathname = window.location.pathname;
+        $('a[href="'+pathname+'"]').parent().addClass('active');
+        // assign 'active' class on click
+        $('a').click(function(){
+          $('li').removeClass("active");
+          $(this).parent('li').addClass("active");
+        });
+      });
+
       $(document).ready(function(){
 
       //   $('#backtomodal').hide();
@@ -150,6 +134,8 @@
       //     $('.partial').show();
       //   });
     });
+
+
       </script>
 
 
