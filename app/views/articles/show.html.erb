@@ -55,8 +55,21 @@
       <% end %>
     </div>
   <hr>
+    <div class="show-header">
+      <p><%= @article.title  %></p>
+        <div class="inline-social">
+          <div class="eq"><%= social_share_button_tag(@article.title , :url => request.original_url , desc: @article.description) %></div>
+          <div class="eq"><a href="whatsapp://send?text=<%= request.original_url %>"><img class="whatsapp" src="https://image.flaticon.com/icons/svg/124/124034.svg"></img></a></div>
+        </div>
+    </div>
+      </br>
+    <div class="author">
+      <p>Posted on <%= @article.created_at.strftime("%d %B %Y") %> |
+        <%= @article.impressionist_count(:filter=>:ip_address) %> Views
+      </p>
 
-    <p class="header"><%= @article.title  %></p>
+
+    </div>
   </header>
 
 
@@ -127,9 +140,7 @@
           </div>
         </div>
         <div class="col-4">
-          <div class="img-wrap">
             <img class="card-img-right" src="http://via.placeholder.com/161x161" alt="Card image cap">
-          </div>
         </div>
       </div>
     </div>
@@ -144,9 +155,7 @@
           </div>
         </div>
         <div class="col-4">
-          <div class="img-wrap">
             <img class="card-img-right" src="http://via.placeholder.com/161x161" alt="Card image cap">
-          </div>
         </div>
       </div>
     </div>
@@ -161,9 +170,7 @@
           </div>
         </div>
         <div class="col-4">
-          <div class="img-wrap">
             <img class="card-img-right" src="http://via.placeholder.com/161x161" alt="Card image cap">
-          </div>
         </div>
       </div>
     </div>
@@ -173,9 +180,9 @@
   <div class="ad">Advertising</div>
 
 <!-- sticky ends for right nav -->
-</aside>
 
-<footer class="main-footer">Contact details bla bla bla</footer>
+  <footer class="main-footer">Contact details bla bla bla</footer>
+</aside>
 
 </div>
 

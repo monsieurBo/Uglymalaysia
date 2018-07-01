@@ -471,7 +471,74 @@ li {
   margin-top: 15px;
 }
 
-// SOCIAL SHARE BUTTONS
+// SHOW PAGE
+
+.show-header {
+  text-align: center;
+  font-size: $banner-size;
+}
+
+.author {
+  font-size: $small-size;
+  font-style: italic;
+}
+
+.show-header .social-share-button .ssb-icon {
+  background-size: 50px 50px;
+  padding-top: 5px;
+  width: 100px;
+  height: 50px;
+}
+
+.show-header .inline-social {
+  display: flex;
+  // flex-direction: row;
+  flex-wrap: wrap;
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.show-header .social-share-button .ssb-twitter {
+  background-color: #1da1f2;
+}
+
+.show-header .social-share-button .ssb-facebook {
+  background-color: #0000e6;
+}
+
+.show-header .social-share-button .ssb-linkedin {
+  background-color: #0077b5;
+}
+
+.show-header .social-share-button .ssb-email {
+  background-color: #a81bf9;
+}
+
+.show-header .social-share-button .ssb-telegram {
+  background-color: #37a4db;
+}
+
+.show-header .social-share-button .ssb-reddit {
+  background-color: #FF4500;
+}
+
+.show-header .whatsapp {
+  background-color: #1ed414;
+
+  width: 100px;
+  height: 50px;
+}
+
+.eq {
+	padding: 5px;
+}
+
+.inline-social img {
+  object-fit: contain;
+  vertical-align: inherit;
+}
+
 .sticky-social {
   position: -webkit-sticky;
   position: sticky;
@@ -479,7 +546,7 @@ li {
 }
 
 
-.social-share-button .ssb-icon {
+.main-nav .social-share-button .ssb-icon {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 50px 50px;
@@ -493,24 +560,17 @@ li {
 }
 
 
-// SHOW PAGE
 .side {
   position: -webkit-sticky;
   position: sticky;
   top: 100px;
 }
 .wrapper {
-    max-width: 1024px;
+    max-width: 1400px;
     margin: 0 auto;
     font: 1.2em Helvetica, arial, sans-serif;
 }
 
-.wrapper > * {
-    // border: 2px solid #f08c00;
-    // background-color: #ffec99;
-    border-radius: 5px;
-    padding: 10px;
-}
 
 nav ul {
     list-style: none;
@@ -526,6 +586,8 @@ nav ul {
 .wrapper > * {
   grid-column: col-start / span 12;
 }
+
+
 
 @media (min-width: 500px) {
 
