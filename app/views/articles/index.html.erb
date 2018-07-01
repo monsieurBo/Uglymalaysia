@@ -8,7 +8,7 @@
       </div>
       <div class="row">
         <!-- column 1 // main card -->
-        <div class="col-md-7 col-sm-12 align-items-stretch">
+         <div class="col-md-12 col-sm-12 col-lg-7 p-0 align-items-stretch">
           <a href="articles/<%= @latest[0].id %>">
             <div class="card featured-main" id="<%= @articles[0].id %>">
               <div class="img-wrap image-box">
@@ -38,14 +38,14 @@
         <div style="width: 15px;"></div>
         <!-- column end // card end -->
         <!-- column 2 -->
-        <div class="col-md col-sm-12">
+        <div class="col-md p-0 col-sm-12">
           <!-- card deck -->
           <div class="card-list d-flex flex-column justify-content-between">
             <!-- card list -->
             <a href="articles/<%= @latest[1].id %>">
               <div class="card shadow-sm row">
                 <div class="card-body d-flex justify-content-between">
-                  <div class="col-8 d-flex flex-column">
+                  <div class="col-8 p-0 d-flex flex-column">
                     <div class="tags">
                       <% @latest[1].tag_list.each do |tag| %>
                         <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
@@ -56,7 +56,7 @@
                       <i class="fa fa-eye"></i> <%= @latest[1].impressionist_count(:filter=>:ip_address) %> <i class="fa fa-heart"></i> <%= Vote.where(article_id: @latest[1].id, vote: true).count %>
                     </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-4 p-0">
                     <div class="img-wrap">
                       <img class="card-img-right pull-right" src="<%= @latest[1].images[0].large_thumb if @latest[1].images? %>" alt="Card image cap">
                     </div>
@@ -70,7 +70,7 @@
             <a href="articles/<%= @latest[2].id %>">
               <div class="card shadow-sm row">
                 <div class="card-body d-flex justify-content-between">
-                  <div class="col-8 d-flex flex-column">
+                  <div class="col-8 p-0 d-flex flex-column">
                     <div class="tags">
                       <% @latest[2].tag_list.each do |tag| %>
                         <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
@@ -81,7 +81,7 @@
                       <i class="fa fa-eye"></i> <%= @latest[2].impressionist_count(:filter=>:ip_address) %> <i class="fa fa-heart"></i> <%= Vote.where(article_id: @latest[2].id, vote: true).count %>
                     </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col- p-0">
                     <div class="img-wrap">
                       <img class="card-img-right pull-right" src="<%= @latest[2].images[0].large_thumb if @latest[2].images? %>" alt="Card image cap">
                     </div>
@@ -95,7 +95,7 @@
             <a href="articles/<%= @latest[3].id %>">
               <div class="card shadow-sm row">
                 <div class="card-body d-flex justify-content-between">
-                  <div class="col-8 d-flex flex-column">
+                  <div class="col-8 p-0 d-flex flex-column">
                     <div class="tags">
                       <% @latest[3].tag_list.each do |tag| %>
                         <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
@@ -106,7 +106,7 @@
                       <i class="fa fa-eye"></i> <%= @latest[3].impressionist_count(:filter=>:ip_address) %> <i class="fa fa-heart"></i> <%= Vote.where(article_id: @latest[3].id, vote: true).count %>
                     </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-4 p-0">
                     <div class="img-wrap">
                       <img class="card-img-right pull-right" src="<%= @latest[3].images[0].large_thumb if @latest[3].images? %>" alt="Card image cap">
                     </div>
@@ -115,7 +115,9 @@
               </div>
             </a>
             <!-- card ends -->
-            <%= link_to 'more featured news >>', root_path, class: "featured-link" %>
+            <div class="featured-link text-right">
+              <%= link_to 'more featured news >>', root_path %>
+            </div>
           </div>
           <!-- deck end -->
         </div>
@@ -132,7 +134,7 @@
       <div class="featured-cards">
         <div class="row">
           <!-- column 1 // latest main card -->
-          <div class="col-md-5 d-flex align-items-stretch">
+          <div class="col-md-5 p-0 d-flex align-items-stretch">
             <a href="articles/<%= @articles[0].id %>">
               <div class="card shadow-sm">
                 <div class="img-wrap">
@@ -156,10 +158,11 @@
           </div>
           <!-- column end // card end -->
           <!-- column 2 -->
-          <div class="col-md-7">
+          <div class="col-md-7 p-0">
             <div class="row twos d-flex">
+              <div style="min-width: 15px; min-height: 15px;"></div>
               <!-- modular twos card -->
-              <div class="col-sm">
+              <div class="col-sm p-0">
                 <a href="articles/<%= @articles[0].id %>">
                   <div class="card shadow-sm">
                     <div class="img-wrap">
@@ -184,7 +187,7 @@
               <!-- card end -->
               <div style="min-width: 15px;"></div>
               <!-- modular twos card -->
-              <div class="col-sm">
+              <div class="col-sm p-0">
                 <a href="articles/<%= @articles[0].id %>">
                   <div class="card shadow-sm">
                     <div class="img-wrap">
@@ -210,7 +213,8 @@
             </div>
             <div class="row advertisement">
               <!-- advertisement card -->
-              <div class="col-sm">
+              <div style="min-width: 15px; min-height: 15px;"></div>
+              <div class="col-sm p-0">
                 <div class="card shadow-sm">
                   <div class="card-body">
                     <p class="card-text">Advertisement</p>
@@ -233,12 +237,12 @@
     <div class="latest-feed">
       <div class="row">
         <!-- column 1 -->
-        <div class="col-md-8">
+        <div class="col-md-8 p-0">
           <!-- modular single card -->
           <div class="row singles d-flex">
             <% @articles.each do |post|%>
             <!-- card -->
-            <div class="col-sm-6 col-md-6">
+            <div class="col-sm-6 col-md-6 py-0 px-2 mb-3">
               <a href="articles/<%= post.id %>">
                 <div class="card shadow-sm h-100">
                   <div class="img-wrap">
@@ -270,19 +274,19 @@
         </div>
         <!-- column ends -->
         <!-- column 2 -->
-        <div class="col-md-4 d-none d-sm-block col-sm-6">
+        <div class="col-md-4 p-0 d-none d-sm-block col-sm-6">
           <!-- side nav -->
           <div class="side-nav">
             <div class="header">
               <p class="title background">Pedas Stories</p>
             </div>
-            <hr/>
+            <hr/ class="my-2">
             <% @articles.limit(5).each do |post|%>
             <!-- card deck -->
               <a href="articles/<%= post.id %>">
                 <div class="card shadow-sm">
                   <div class="row">
-                    <div class="col-8">
+                    <div class="col-8 p-0">
                       <div class="card-body flex-column">
                         <div class="card-title"><%= post.title %></div>
                         <div class="stats mt-auto">
@@ -290,7 +294,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-4 p-0">
                       <div class="img-wrap">
                         <img class="card-img-right pull-right" src="<%= post.images[0].thumb if post.images? %>" alt="Card image cap">
                       </div>
@@ -303,7 +307,7 @@
             <!-- deck end -->
             <div class="row advertisement">
               <!-- advertisement card -->
-              <div class="col-sm">
+              <div class="col-sm p-0 mt-3">
                 <div class="card">
                   <div class="card-body">
                     <p class="card-text">Advertisement</p>
@@ -312,7 +316,7 @@
               </div>
               <!-- card end -->
             </div>
-            <hr/>
+            <hr/ class="my-2">
             <ul class="footer-links d-flex flex-wrap justify-content-center">
               <li><%= link_to 'Advertise!', root_path, class: "" %></li>
               <li><%= link_to 'Help', root_path, class: "" %></li>

@@ -1,21 +1,40 @@
-<!-- Display all post -->
-  <% @output.each do |post|%>
-    <br>
-    <%= post.title  %>
-    <%= post.description %>
-    <%= post.impressionist_count(:filter=>:ip_address) %>
-    <p> Tags: <a><%= post.tag_list %><a> </p>
-
-    <!-- Variable vote to be used in the if else check -->
-    <% vote = Vote.find_by(article: post.id) %>
-      <% if !vote.nil? %>
-        <% if vote.vote? %>
-          <%= "UPVOTE" %>
-          <%= Vote.where(article_id: post.id, vote: true).count %>
-        <% end %>
-      <% else %>
-        <%= "UPVOTE" %>
-        <%= Vote.where(article_id: post.id, vote: true).count %>
-      <% end %>
-    <%=link_to "Show Post", controller: "articles", action: "show", id: post.id %>
+<div class="container">
+<div class="header">
+  <p class="title">Pedas News</p>
+  <p class="subtitle">Trending stories you have to know</p>
+</div>
+  <% if @output.empty? %>
+  <div class="text-center">
+    <p>Please come back later for more news!</p>
+  </div>
+  <% else %>
+  <div class="row singles">
+    <% @output.each do |post|%>
+    <div class="col-sm-12 col-md-4 col-lg-3 mb-3 px-2">
+      <a href="articles/<%= post.id %>">
+        <div class="card shadow-sm h-100">
+          <div class="img-wrap">
+            <% if post.images? %>
+              <img class="card-img-top" src="<%= post.images[0].url%>" alt="Card image cap">
+            <% end %>
+          </div>
+          <div class="card-body">
+            <div class="tags">
+              <% post.tag_list.each do |tag| %>
+                <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
+              <%end%>
+            </div>
+            <p class="card-title"><%= post.title  %></p>
+            <div class="stats d-flex flex-wrap justify-content-between align-self-end">
+              <li><i class="fa fa-eye"></i> <%= post.impressionist_count(:filter=>:ip_address) %></p></li>
+              <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: post.id, vote: true).count %></li>
+              <li><i class="fa fa-calendar"></i> <%= time_ago_in_words(post.created_at) unless post.created_at.blank? %> ago</li>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <% end %>
+  </div>
   <% end %>
+</div>
