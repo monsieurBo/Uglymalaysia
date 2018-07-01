@@ -48,7 +48,7 @@
  }
 
  .background {
-   background-color: teal;
+   background-color: $red2;
    max-width: inherit;
    max-height: 100%;
    padding-top: -50px;
@@ -220,51 +220,6 @@ li .dropdown-menu a {
   padding: 0;
 }
 
-.col-sm-6 {
-  padding: 0 10px;
-  margin-bottom: 15px;
-}
-
-.col-8 {
-  padding: 0;
-}
-
-.col-4 {
-  padding: 0;
-}
-
-.col-md {
-  padding: 0;
-}
-
-.col-md-7 {
-  // background-color: SlateGrey;
-  padding: 0;
-  text-align: center;
-  margin: 0;
-}
-
-.col-md-5 {
-  // background-color: Grey;
-  padding: 0;
-  text-align: center;
-  margin: 0;
-}
-
-.col-md-8 {
-  // background-color: SlateGrey;
-  padding: 0;
-}
-
-.col-md-4 {
-  // background-color: Grey;
-  padding: 0;
-}
-
-.col-lg-7 {
-  padding: 0;
-}
-
 // header
 .header {
   text-align: center;
@@ -378,8 +333,9 @@ li .dropdown-menu a {
 .internal-card .card-header {
   height: 30px;
   padding: 3px;
-  background-color: $red;
-  opacity: .5;
+  background-color: $red2;
+  color: $light;
+  // opacity: .5;
 }
 
 .internal-card .card-title {
@@ -426,32 +382,10 @@ li .dropdown-menu a {
 
 
 // LATEST MAIN
-.latest .card-main .card-body {
-
-}
-
-.latest .col-md-7 {
-  // padding-left: 15px;
-}
-
 // Latest feed
-.latest-feed .col-md-8 {
-  padding: 0;
-}
-
-// modular card twos
-.twos {
-  // padding-bo   ttom: 15px;
-}
-.twos .col-sm {
-  padding: 0;
-}
-
-.singles .card {
-  // max-width: 332.5px;
-}
 
 .singles .img-wrap {
+  min-height: 200px;
   max-height: 280px;
 }
 
@@ -464,24 +398,6 @@ li .dropdown-menu a {
   background-color: white;
   padding: 15px 15px 0 15px;
 }
-
-.threes .col-sm {
-  padding: 0;
-}
-
-// .regular .card {
-//   min-height: 350px;
-// }
-
-// .regular .card-img-top {
-//   min-height: 165px;
-//   max-height: 165px;
-// }
-
-// .small .card {
-//   max-width: 325px;
-//   max-height: 350px;
-// }
 
 // side-nav
 
@@ -527,17 +443,13 @@ li .dropdown-menu a {
   padding: 10px;
 }
 
-.side-nav .row .col-md-4 {
-  padding: 0;
-}
-
 .side-nav .stats {
   font-size: $xsmall-size;
 }
-// ADVERTISMENT
-.advertisement .col-sm {
-  padding: 0;
-  margin-top: 15px;
+
+.footer-links a {
+  color: $green;
+  padding: 0 5px;
 }
 
 // SHOW PAGE
