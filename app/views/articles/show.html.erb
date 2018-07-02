@@ -56,7 +56,21 @@
     </div>
   <hr>
 
-    <p class="header"><%= @article.title  %></p>
+  <div class="show-header">
+      <p><%= @article.title  %></p>
+        <div class="inline-social">
+          <div class="eq"><%= social_share_button_tag(@article.title , :url => request.original_url , desc: @article.description) %></div>
+          <div class="eq"><a href="whatsapp://send?text=<%= request.original_url %>"><img class="whatsapp" src="https://image.flaticon.com/icons/svg/124/124034.svg"></img></a></div>
+        </div>
+    </div>
+      </br>
+    <div class="author">
+      <p>Posted on <%= @article.created_at.strftime("%d %B %Y") %> |
+        <%= @article.impressionist_count(:filter=>:ip_address) %> Views
+      </p>
+
+
+    </div>
   </header>
 
 
