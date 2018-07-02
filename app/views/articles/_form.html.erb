@@ -1,30 +1,37 @@
 <%= form_with(model: article, local: true) do |f| %>
-
-  <div class="field">
-    <%= f.label :images %><br />
-    <%= f.file_field :images, multiple: true %>
+<div class="form-row" style="padding: 0 15px;">
+  <div class="form-group col-sm-4">
+    <%= f.label :images, class: "col-form-label-sm"  %><br />
+    <%= f.file_field :images, multiple: true , class: "form-control form-control-sm" %>
   </div>
 
-  <div class="field">
-    <%= f.label :videos %>
-    <%= f.file_field :videos, multiple: true %>
+  <div class="form-group col-sm-4">
+    <%= f.label :videos, class: "col-form-label-sm"   %>
+    <%= f.file_field :videos, multiple: true , class: "form-control form-control-sm" %>
   </div>
-  <div class="field">
-    <%= f.label :title %><br/>
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= f.label :tag_list, "Insert Tags(Seperated by comma)" %>
-    <%= f.text_field :tag_list %>
+</div>
+<div class="form-row" style="padding: 0 15px;">
+  <div class="form-group col-sm-4">
+    <%= f.label :title, class: "col-form-label-sm" %><br/>
+    <%= f.text_field :title, class: "form-control form-control-sm" %>
   </div>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description, :class => "description-field"  %>
+  <div class="form-group col-sm-4">
+    <%= f.label :tag_list, "Insert Tags(Seperated by comma)", class: "col-form-label-sm"  %>
+    <%= f.text_field :tag_list, class: "form-control form-control-sm" %>
   </div>
+</div>
+  <div class="form-group col-sm-6">
+    <%= f.label :description, class: "col-form-label-sm"  %>
+    <%= f.text_area :description, :class => "description-field", class: "form-control form-control-sm"  %>
+  </div>
+<div class="row">
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="col">
+    <%= link_to 'Back', articles_path , class: "rounded", style: "padding: 5px; margin: 5px;"%>
   </div>
+  <div class="actions col-sm" >
+    <%= f.submit "Submit", class: "rounded", style: "margin: 5px;" %>
+  </div>
+</div>
 <% end %>
