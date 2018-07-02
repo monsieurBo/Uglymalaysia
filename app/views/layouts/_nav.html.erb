@@ -61,14 +61,22 @@
         <a href="/" class="navbar-brand mx-auto d-block text-center order-0 order-md-1 w-25">UglyMY</a>
         <div class="navbar-collapse collapse dual-nav w-50 order-2">
             <ul class="nav navbar-nav ml-auto">
+              <% if user_signed_in? %>
               <li class="nav-item nav-btn"><a class="btn btn-outline-danger d-none d-lg-block" href="/articles/new">Share a story!</a></li>
+              <% else %>
+              <li class="nav-item nav-btn"><a class="btn btn-outline-danger d-none d-sm-block d-md-none" href="/users/sign_in">Share!</a></li>
+              <% end %>
                 <% if user_signed_in? %>
                   <li class="nav-item dropdown nav-btn d-none d-lg-flex">
                     <button class="nav-link rounded-circle btn btn-outline-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                       <%= current_user.name.split.map { |n| n[0] }.join() %>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
+                      <% if user_signed_in? %>
                       <a class="dropdown-item" href="/articles/new">Share a story!</a>
+                      <% else %>
+                      <li class="nav-item nav-btn"><a class="btn btn-outline-danger d-none d-sm-block d-md-none" href="/users/sign_in">Share!</a></li>
+                      <% end %>
                       <a class="dropdown-item" href="/users/edit">Change Password</a>
                       <div class="dropdown-divider"></div>
                       <%= link_to"Log Out",destroy_user_session_path, class: "dropdown-item", method: :delete%>
@@ -82,7 +90,11 @@
         </div>
         <ul class="navbar-nav flex-row mr-sm-0 d-sm-flex d-lg-none">
           <!-- <li class="nav-item nav-btn"><a class="btn btn-outline-danger" href="/articles/new">Share a story!</a></li> -->
+          <% if user_signed_in? %>
           <li class="nav-item nav-btn"><a class="btn btn-outline-danger d-none d-sm-block d-md-none" href="/articles/new">Share!</a></li>
+          <% else %>
+          <li class="nav-item nav-btn"><a class="btn btn-outline-danger d-none d-sm-block d-md-none" href="/users/sign_in">Share!</a></li>
+          <% end %>
           <li class="nav-item">
               <a class="nav-link btn d-block d-sm-none nav-post"><i class="fa fa-edit nav-post"></i></a>
           </li>
