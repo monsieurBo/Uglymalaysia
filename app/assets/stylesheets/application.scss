@@ -630,9 +630,27 @@ nav ul {
 
 // modal-css-start
 
+.header .title-signup {
+  font-size: $large-size;
+  margin-bottom: -20px;
+  margin-top: 0.5rem;
+  font-family: $title;
+  font-weight: bold;
+  color: $dark;
+}
+
+.header .subtitle-signup {
+  background:$light;
+  padding: 10px 25px;
+  margin: 0 auto 0.5rem auto;
+  font-family: $body;
+  color: $green;
+  max-width: 500px;
+  box-shadow: 7px 6px rgba(0,0,0,0.05);
+}
+
 .facebook_login {
   border-radius: 40px;
-  padding: 10px 120px;
   background: transparent;
   color: rgba(58, 133, 191, 0.75);
   border: 2px solid rgba(58, 133, 191, 0.75);
@@ -646,7 +664,6 @@ nav ul {
 
 .twitter_login {
   border-radius: 40px;
-  padding: 10px 120px;
   background: transparent;
   color: rgba(91, 192, 222, 0.75);
   border: 2px solid rgba(91, 192, 222, 0.75);
@@ -660,7 +677,6 @@ nav ul {
 
 .google_login {
   border-radius: 40px;
-  padding: 10px 120px;
   background: transparent;
   color: rgba(217, 83, 78, 0.75);
   border: 2px solid rgba(217, 83, 78, 0.75);
@@ -674,7 +690,6 @@ nav ul {
 
 .email_login {
   border-radius: 40px;
-  padding: 10px 120px;
   background: transparent;
   color: rgba(108, 88, 179, 0.75);
   border: 2px solid rgba(108, 89, 179, 0.75);
@@ -684,20 +699,6 @@ nav ul {
   color: #FFF;
   background: rgba(108, 88, 179, 0.75);
   border: 2px solid rgba(108, 89, 179, 0.75);
-}
-
-.submitbtn {
-  margin-left: auto;
-}
-
-.sharedlinks {
-  margin-left: auto;
-  width: 290px;
-  text-align: right;
-}
-
-.captcha {
-  margin-right: auto;
 }
 
 .rounded {
