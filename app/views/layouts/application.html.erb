@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
 
   <body>
       <%= render partial: '/layouts/nav' %>
-
+      
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
       <% end %>
@@ -23,20 +24,25 @@
 
 
 <!-- Sign Up Modal -->
-      <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-lg" >
+      <div class="modal fade signupModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-lg">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Sign up with email</h5>
+            <div style="margin: 10px 15px 0px 15px;">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true" >&times;</span>
               </button>
+              <div class="header">
+                <p class="title-signup">Sign up with email</p>
+                <p class="subtitle-signup">Enter your particulars for your account, and we'll send a verification link to your inbox.</p>
+              </div>
             </div>
             <div class="modal-body">
-              <h6>Enter your particulars for your account, and we'll send a verification link to your inbox.</h6>
-            <div class="container-fluid">
-              <%= render(template: "devise/registrations/new")%>
-            </div>
+              <div class="container-fluid">
+                <%= render(template: "devise/registrations/new")%>
+              </div>
+              <div class="col">
+                <%= render "devise/shared/links" %>
+              </div>
             </div>
           </div>
         </div>
@@ -45,46 +51,50 @@
 
 <!-- Login Modal -->
       <div class="modal fade"  id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-lg">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" style="text-align:center;" id="exampleModalLongTitle">Welcome Back!</h5>
+            <div style="margin: 10px 15px 0px 15px;">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true" >&times;</span>
               </button>
-            </div>
-            <div class="modal-body">
-              <h6  style="text-align:center;">Sign in to access share stories, like articles and leave your thoughts that matters to you.</h6>
-            <div class="container-fluid">
-              <div class="partial">
-                <%= render partial: 'partial/loginlinks'%>
+              <div class="header">
+                <p class="title-signup">Welcome back</p>
+                <p class="subtitle-signup">Sign in to access share stories, like articles and leave your thoughts that matters to you.</p>
               </div>
             </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+                <div class="partial">
+                  <%= render partial: 'partial/loginlinks'%>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 <!-- Login Modal End -->
+
 <!-- Email Login Modal -->
       <div class="modal fade"  id="emailModalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-lg" role="document">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" style="text-align:center;" id="exampleModalLongTitle">Welcome Back!</h5>
+            <div style="margin: 10px 15px 0px 15px;">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true" >&times;</span>
               </button>
+              <div class="header">
+                <p class="title-signup">Welcome back</p>
+                <p class="subtitle-signup">Sign in to access share stories, like articles and leave your thoughts that matters to you.</p>
+              </div>
             </div>
             <div class="modal-body">
-              <h6  style="text-align:center;">Sign in to access share stories, like articles and leave your thoughts that matters to you.</h6>
-            <div class="container-fluid">
-              <div class="partial">
-                <%= render template: 'devise/sessions/new'%>
+              <div class="container-fluid">
+                <div class="partial">
+                  <%= render template: 'devise/sessions/new'%>
+                </div>
+                <p id="loginemail"></p>
+                <%= link_to "Back" ,"", id: "backtomodal"%>
               </div>
-
-              <p id="loginemail"></p>
-              <%= link_to "Back" ,"", id: "backtomodal"%>
-            </div>
             </div>
           </div>
         </div>
@@ -108,8 +118,6 @@
       });
 
       $(document).ready(function(){
-
-      //   $('#backtomodal').hide();
           $("#email").on("click", function(event){
             event.preventDefault();
             $("#exampleModalCenter").modal("hide");
@@ -120,21 +128,7 @@
             $("#emailModalLogin").modal("hide");
             $("#exampleModalCenter").modal("show");
           })
-      //       event.preventDefault();
-      //       $('.partial').hide();
-      //       $("#loginemail").append("<%= escape_javascript(render(template: "devise/sessions/new"))%>");
-      //       $('#backtomodal').show();
-      //       backtoModal();
-      // });
-      // function backtoModal(){
-      //   $("#backtomodal").on("click",function(event){
-      //     event.preventDefault();
-      //     $("#loginemail").remove();
-      //     $('#backtomodal').hide();
-      //     $('.partial').show();
-      //   });
-    });
-
+      });
 
       </script>
 
