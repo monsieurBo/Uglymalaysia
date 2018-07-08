@@ -2,10 +2,17 @@ class VideoUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-
+  # include CarrierWave::Video
+  # process encode_video: [:mp4 ]
   # Choose what kind of storage to use for this uploader:
   # storage :file
   storage :fog
+  #
+  # DEFAULTS = {
+  #   watermark: {
+  #     path: Rails.root.join('uglymy.png')
+  #   }
+  # }
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -23,20 +30,29 @@ class VideoUploader < CarrierWave::Uploader::Base
   # Process files as they are uploaded:
   # process scale: [200, 300]
   #
+  # process encode_video: [:mp4, resolution: "200x200"]
+  # preserve_aspect_ratio: :width
+  # preserve_aspect_ratio: :height
   # def scale(width, height)
   #   # do something
   # end
 
   # Create different versions of your uploaded files:
   # version :thumb do
-  #   process resize_to_fit: [50, 50]
+  #   process thumbnail: [{format: 'png', quality: 10, size: 158, strip: true, logger: Rails.logger}]
+  #   def full_filename for_file
+  #   png_name for_file, version_name
+  #   end
   # end
 
+  # def png_name for_file, version_name
+  # %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
+  # end
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  def extension_whitelist
-    %w(mp4 avi)
-  end
+  # def extension_whitelist
+  #   %w(mp4 avi mp3)
+  # end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
@@ -44,4 +60,3 @@ class VideoUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 end
-
