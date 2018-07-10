@@ -5,4 +5,8 @@ class Article < ApplicationRecord
 	acts_as_taggable_on :tags
 	mount_uploaders :images, ImageUploader
 	mount_uploaders :videos, VideoUploader
+
+	# def set_success(format, opts)
+  #   self.success = true
+  # end
 end
