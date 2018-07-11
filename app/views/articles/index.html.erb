@@ -13,37 +13,40 @@
     <!-- FEATURED MAIN -->
     <div class="featured">
       <div class="header">
-        <p class="title">Featured</p>
-        <p class="subtitle">Stories you would want to know</p>
+        <p class="title">Latest</p>
+        <p class="subtitle">This just in!</p>
       </div>
       <div class="row">
         <!-- column 1 // main card -->
          <div class="col-md-12 col-sm-12 col-lg-7 p-0 align-items-stretch">
-          <a href="articles/<%= @articles[0].id %>">
-            <div class="card featured-main" id="<%= @articles[0].id %>">
+          <a href="articles/<%= @latest[0].id %>">
+            <div class="card featured-main" id="<%= @latest[0].id %>">
+              <h4 class="card-title"><%= @latest[0].title %></h4>
+              <div class="stats d-flex justify-content-center mt-auto mb-3 mx-auto">
+                <li class="mx-3"><i class="fa fa-eye"></i> <%= @latest[0].impressionist_count(:filter=>:ip_address) %></li>
+                <li class="mx-3"><i class="fa fa-heart"></i> <%= Vote.where(article_id: @latest[0].id, vote: true).count %></li>
+              </div>
               <div class="img-wrap image-box">
-                <% if @articles[0].images? %>
-                  <img class="card-img-top" src="<%= @articles[0].images[0].full if @articles[0].images? %>" alt="Card image cap">
+                <% if @latest[0].images? %>
+                  <img class="card-img-top" src="<%= @latest[0].images[0].full if @latest[0].images? %>" alt="Card image cap">
                 <% else %>
                   <img class="card-img-top" src="http://via.placeholder.com/1900x1080" alt="Card image cap">
                 <% end %>
               </div>
-              <div class="card-body external-card">
+              <!-- <div class="card-body external-card">
                 <div class="card internal-card shadow-sm">
                   <div class="card-header">
-                    Featured
+                    Latest
                   </div>
                   <div class="card-body">
-                    <h5 class="card-title"><%= @articles[0].title %></h5>
+                    <h5 class="card-title"><%= @latest[0].title %></h5>
                     <div class="stats mt-auto">
-                      <i class="fa fa-eye"></i> <%= @articles[0].impressionist_count(:filter=>:ip_address) %>
-                      <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %>
-                      <%#= link_to "Comment Count | #{Article.where(article_id: @latest[0].id, vote: true).count}", upvote_article_votes_path(@article), class: "btn btn-outline-secondary btn-sm disabled", :remote => true %>
-
+                      <i class="fa fa-eye"></i> <%= @latest[0].impressionist_count(:filter=>:ip_address) %>
+                      <i class="fa fa-heart"></i> <%= Vote.where(article_id: @latest[0].id, vote: true).count %>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </a>
         </div>
@@ -54,26 +57,27 @@
           <!-- card deck -->
           <div class="card-list d-flex flex-column justify-content-between">
             <!-- card list -->
-            <a href="articles/<%= @articles[1].id %>">
+            <a href="articles/<%= @latest[1].id %>">
               <div class="card shadow-sm row">
                 <div class="card-body d-flex justify-content-between">
                   <div class="col-8 p-0 d-flex flex-column">
                     <div class="tags">
-                      <% @articles[1].tag_list.each do |tag| %>
+                      <% @latest[1].tag_list.each do |tag| %>
                         <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
                       <%end%>
                     </div>
-                    <div class="card-title text-left d-flex row"><%= @articles[1].title %></div>
-                    <div class="stats mt-auto">
-                      <i class="fa fa-eye"></i> <%= @articles[1].impressionist_count(:filter=>:ip_address) %> <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[1].id, vote: true).count %>
+                    <div class="card-title text-left d-flex row"><%= @latest[1].title %></div>
+                    <div class="stats d-flex justify-content-start mt-auto">
+                      <li class="mx-3"><i class="fa fa-eye"></i> <%= @latest[1].impressionist_count(:filter=>:ip_address) %> </li>
+                      <li class="mx-3"><i class="fa fa-heart"></i> <%= Vote.where(article_id: @latest[1].id, vote: true).count %></li>
                     </div>
                   </div>
                   <div class="col-4 p-0">
                     <div class="img-wrap">
-                      <% if @articles[0].images? %>
-                        <img class="card-img-right pull-right" src="<%= @articles[1].images[0].full if @articles[1].images? %>" alt="Card image cap">
+                      <% if @latest[1].images? %>
+                        <img class="card-img-right pull-right" src="<%= @latest[1].images[0].full if @latest[1].images? %>" alt="Card image cap">
                       <% else %>
-                        <img class="card-img-right pull-right" src="http://via.placeholder.com/325x165" alt="Card image cap">
+                        <img class="card-img-right pull-right" src="http://via.placeholder.com/325x325" alt="Card image cap">
                       <% end %>
                     </div>
                   </div>
@@ -83,26 +87,27 @@
             <!-- card ends -->
             <!-- <div style="min-height: 10px;"></div> -->
             <!-- card list -->
-            <a href="articles/<%= @articles[2].id %>">
+            <a href="articles/<%= @latest[2].id %>">
               <div class="card shadow-sm row">
                 <div class="card-body d-flex justify-content-between">
                   <div class="col-8 p-0 d-flex flex-column">
                     <div class="tags">
-                      <% @articles[2].tag_list.each do |tag| %>
+                      <% @latest[2].tag_list.each do |tag| %>
                         <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
                       <%end%>
                     </div>
-                    <div class="card-title text-left d-flex row"><%= @articles[2].title %></div>
-                    <div class="stats mt-auto">
-                      <i class="fa fa-eye"></i> <%= @articles[2].impressionist_count(:filter=>:ip_address) %> <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[2].id, vote: true).count %>
+                    <div class="card-title text-left d-flex row"><%= @latest[2].title %></div>
+                    <div class="stats d-flex justify-content-start mt-auto">
+                      <li class="mx-3"><i class="fa fa-eye"></i> <%= @latest[2].impressionist_count(:filter=>:ip_address) %> </li>
+                      <li class="mx-3"><i class="fa fa-heart"></i> <%= Vote.where(article_id: @latest[2].id, vote: true).count %></li>
                     </div>
                   </div>
-                  <div class="col- p-0">
+                  <div class="col-4 p-0">
                     <div class="img-wrap">
-                      <% if @articles[0].images? %>
-                        <img class="card-img-right pull-right" src="<%= @articles[2].images[0].full if @articles[2].images? %>" alt="Card image cap">
+                      <% if @latest[2].images? %>
+                        <img class="card-img-right pull-right" src="<%= @latest[2].images[0].full if @latest[2].images? %>" alt="Card image cap">
                       <% else %>
-                        <img class="card-img-right pull-right" src="http://via.placeholder.com/325x165" alt="Card image cap">
+                        <img class="card-img-right pull-right" src="http://via.placeholder.com/325x325" alt="Card image cap">
                       <% end %>
                     </div>
                   </div>
@@ -112,26 +117,27 @@
             <!-- card ends -->
             <!-- <div style="min-height: 15px;"></div> -->
             <!-- card list -->
-            <a href="articles/<%= @articles[3].id %>">
+            <a href="articles/<%= @latest[3].id %>">
               <div class="card shadow-sm row">
                 <div class="card-body d-flex justify-content-between">
                   <div class="col-8 p-0 d-flex flex-column">
                     <div class="tags">
-                      <% @articles[3].tag_list.each do |tag| %>
+                      <% @latest[3].tag_list.each do |tag| %>
                         <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
                       <%end%>
                     </div>
-                    <div class="card-title text-left d-flex row"><%= @articles[3].title %></div>
-                    <div class="stats mt-auto">
-                      <i class="fa fa-eye"></i> <%= @articles[3].impressionist_count(:filter=>:ip_address) %> <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[3].id, vote: true).count %>
+                    <div class="card-title text-left d-flex row"><%= @latest[3].title %></div>
+                    <div class="stats d-flex justify-content-start mt-auto">
+                      <li class="mx-3"><i class="fa fa-eye"></i> <%= @latest[3].impressionist_count(:filter=>:ip_address) %> </li>
+                      <li class="mx-3"><i class="fa fa-heart"></i> <%= Vote.where(article_id: @latest[3].id, vote: true).count %></li>
                     </div>
                   </div>
                   <div class="col-4 p-0">
                     <div class="img-wrap">
-                      <% if @articles[0].images? %>
-                        <img class="card-img-right pull-right" src="<%= @articles[3].images[0].full if @articles[3].images? %>" alt="Card image cap">
+                      <% if @latest[3].images? %>
+                        <img class="card-img-right pull-right" src="<%= @latest[3].images[0].full if @latest[3].images? %>" alt="Card image cap">
                       <% else %>
-                        <img class="card-img-right pull-right" src="http://via.placeholder.com/325x165" alt="Card image cap">
+                        <img class="card-img-right pull-right" src="http://via.placeholder.com/325x325" alt="Card image cap">
                       <% end %>
                     </div>
                   </div>
@@ -140,7 +146,7 @@
             </a>
             <!-- card ends -->
             <div class="featured-link text-right">
-              <%= link_to 'more featured news >>', root_path %>
+              <%= link_to 'more latest news >>', root_path %>
             </div>
           </div>
           <!-- deck end -->
@@ -149,36 +155,45 @@
       </div>
     </div>
     <!-- featured end -->
+    <!-- advertisement -->
+    <div class="col-sm p-0">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <p class="card-text text-center">Advertisement</p>
+        </div>
+      </div>
+    </div>
+    <!-- end -->
     <!-- LATEST MAIN -->
     <div class="latest">
       <div class="header">
-        <p class="title">Latest</p>
-        <p class="subtitle">This just in!</p>
+        <p class="title">Featured</p>
+        <p class="subtitle">Stories you would want to know</p>
       </div>
       <div class="featured-cards">
         <div class="row">
           <!-- column 1 // latest main card -->
           <div class="col-md-5 p-0 d-flex align-items-stretch">
-            <a href="articles/<%= @latest[0].id %>">
+            <a href="articles/<%= @articles[0].id %>">
               <div class="card shadow-sm">
                 <div class="img-wrap">
-                  <% if @latest[0].images? %>
-                    <img class="card-img-top" src="<%= @latest[0].images[0].url if @latest[0].images? %>" alt="Card image cap">
+                  <% if @articles[0].images? %>
+                    <img class="card-img-top" src="<%= @articles[0].images[0].url if @articles[0].images? %>" alt="Card image cap">
                   <% else %>
-                    <img class="card-img-top" src="http://via.placeholder.com/325x165" alt="Card image cap">
+                    <img class="card-img-top" src="http://via.placeholder.com/600x400" alt="Card image cap">
                   <% end %>
                 </div>
-                <div class="card-body">
+                <div class="card-body d-flex flex-column">
                   <div class="tags">
-                    <% @latest[0].tag_list.each do |tag| %>
+                    <% @articles[0].tag_list.each do |tag| %>
                       <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
                     <%end%>
                   </div>
-                  <p class="card-title"><%= @latest[0].title %></p>
-                  <div class="stats">
-                    <i class="fa fa-eye"></i> <%= @latest[0].impressionist_count(:filter=>:ip_address) %>
-                    <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %>
-                    <i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) unless @articles[0].created_at.blank? %> ago
+                  <p class="card-title"><%= @articles[0].title %></p>
+                  <div class="stats d-flex flex-wrap justify-content-around mt-auto">
+                    <li><i class="fa fa-eye"></i> <%= @articles[0].impressionist_count(:filter=>:ip_address) %></li>
+                    <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %></li>
+                    <li><i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) unless @articles[0].created_at.blank? %> ago</li>
                   </div>
                 </div>
               </div>
@@ -191,26 +206,26 @@
               <div style="min-width: 15px; min-height: 15px;"></div>
               <!-- modular twos card -->
               <div class="col-sm p-0">
-                <a href="articles/<%= @latest[1].id %>">
+                <a href="articles/<%= @articles[1].id %>">
                   <div class="card shadow-sm">
                     <div class="img-wrap">
-                      <% if @latest[1].images? %>
-                        <img class="card-img-top" src="<%= @latest[1].images[0].url if @latest[1].images? %>" alt="Card image cap">
+                      <% if @articles[1].images? %>
+                        <img class="card-img-top" src="<%= @articles[1].images[0].url if @articles[1].images? %>" alt="Card image cap">
                       <% else %>
-                        <img class="card-img-top" src="http://via.placeholder.com/325x165" alt="Card image cap">
+                        <img class="card-img-top" src="http://via.placeholder.com/325x325" alt="Card image cap">
                       <% end %>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body d-flex flex-column">
                       <div class="tags">
-                        <% @latest[1].tag_list.each do |tag| %>
+                        <% @articles[1].tag_list.each do |tag| %>
                           <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
                         <%end%>
                       </div>
-                      <p class="card-title"><%= @latest[1].title %></p>
-                      <div class="stats">
-                        <i class="fa fa-eye"></i> <%= @latest[1].impressionist_count(:filter=>:ip_address) %>
-                        <i class="fa fa-heart"></i> <%= Vote.where(article_id: @latest[1].id, vote: true).count %>
-                        <i class="fa fa-calendar"></i> <%= time_ago_in_words(@latest[1].created_at) unless @latest[1].created_at.blank? %> ago
+                      <p class="card-title"><%= @articles[1].title %></p>
+                      <div class="stats d-flex flex-wrap justify-content-around mt-auto">
+                        <li><i class="fa fa-eye"></i> <%= @articles[1].impressionist_count(:filter=>:ip_address) %></li>
+                        <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[1].id, vote: true).count %></li>
+                        <li><i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[1].created_at) unless @articles[1].created_at.blank? %> ago</li>
                       </div>
                     </div>
                   </div>
@@ -220,26 +235,26 @@
               <div style="min-width: 15px;"></div>
               <!-- modular twos card -->
               <div class="col-sm p-0">
-                <a href="articles/<%= @latest[2].id %>">
+                <a href="articles/<%= @articles[2].id %>">
                   <div class="card shadow-sm">
                     <div class="img-wrap">
-                      <% if @latest[2].images? %>
-                        <img class="card-img-top" src="<%= @latest[2].images[0].url if @latest[2].images? %>" alt="Card image cap">
+                      <% if @articles[2].images? %>
+                        <img class="card-img-top" src="<%= @articles[2].images[0].url if @articles[2].images? %>" alt="Card image cap">
                       <% else %>
-                        <img class="card-img-top" src="http://via.placeholder.com/325x165" alt="Card image cap">
+                        <img class="card-img-top" src="http://via.placeholder.com/325x325" alt="Card image cap">
                       <% end %>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body d-flex flex-column">
                       <div class="tags">
-                        <% @latest[2].tag_list.each do |tag| %>
+                        <% @articles[2].tag_list.each do |tag| %>
                           <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
                         <%end%>
                       </div>
-                      <p class="card-title"><%= @latest[2].title %></p>
-                      <div class="stats d-flex flex-wrap justify-content-around align-self-end">
-                        <li><i class="fa fa-eye"></i> <%= @latest[2].impressionist_count(:filter=>:ip_address) %></li>
-                        <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: @latest[2].id, vote: true).count %></li>
-                        <li><i class="fa fa-calendar"></i> <%= time_ago_in_words(@latest[2].created_at) unless @latest[2].created_at.blank? %> ago</li>
+                      <p class="card-title"><%= @articles[2].title %></p>
+                      <div class="stats d-flex flex-wrap justify-content-around mt-auto">
+                        <li><i class="fa fa-eye"></i> <%= @articles[2].impressionist_count(:filter=>:ip_address) %></li>
+                        <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[2].id, vote: true).count %></li>
+                        <li><i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[2].created_at) unless @articles[2].created_at.blank? %> ago</li>
                       </div>
                     </div>
                   </div>
@@ -253,7 +268,7 @@
               <div class="col-sm p-0">
                 <div class="card shadow-sm">
                   <div class="card-body">
-                    <p class="card-text">Advertisement</p>
+                    <p class="card-text text-center">Advertisement</p>
                   </div>
                 </div>
               </div>
@@ -283,21 +298,19 @@
                 <div class="card shadow-sm h-100">
                   <div class="img-wrap">
                     <% if post.images? %>
-                      <% if @articles[0].images? %>
-                        <img class="card-img-top" src="<%= post.images[0].full if post.images? %>" alt="Card image cap">
-                      <% else %>
-                        <img class="card-img-top" src="http://via.placeholder.com/325x165" alt="Card image cap">
-                      <% end %>
+                      <img class="card-img-top" src="<%= post.images[0].medium if post.images? %>" alt="Card image cap">
+                    <% else %>
+                      <img class="card-img-top" src="http://via.placeholder.com/325x325" alt="Card image cap">
                     <% end %>
                   </div>
-                  <div class="card-body">
+                  <div class="card-body d-flex flex-column">
                     <div class="tags">
                       <% post.tag_list.each do |tag| %>
                         <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
                       <%end%>
                     </div>
                     <p class="card-title"><%= post.title  %></p>
-                    <div class="stats d-flex flex-wrap justify-content-between align-self-end">
+                    <div class="stats d-flex flex-wrap justify-content-between mt-auto">
                       <li><i class="fa fa-eye"></i> <%= post.impressionist_count(:filter=>:ip_address) %></p></li>
                       <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: post.id, vote: true).count %></li>
                       <li><i class="fa fa-calendar"></i> <%= time_ago_in_words(post.created_at) unless post.created_at.blank? %> ago</li>
@@ -327,7 +340,7 @@
                 <div class="card shadow-sm">
                   <div class="row">
                     <div class="col-8 p-0">
-                      <div class="card-body flex-column">
+                      <div class="card-body d-flex flex-column">
                         <div class="card-title"><%= post.title %></div>
                         <div class="stats mt-auto">
                           <i class="fa fa-eye"></i> <%= post.impressionist_count(:filter=>:ip_address) %> <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %>

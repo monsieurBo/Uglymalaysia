@@ -1,0 +1,344 @@
+// color variations
+$red: #FF3118;
+$red2:  #FF9180;
+$yellow: #FFE900;
+$dark: #0A2343;
+$green: #2CA58D;
+$light: #FFEDDF;
+
+// font variables
+$title: "Raleway", "Nunito Sans", sans-serif;
+$body: "Source Sans Pro", "Open Sans", "Arial", sans-serif;
+  $banner-size: 40px;
+$xlarge-size: 34px;
+$large-size: 28px;
+$medium-size: 20px;
+$small-size: 16px;
+$xsmall-size: 14px;
+$tag-size: 12px;
+
+img {
+  width: auto;
+  max-height: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform .3s;
+}
+
+.background {
+  background-color: $red2;
+  max-width: inherit;
+  max-height: 100%;
+  padding-top: -50px;
+  margin: 0;
+}
+
+.img-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.row {
+  margin: 0;
+}
+
+.container {
+  // max-width: 1200px;
+}
+
+.card {
+  margin-bottom: 15px;
+}
+
+.stats {
+  color: $green;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul {
+ display: flex;
+ list-style-type: none;
+ margin: 0;
+ padding: 0;
+}
+
+li {
+ list-style-type: none;
+ padding: 0 auto;
+}
+
+.card-title {
+ color: $dark;
+ font-family: $title;
+ font-weight: bold;
+ // margin-top: .75rem;
+}
+
+// LANDING PAGE
+//
+// gemeral
+.container-a {
+ position: relative;
+ max-width: 1400px;
+ height: auto;
+ margin: 0 auto;
+ padding: 0;
+}
+
+.container-b {
+ display: flex;
+ position: relative;
+ max-width: 1020px;
+ height: auto;
+ margin: 0 auto;
+ padding: 0;
+}
+
+// header
+.header {
+ text-align: center;
+}
+
+.header .title {
+ font-size: $large-size;
+ margin-bottom: -20px;
+ margin-top: 2rem;
+ font-family: $title;
+ font-weight: bold;
+ color: $dark;
+}
+
+.header .subtitle {
+ background:$light;
+ padding: 20px 25px;
+ margin: 0 auto 1.5rem auto;
+ font-family: $body;
+ color: $green;
+ max-width: 500px;
+}
+
+.card:hover {
+ cursor: pointer;
+}
+
+.card:hover .card-title {
+ text-decoration: underline;
+ text-decoration-color: $red;
+}
+
+.card:hover img {
+ transform: scale(1.2);
+}
+
+// .card-featured:hover .image-box img {
+//   transform: scale(1.2);
+//   cursor: pointer;
+// }
+
+
+// FEATURED CAARDS
+//
+// general
+.featured {
+ margin-bottom: 3rem;
+}
+
+.featured-link {
+ // position: absolute;
+ padding: 0;
+ // bottom: 0;
+ // right: 0;
+ color: $green;
+ // margin-top: 5px;
+}
+
+.featured-link a{
+ color: $green;
+}
+
+.featured-link a:hover {
+ color: $red;
+}
+
+// card featured
+.featured-main {
+ display: block;
+ width: auto;
+ // height: 515px;
+ position: relative;
+ // padding-right: 10px;
+ text-align: center;
+}
+
+.image-box {
+ max-height: 465px;
+ position: relative;
+ background: white;
+ // margin-bottom: -60px;
+ overflow: hidden;
+ vertical-align: middle;
+}
+
+.image-box img {
+ max-height: 460px;
+
+ // width: auto;
+ // height: 100%;
+ // object-fit: cover;
+}
+
+.featured-main {
+ background: transparent;
+ border: 0;
+}
+
+.internal-card {
+ // background: transparent;
+ // position: absolute;
+ width: auto;
+ bottom: 0;
+ margin: 0 50px;
+ padding: 0 auto;
+ z-index: 10;
+}
+
+.internal-card .card-body {
+ padding: 15px;
+}
+
+.internal-card .card-header {
+ height: 30px;
+ padding: 3px;
+ background-color: $red2;
+ color: $light;
+ // opacity: .5;
+}
+
+.internal-card .card-title {
+ // font-size: $large-size;
+ font-family: $title;
+ font-weight: bold;
+ color: $dark;
+}
+
+.external-card {
+ background: white;
+ padding: 0;
+}
+
+
+// card list
+.card-list {
+ // padding-left: 10px;
+}
+
+.card-list .card-body {
+ padding: 0;
+}
+
+.card-list .card-title {
+ padding: 1.25rem;
+ // font-size: $medium-size;
+ font-family: $title;
+ font-weight: bold;
+}
+
+.card-list img {
+ width: 150px;
+ height: 150px;
+}
+
+.card-list .stats {
+ padding: 0 10px 1.25rem 1.25rem;
+}
+
+.featured .tags {
+ padding: 15px 0 0 15px;
+}
+
+
+// LATEST MAIN
+.featured-cards img {
+ max-height: 435px;
+}
+
+.twos img {
+ max-height: 290px;
+}
+
+// Latest feed
+
+.singles .img-wrap {
+ min-height: 200px;
+ max-height: 280px;
+}
+
+.singles .tags {
+ margin-bottom: 15px;
+}
+
+.singles img {
+ max-height: 215px;
+}
+
+// modular card threes
+.threes {
+ background-color: white;
+ padding: 15px 15px 0 15px;
+}
+
+// side-nav
+
+.side-nav {
+ position: -webkit-sticky;
+ position: sticky;
+ top: 100px;
+}
+.latest-feed .side-nav {
+ padding: 0 0 0 30px;
+}
+
+.side-nav .card {
+ margin-bottom: 5px;
+}
+
+.side-nav .card-list {
+ padding: 0;
+}
+
+.side-nav .card-body {
+ padding: auto;
+}
+
+.side-nav .card-title {
+ // padding: 1.25rem;
+ margin: 0;
+ font-size: $tag-size;
+ font-family: $title;
+ font-weight: bold;
+}
+
+.side-nav img {
+ width: 85px;
+ height: 85px;
+}
+
+.side-nav .title {
+ margin: 0;
+}
+
+.side-nav .card-body {
+ padding: 10px;
+}
+
+.side-nav .stats {
+ font-size: $xsmall-size;
+}
+
+.footer-links a {
+ color: $green;
+ padding: 0 5px;
+}

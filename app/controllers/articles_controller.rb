@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy, :search]
+  before_action :authenticate_user!, only: [:new, :create]
   impressionist :actions=>[:show,:index]
 
   def search
