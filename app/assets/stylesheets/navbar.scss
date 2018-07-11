@@ -1,0 +1,118 @@
+ // color variations
+ $red: #FF3118;
+ $red2:  #FF9180;
+ $yellow: #FFE900;
+ $dark: #0A2343;
+ $green: #2CA58D;
+ $light: #FFEDDF;
+
+ // font variables
+ $title: "Raleway", "Nunito Sans", sans-serif;
+ $body: "Source Sans Pro", "Open Sans", "Arial", sans-serif;
+   $banner-size: 40px;
+ $xlarge-size: 34px;
+ $large-size: 28px;
+ $medium-size: 20px;
+ $small-size: 16px;
+ $xsmall-size: 14px;
+ $tag-size: 12px;
+ 
+// NAVNAR
+.navbar-light {
+  font-family: "Nunito Sans";
+  color: $light;
+  font-weight: bold;
+  font-size: 16px;
+  background: linear-gradient(to right, #FFD998, #FF9180, #FFD998);
+  box-shadow: 0px 4px 6px #dddddd;
+  z-index: 100;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: $light;
+}
+
+.navbar-nav li a {
+  color: $light;
+}
+
+.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+  color: $red;
+  font-weight: bolder;
+}
+
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+  color: $red2;
+}
+
+.navbar-light .navbar-brand {
+    // position: absolute;
+    // top: .5rem;
+    // left: 50%;
+    // transform: translateX(-50%);
+    color: $light;
+    // margin-left: -50px;
+    // color: #FFEDDF;
+}
+.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
+  color: $light;
+}
+
+.dropdown-menu {
+  color: $dark;
+  background-color: $light;
+  margin: .5rem 0 0 0;
+}
+
+li .dropdown-menu a {
+  color: $dark;
+}
+
+.nav-item .rounded-circle {
+  max-width: 40px;
+  max-height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.nav-btn {
+  padding: 0 .5rem;
+}
+
+.nav-btn .btn-outline-danger {
+  color: $red;
+  border-color: $red;
+  font-weight: bold;
+
+}
+
+.nav-btn .btn-outline-danger:hover {
+  color: $light;
+}
+
+.nav-btn .btn-outline-light {
+  color: $light;
+  border-color: $light;
+}
+
+.nav-btn .btn-outline-light:hover {
+  color: $dark;
+}
+
+.nav-post {
+  min-width: 25px;
+  min-height: 25px;
+  font-size: 25px;
+}
+
+.circle {
+  height: 20px;
+  width: 20px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%;
+  color: #FFEDDF;
+  background: rgba(255, 255, 255, 0.5);
+}
+//

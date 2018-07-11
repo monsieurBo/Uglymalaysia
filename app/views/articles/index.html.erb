@@ -13,8 +13,8 @@
     <!-- FEATURED MAIN -->
     <div class="featured">
       <div class="header">
-        <p class="title">Featured</p>
-        <p class="subtitle">Stories you would want to know</p>
+        <p class="title">Latest</p>
+        <p class="subtitle">This just in!</p>
       </div>
       <div class="row">
         <!-- column 1 // main card -->
@@ -31,7 +31,7 @@
               <div class="card-body external-card">
                 <div class="card internal-card shadow-sm">
                   <div class="card-header">
-                    Featured
+                    Latest
                   </div>
                   <div class="card-body">
                     <h5 class="card-title"><%= @articles[0].title %></h5>
@@ -70,7 +70,7 @@
                   </div>
                   <div class="col-4 p-0">
                     <div class="img-wrap">
-                      <% if @articles[0].images? %>
+                      <% if @articles[1].images? %>
                         <img class="card-img-right pull-right" src="<%= @articles[1].images[0].full if @articles[1].images? %>" alt="Card image cap">
                       <% else %>
                         <img class="card-img-right pull-right" src="http://via.placeholder.com/325x165" alt="Card image cap">
@@ -97,9 +97,9 @@
                       <i class="fa fa-eye"></i> <%= @articles[2].impressionist_count(:filter=>:ip_address) %> <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[2].id, vote: true).count %>
                     </div>
                   </div>
-                  <div class="col- p-0">
+                  <div class="col-4 p-0">
                     <div class="img-wrap">
-                      <% if @articles[0].images? %>
+                      <% if @articles[2].images? %>
                         <img class="card-img-right pull-right" src="<%= @articles[2].images[0].full if @articles[2].images? %>" alt="Card image cap">
                       <% else %>
                         <img class="card-img-right pull-right" src="http://via.placeholder.com/325x165" alt="Card image cap">
@@ -128,7 +128,7 @@
                   </div>
                   <div class="col-4 p-0">
                     <div class="img-wrap">
-                      <% if @articles[0].images? %>
+                      <% if @articles[3].images? %>
                         <img class="card-img-right pull-right" src="<%= @articles[3].images[0].full if @articles[3].images? %>" alt="Card image cap">
                       <% else %>
                         <img class="card-img-right pull-right" src="http://via.placeholder.com/325x165" alt="Card image cap">
@@ -149,11 +149,20 @@
       </div>
     </div>
     <!-- featured end -->
+    <!-- advertisement -->
+    <div class="col-sm p-0">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <p class="card-text text-center">Advertisement</p>
+        </div>
+      </div>
+    </div>
+    <!-- end -->
     <!-- LATEST MAIN -->
     <div class="latest">
       <div class="header">
         <p class="title">Latest</p>
-        <p class="subtitle">This just in!</p>
+        <p class="subtitle">Stories you would want to know</p>
       </div>
       <div class="featured-cards">
         <div class="row">
@@ -175,7 +184,7 @@
                     <%end%>
                   </div>
                   <p class="card-title"><%= @latest[0].title %></p>
-                  <div class="stats">
+                  <div class="stats mt-auto">
                     <i class="fa fa-eye"></i> <%= @latest[0].impressionist_count(:filter=>:ip_address) %>
                     <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %>
                     <i class="fa fa-calendar"></i> <%= time_ago_in_words(@articles[0].created_at) unless @articles[0].created_at.blank? %> ago
@@ -207,7 +216,7 @@
                         <%end%>
                       </div>
                       <p class="card-title"><%= @latest[1].title %></p>
-                      <div class="stats">
+                      <div class="stats  mt-auto">
                         <i class="fa fa-eye"></i> <%= @latest[1].impressionist_count(:filter=>:ip_address) %>
                         <i class="fa fa-heart"></i> <%= Vote.where(article_id: @latest[1].id, vote: true).count %>
                         <i class="fa fa-calendar"></i> <%= time_ago_in_words(@latest[1].created_at) unless @latest[1].created_at.blank? %> ago
@@ -253,7 +262,7 @@
               <div class="col-sm p-0">
                 <div class="card shadow-sm">
                   <div class="card-body">
-                    <p class="card-text">Advertisement</p>
+                    <p class="card-text text-center">Advertisement</p>
                   </div>
                 </div>
               </div>
@@ -283,11 +292,9 @@
                 <div class="card shadow-sm h-100">
                   <div class="img-wrap">
                     <% if post.images? %>
-                      <% if @articles[0].images? %>
-                        <img class="card-img-top" src="<%= post.images[0].full if post.images? %>" alt="Card image cap">
-                      <% else %>
-                        <img class="card-img-top" src="http://via.placeholder.com/325x165" alt="Card image cap">
-                      <% end %>
+                      <img class="card-img-top" src="<%= post.images[0].medium if post.images? %>" alt="Card image cap">
+                    <% else %>
+                      <img class="card-img-top" src="http://via.placeholder.com/325x165" alt="Card image cap">
                     <% end %>
                   </div>
                   <div class="card-body">
@@ -297,7 +304,7 @@
                       <%end%>
                     </div>
                     <p class="card-title"><%= post.title  %></p>
-                    <div class="stats d-flex flex-wrap justify-content-between align-self-end">
+                    <div class="stats d-flex flex-wrap justify-content-between align-self-end mt-auto">
                       <li><i class="fa fa-eye"></i> <%= post.impressionist_count(:filter=>:ip_address) %></p></li>
                       <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: post.id, vote: true).count %></li>
                       <li><i class="fa fa-calendar"></i> <%= time_ago_in_words(post.created_at) unless post.created_at.blank? %> ago</li>
