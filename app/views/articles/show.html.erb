@@ -1,5 +1,6 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120935558-1"></script>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -7,6 +8,19 @@
 
   gtag('config', 'UA-120935558-1');
 </script>
+
+<!-- hotjar installed -->
+<script>
+  (function(h,o,t,j,a,r){
+    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+    h._hjSettings={hjid:948381,hjsv:6};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+<!-- hotjar end -->
 
 <div class="wrapper">
   <header class="main-head">
@@ -66,12 +80,8 @@
     </div>
   <hr>
 
-  <div class="show-header">
+    <div class="show-header">
       <p><%= @article.title  %></p>
-        <div class="inline-social">
-          <div class="eq"><%= social_share_button_tag(@article.title , :url => request.original_url , desc: @article.description) %></div>
-          <div class="eq"><a href="whatsapp://send?text=<%= request.original_url %>"><img class="whatsapp" src="https://image.flaticon.com/icons/svg/124/124034.svg"></img></a></div>
-        </div>
     </div>
       </br>
     <div class="author">
@@ -88,10 +98,16 @@
   <nav class="main-nav">
     <div class="sticky-social">
       <ul>
-
-        <li><%= social_share_button_tag(@article.title , :url => request.original_url , desc: @article.description) %></li>
-        <li><a href="whatsapp://send?text=<%= request.original_url %>"><img class="whatsapp" src="https://image.flaticon.com/icons/svg/124/124034.svg"></img></a></li>
-
+        <!-- AddToAny BEGIN -->
+        <p>Share via:</p>
+          <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_gmail"></a>
+            <a class="a2a_button_whatsapp"></a>
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+          </div>
+        <!-- AddToAny END -->
       </ul>
     </div>
   </nav>
@@ -132,74 +148,102 @@
       <%= link_to 'Edit', edit_article_path(@article) %> |
       <%= link_to 'Back', articles_path %>
       <a href="http://foo.com/bar.html#disqus_thread">Link</a>
-      <div id="disqus_thread">
-      </div>
-      <script id="dsq-count-scr" src="//www-uglymalaysia.disqus.com/count.js" async></script>
 
     </article>
     <!-- Article ends -->
 
 <!-- Right side bar -->
 <aside class="side">
-
-    <!-- card list -->
-    <div class="card">
-      <div class="row">
-        <div class="col-8">
-          <div class="card-body flex-column">
-            <div class="card-title">absdas</div>
+  <div class="side-nav">
+    <div class="header">
+      <p class="title background">Pedas Stories</p>
+    </div>
+    <hr/ class="my-2">
+    <% @articles.limit(5).each do |post|%>
+    <!-- card deck -->
+      <a href="<%= post.id %>">
+        <div class="card shadow-sm">
+          <div class="row">
+            <div class="col-8 p-0">
+              <div class="card-body d-flex flex-column">
+                <div class="card-title"><%= post.title %></div>
+                <div class="stats mt-auto">
+                  <i class="fa fa-eye"></i> <%= post.impressionist_count(:filter=>:ip_address) %> <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 p-0">
+              <div class="img-wrap">
+                <img class="card-img-right pull-right" src="<%= post.images[0].thumb if post.images? %>" alt="Card image cap">
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-4">
-          <div class="img-wrap">
-            <img class="card-img-right" src="http://via.placeholder.com/161x161" alt="Card image cap">
+      </a>
+    <!-- card ends -->
+    <% end %>
+    <!-- deck end -->
+    <div class="ad">
+      <!-- advertisement card -->
+      <div class="col-sm p-0 mt-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Advertisement</p>
           </div>
         </div>
       </div>
+      <!-- card end -->
     </div>
-    <!-- card ends -->
-
-    <!-- card list -->
-    <div class="card">
-      <div class="row">
-        <div class="col-8">
-          <div class="card-body flex-column">
-            <div class="card-title">absdas</div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="img-wrap">
-            <img class="card-img-right" src="http://via.placeholder.com/161x161" alt="Card image cap">
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- card ends -->
-
-    <!-- card list -->
-    <div class="card">
-      <div class="row">
-        <div class="col-8">
-          <div class="card-body flex-column">
-            <div class="card-title">absdas</div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="img-wrap">
-            <img class="card-img-right" src="http://via.placeholder.com/161x161" alt="Card image cap">
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- card ends -->
-
-  <!-- for advertising -->
-  <div class="ad">Advertising</div>
-
+    <hr/ class="my-2">
+    <ul class="footer-links d-flex flex-wrap justify-content-center">
+      <li><%= link_to 'Advertise!', root_path, class: "" %></li>
+      <li><%= link_to 'Help', root_path, class: "" %></li>
+      <li><%= link_to 'Privacy', root_path, class: "" %></li>
+      <li><%= link_to 'Terms', root_path, class: "" %></li>
+      <li><%= link_to 'About', root_path, class: "" %></li>
+      <li><%= link_to 'Contact', root_path, class: "" %></li>
+    </ul>
+  </div>
+  <!-- side nav ends -->
 <!-- sticky ends for right nav -->
 </aside>
 
-<footer class="main-footer">Contact details bla bla bla</footer>
+<footer class="main-footer">
+  <p>Other stories like this</p>
+
+
+  <div class="footer-wrapper">
+
+      <% @relevant_tag.limit(2).each do |relevant_article| %>
+        <a href="<%= relevant_article.id %>">
+         <div class="footer-box">
+          <% if relevant_article.images == nil %>
+
+          <% else %>
+            <img class="footer-image" src="<%= relevant_article.images[0]%>" alt="Card image cap"  height="15" width="15">
+          <% end %>
+
+
+          <div class="footer-title">
+            <%= relevant_article.title %>
+          </div>
+
+          <div class="footer-desc">
+            <%= relevant_article.description.first(40) %>
+            <p>... read more<p>
+          </div>
+        </div>
+      </a>
+     <% end %>
+
+  </div>
+
+
+ </footer>
+
+ <div id="disqus_thread">
+ </div>
+ <script id="dsq-count-scr" src="//www-uglymalaysia.disqus.com/count.js" async></script>
 
 </div>
 
