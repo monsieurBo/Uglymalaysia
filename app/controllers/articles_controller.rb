@@ -65,6 +65,9 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article = Article.find(params[:id])
+    @articles = Article.left_joins(:votes).group(:id).order('COUNT(vote) DESC')
+    tag_list = @article.tag_list
+    @relevant_tag = Article.tagged_with(tag_list, :any => true,:wild => true)
     # impressionist(@article)
   end
 
