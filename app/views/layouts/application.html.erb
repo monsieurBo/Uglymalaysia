@@ -48,87 +48,74 @@
 
       <p class="navbar-text pull-right">
 
-<!-- Sign Up Modal -->
+<!-- Sign Up & Sign In Modal -->
       <div class="modal fade signupModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
         <div class="modal-dialog modal-dialog-lg">
-          <div class="modal-content">
-            <div style="margin: 10px 15px 0px 15px;">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true" >&times;</span>
-              </button>
-              <div class="header">
-                <p class="title-signup">Sign up with email</p>
-                <p class="subtitle-signup">Enter your particulars for your account, and we'll send a verification link to your inbox.</p>
-              </div>
-            </div>
-            <div class="modal-body">
-              <div class="container-fluid">
-                <%= render(template: "devise/registrations/new")%>
-              </div>
-              <div class="col">
-                <%= render "devise/shared/links" %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-<!-- Sign Up Modal End -->
-
-<!-- Login Modal -->
-      <div class="modal fade"  id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-lg">
-          <div class="modal-content">
-            <div style="margin: 10px 15px 0px 15px;">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true" >&times;</span>
-              </button>
-              <div class="header">
-                <p class="title-signup">Welcome back</p>
-                <p class="subtitle-signup">Sign in to access share stories, like articles and leave your thoughts that matters to you.</p>
-              </div>
-            </div>
-            <div class="modal-body">
-              <div class="container-fluid">
-                <div class="partial">
-                  <%= render partial: 'partial/loginlinks'%>
+<!--  Sign Up Content-->
+            <div class="modal-content sign_up_content">
+              <div style="margin: 10px 15px 0px 15px;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" >&times;</span>
+                </button>
+                <div class="header">
+                  <p class="title-signup">Sign up with email</p>
+                  <p class="subtitle-signup">Enter your particulars for your account, and we'll send a verification link to your inbox.</p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-<!-- Login Modal End -->
-
-<!-- Email Login Modal -->
-      <div class="modal fade"  id="emailModalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-lg" role="document">
-          <div class="modal-content">
-            <div style="margin: 10px 15px 0px 15px;">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true" >&times;</span>
-              </button>
-              <div class="header">
-                <p class="title-signup">Welcome back</p>
-                <p class="subtitle-signup">Sign in to access share stories, like articles and leave your thoughts that matters to you.</p>
-              </div>
-            </div>
-            <div class="modal-body">
-              <div class="container-fluid">
-                <div class="partial">
-                  <%= render template: 'devise/sessions/new'%>
+              <div class="modal-body">
+                <div class="container-fluid">
+                  <%= render(template: "devise/registrations/new")%>
                 </div>
-                <p id="loginemail"></p>
-                <%= link_to "Back" ,"", id: "backtomodal"%>
+                <div class="col">
+                  <%= render "devise/shared/links" %>
+                </div>
+                <a class="nav-link light sign_in_link" style="padding: 0 16px" href="">Already a member? Sign in here</a>
               </div>
             </div>
-          </div>
+
+<!--  Sign In Options-->
+            <div class="modal-content sign_in_options">
+              <div style="margin: 10px 15px 0px 15px;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" >&times;</span>
+                </button>
+                <div class="header">
+                  <p class="title-signup">Welcome back</p>
+                  <p class="subtitle-signup">Sign in to access share stories, like articles and leave your thoughts that matters to you.</p>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                    <%= render partial: 'partial/loginlinks'%>
+                </div>
+                <a class="nav-link light sign_up_link" style="padding: 0 16px" href="">Not a member? Sign up now!</a>
+              </div>
+            </div>
+
+<!--  Email Sign in Content-->
+            <div class="modal-content email_sign_in_content">
+              <div style="margin: 10px 15px 0px 15px;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" >&times;</span>
+                </button>
+                <div class="header">
+                  <p class="title-signup">Welcome back</p>
+                  <p class="subtitle-signup">Sign in to access share stories, like articles and leave your thoughts that matters to you.</p>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                    <%= render template: 'devise/sessions/new'%>
+                </div>
+                <a class="nav-link light sign_in_link" style="padding: 0 16px" href="">Login with other options</a>
+                <a class="nav-link light sign_up_link" style="padding: 0 16px" href="">Not a member? Sign up now!</a>
+              </div>
+            </div>
         </div>
       </div>
-<!-- Email Login End -->
+<!-- Sign Up & Sign In Modal End -->
 
       <%= yield %>
-
-
 
       <script>
       $(document).ready(function() {
@@ -142,18 +129,69 @@
         });
       });
 
+
+
       $(document).ready(function(){
-          $("#email").on("click", function(event){
+
+// sign up button on navbar
+        $(".sign_up_nav").on("click",function(event){
+          event.preventDefault();
+          $(".email_sign_in_content").hide();
+          $(".sign_in_options").hide();
+          $(".sign_up_content").show();
+
+          $(".sign_in_link").on('click',function(event){
             event.preventDefault();
-            $("#exampleModalCenter").modal("hide");
-            $("#emailModalLogin").modal("show");
+            $(".sign_up_content").hide();
+            $(".email_sign_in_content").hide();
+            $(".sign_in_options").show();
           })
-          $("#backtomodal").on("click", function(event){
+
+          $(".sign_up_link").on('click',function(event){
             event.preventDefault();
-            $("#emailModalLogin").modal("hide");
-            $("#exampleModalCenter").modal("show");
+            $(".sign_in_options").hide();
+            $(".email_sign_in_content").hide();
+            $(".sign_up_content").show();
           })
-      });
+
+          $(".email_option_login").on("click",function(event){
+            event.preventDefault();
+            // console.log("open email login content");
+            $(".sign_in_options").hide();
+            $(".sign_up_content").hide();
+            $(".email_sign_in_content").show();
+          })
+        })
+
+// login button on navbar
+        $(".login_nav").on("click",function(event){
+          event.preventDefault();
+          $(".email_sign_in_content").hide();
+          $(".sign_up_content").hide();
+          $(".sign_in_options").show();
+
+          $(".sign_in_link").on('click',function(event){
+            event.preventDefault();
+            $(".sign_up_content").hide();
+            $(".email_sign_in_content").hide();
+            $(".sign_in_options").show();
+          })
+
+          $(".sign_up_link").on('click',function(event){
+            event.preventDefault();
+            $(".sign_in_options").hide();
+            $(".email_sign_in_content").hide();
+            $(".sign_up_content").show();
+          })
+
+          $(".email_option_login").on("click",function(event){
+            event.preventDefault();
+            $(".sign_in_options").hide();
+            $(".sign_up_content").hide();
+            $(".email_sign_in_content").show();
+          })
+        })
+      })
 
 
       </script>

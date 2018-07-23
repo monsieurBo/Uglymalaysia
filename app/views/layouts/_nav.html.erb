@@ -39,9 +39,10 @@
                     </div>
                   </li>
                 <% else %>
-                  <li class="nav-item nav-btn"><a class="btn btn-outline-danger d-none d-lg-block" href="/articles/new">Share a story!</a></li>
-                  <li class="nav-item"><a class="nav-link light" href="" data-toggle="modal" data-target=".signupModal">Sign Up</a></li>
-                  <li class="nav-item"><a class="nav-link light" href="" data-toggle="modal" data-target="#exampleModalCenter">Login</a></li>
+                <li class="nav-item nav-btn"><a class="btn btn-outline-danger d-none d-lg-block login_nav" href="" data-toggle="modal" data-target=".signupModal">Share a story!</a></li>
+                <!-- <li class="nav-item nav-btn"><a class="btn btn-outline-danger d-none d-lg-block login_nav" href="alert" data-toggle="modal" data-target=".signupModal">Share ss!</a></li> -->
+                  <li class="nav-item"><a class="nav-link light sign_up_nav" href="" data-toggle="modal" data-target=".signupModal">Sign Up</a></li>
+                  <li class="nav-item"><a class="nav-link light login_nav" href="" data-toggle="modal" data-target=".signupModal">Login</a></li>
                 <% end %>
             </ul>
         </div>
@@ -53,7 +54,11 @@
           <li class="nav-item nav-btn"><a class="btn btn-outline-danger d-none d-sm-block d-md-none" href="/users/sign_in">Share!</a></li>
           <% end %>
           <li class="nav-item">
+            <% if user_signed_in? %>
               <a class="nav-link btn d-block d-sm-none nav-post" href="/articles/new"><i class="fa fa-edit nav-post"></i></a>
+            <% else %>
+              <a class="nav-link btn d-block d-sm-none nav-post login_nav" href="/articles/new" data-toggle="modal" data-target=".signupModal"><i class="fa fa-edit nav-post"></i></a>
+            <% end %>
           </li>
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle ml-3 mr-lg-0" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i><span class="caret"></span>
