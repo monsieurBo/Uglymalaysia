@@ -1,2 +1,5 @@
+$(".downvote").addClass("disabled");
+$(".upvote").removeClass("disabled btn-secondary");
+$(".upvote").addClass("btn-outline-secondary");
 $(".upvote").html("UPVOTE <%=Vote.where(article_id: @article.id, vote: true).count%>")
 $(".downvote").html("DOWNVOTE <%=Vote.where(article_id: @article.id, vote: false).count%>")

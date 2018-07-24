@@ -13,12 +13,20 @@ class VotesController < ApplicationController
   def upvote
     if @vote.nil?
     	@vote = Vote.create(article_id: params[:article_id], user_id: current_user.id, vote: true)
-      redirect_to article_path(@vote.article_id)
+
+			respond_to do |format|
+				format.js
+				format.html { redirect_to article_path(@vote.article_id) }
+			end
     else
       @article = @vote.article
 			if @vote.vote == false
         @vote.update(vote: true)
-				redirect_to article_path(@article.id)
+
+				respond_to do |format|
+					format.js
+					format.html { redirect_to article_path(@vote.article_id) }
+				end
       end
     end
   end
@@ -26,13 +34,21 @@ class VotesController < ApplicationController
   def downvote
     if @vote.nil?
        @vote = Vote.create(article_id: params[:article_id], user_id: current_user.id, vote: false)
-       redirect_to article_path(@vote.article_id)
+
+ 			respond_to do |format|
+ 				format.js
+ 				format.html { redirect_to article_path(@vote.article_id) }
+ 			end
     else
       @article = @vote.article
 
       if @vote.vote == true
         @vote.update(vote: false)
-				redirect_to article_path(@article.id)
+
+				respond_to do |format|
+					format.js
+					format.html { redirect_to article_path(@vote.article_id) }
+				end
       end
     end
   end

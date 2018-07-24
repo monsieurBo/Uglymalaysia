@@ -23,16 +23,16 @@
 
 <div class="container">
   <div class="header">
-    <p class="title">Durian Runtuh</p>
-    <p class="subtitle">Stories where votes comes atumbling</p>
+    <p class="title">Latest</p>
+    <p class="subtitle">As fresh as they come!</p>
   </div>
-  <% if @output.empty? %>
+  <% if @latest.empty? %>
   <div class="text-center">
     <p>Please come back later for more news!</p>
   </div>
   <% else %>
   <div class="row singles">
-    <% @output.each do |post|%>
+    <% @latest.each do |post|%>
     <div class="col-sm-12 col-md-4 col-lg-3 mb-3 px-2">
       <a href="articles/<%= post.id %>">
         <div class="card shadow-sm h-100">
@@ -46,7 +46,7 @@
           <div class="card-body d-flex flex-column">
             <div class="tags">
               <% post.tag_list.each do |tag| %>
-                <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"> <%= tag %> </button>
+                <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"><%= tag %></button>
               <%end%>
             </div>
             <p class="card-title"><%= post.title  %></p>

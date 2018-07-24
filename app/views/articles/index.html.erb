@@ -77,7 +77,7 @@
                   <div class="col-8 p-0 d-flex flex-column">
                     <div class="tags">
                       <% @latest[1].tag_list.each do |tag| %>
-                        <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
+                        <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"> <%= tag %> </button>
                       <%end%>
                     </div>
                     <div class="card-title text-left d-flex row"><%= @latest[1].title %></div>
@@ -107,7 +107,7 @@
                   <div class="col-8 p-0 d-flex flex-column">
                     <div class="tags">
                       <% @latest[2].tag_list.each do |tag| %>
-                        <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
+                        <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"> <%= tag %> </button>
                       <%end%>
                     </div>
                     <div class="card-title text-left d-flex row"><%= @latest[2].title %></div>
@@ -137,7 +137,7 @@
                   <div class="col-8 p-0 d-flex flex-column">
                     <div class="tags">
                       <% @latest[3].tag_list.each do |tag| %>
-                        <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
+                        <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"> <%= tag %> </button>
                       <%end%>
                     </div>
                     <div class="card-title text-left d-flex row"><%= @latest[3].title %></div>
@@ -160,7 +160,7 @@
             </a>
             <!-- card ends -->
             <div class="featured-link text-right">
-              <%= link_to 'more latest news >>', root_path %>
+              <%= link_to 'more latest news >>', latest_path %>
             </div>
           </div>
           <!-- deck end -->
@@ -200,7 +200,7 @@
                 <div class="card-body d-flex flex-column">
                   <div class="tags">
                     <% @articles[0].tag_list.each do |tag| %>
-                      <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
+                      <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"> <%= tag %> </button>
                     <%end%>
                   </div>
                   <p class="card-title"><%= @articles[0].title %></p>
@@ -232,7 +232,7 @@
                     <div class="card-body d-flex flex-column">
                       <div class="tags">
                         <% @articles[1].tag_list.each do |tag| %>
-                          <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
+                          <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"> <%= tag %> </button>
                         <%end%>
                       </div>
                       <p class="card-title"><%= @articles[1].title %></p>
@@ -261,7 +261,7 @@
                     <div class="card-body d-flex flex-column">
                       <div class="tags">
                         <% @articles[2].tag_list.each do |tag| %>
-                          <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
+                          <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"> <%= tag %> </button>
                         <%end%>
                       </div>
                       <p class="card-title"><%= @articles[2].title %></p>
@@ -320,7 +320,7 @@
                   <div class="card-body d-flex flex-column">
                     <div class="tags">
                       <% post.tag_list.each do |tag| %>
-                        <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
+                        <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"> <%= tag %> </button>
                       <%end%>
                     </div>
                     <p class="card-title"><%= post.title  %></p>

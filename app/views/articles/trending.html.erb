@@ -24,7 +24,7 @@
 <div class="container">
 <div class="header">
   <p class="title">Pedas News</p>
-  <p class="subtitle">Trending stories you have to know</p>
+  <p class="subtitle">Trending stories - Most views! Most likes! Stories you can't miss out this week!</p>
 </div>
   <% if @output.empty? %>
   <div class="text-center">
@@ -39,16 +39,18 @@
           <div class="img-wrap">
             <% if post.images? %>
               <img class="card-img-top" src="<%= post.images[0].url%>" alt="Card image cap">
+            <% else %>
+              <img class="card-img-top" src="http://via.placeholder.com/325x325" alt="Card image cap">
             <% end %>
           </div>
-          <div class="card-body">
+          <div class="card-body d-flex flex-column">
             <div class="tags">
               <% post.tag_list.each do |tag| %>
-                <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger"> <%= tag %> </button>
+                <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"> <%= tag %> </button>
               <%end%>
             </div>
             <p class="card-title"><%= post.title  %></p>
-            <div class="stats d-flex flex-wrap justify-content-between align-self-end">
+            <div class="stats d-flex flex-wrap justify-content-between mt-auto">
               <li><i class="fa fa-eye"></i> <%= post.impressionist_count(:filter=>:ip_address) %></p></li>
               <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: post.id, vote: true).count %></li>
               <li><i class="fa fa-calendar"></i> <%= time_ago_in_words(post.created_at) unless post.created_at.blank? %> ago</li>

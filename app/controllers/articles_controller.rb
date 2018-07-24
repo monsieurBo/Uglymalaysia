@@ -21,19 +21,23 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def latest
+    @latest = Article.order('created_at desc')
+  end
+
   def trending
     @all = Article.where("articles.created_at > ?", 7.day.ago)
     @articles = []
     @output =  []
     @all.each do |article|
       # change the minimum for views below
-      if article.impressionist_count > 5
+      if article.impressionist_count > 1
         p @articles << article
       end
     end
     @articles.each do |article|
       # Change the limit for vote count below
-      if article.votes.count >= 2
+      if article.votes.count >= 1
         @output << article
       end
     end
