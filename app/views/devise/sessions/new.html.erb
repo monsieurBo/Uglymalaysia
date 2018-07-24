@@ -8,7 +8,7 @@
   gtag('config', 'UA-120935558-1');
 </script>
 
-
+<%= devise_error_messages! %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 <div class="form-row">
   <div class="form-group col-md-12">

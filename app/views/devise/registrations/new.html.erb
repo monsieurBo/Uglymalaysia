@@ -8,7 +8,20 @@
   gtag('config', 'UA-120935558-1');
 </script>
 
-
+<!-- <div class="modal fade signupModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-lg">
+    <div class="modal-content sign_up_content">
+      <div style="margin: 10px 15px 0px 15px;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" >&times;</span>
+        </button>
+        <div class="header">
+          <p class="title-signup">Sign up with email</p>
+          <p class="subtitle-signup">Enter your particulars for your account, and we'll send a verification link to your inbox.</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid"> -->
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 <div class="form-row">
@@ -82,3 +95,12 @@
   </div>
 
 <% end %>
+<!-- </div>
+<div class="col">
+  <%# render "devise/shared/links" %>
+</div>
+<a class="nav-link light sign_in_link" style="padding: 0 16px" href="">Already a member? Sign in here</a>
+</div>
+</div>
+</div>
+</div> -->
