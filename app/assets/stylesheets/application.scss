@@ -54,17 +54,7 @@
   font-style: italic;
 }
 
-.sticky-social {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 100px;
-}
 
-.side {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 100px;
-}
 
 .wrapper {
     max-width: 1400px;
@@ -92,14 +82,11 @@ nav ul {
 .footer-wrapper {
   display: flex;
   display: inline-flex;
-  width: 150px;
-}
-
-.footer-wrapper img {
-  height: 200px;
   width: auto;
-
+  grid-column: span 4;
 }
+
+
 
 .footer-wrapper .footer-box{
   // flex: 0 0 50%;
@@ -108,29 +95,44 @@ nav ul {
   box-shadow: 2px 7px #D3D3D3;
 }
 
-
-@media (min-width: 500px) and (max-width: 699px) {
-
-  .side {
-    grid-column: col-start / span 3;
-    grid-row: 3;
+.main-footer .footer-wrapper .footer-box {
+  grid-column: span 4;
+  img {
+    max-width: 350px;
   }
-
-  .ad {
-    grid-column: col-start / span 3;
-    grid-row: 4;
-  }
-
-  .content, .main-footer {
-    grid-column: col-start 4 / span 9;
-  }
-
-  nav ul {
-    display: flex;
-    justify-content: space-between;
-  }
-
 }
+
+.disqus {
+    grid-column-start: 2;
+    grid-column-end: span 8;
+}
+
+@media (min-width: 300px) and (max-width: 699px) {
+
+//   .side {
+//     grid-column: col-start / span 3;
+//     grid-row: 3;
+//   }
+//
+//   .ad {
+//     grid-column: col-start / span 3;
+//     grid-row: 4;
+//   }
+//
+//
+//
+//   nav ul {
+//     display: flex;
+//     justify-content: space-between;
+//   }
+//
+//
+  .main-footer .footer-wrapper {
+    display: block;
+    padding-top: 5px;
+  }
+}
+
 
 @media (min-width: 700px) {
   .main-nav {
@@ -154,11 +156,35 @@ nav ul {
   }
 
   .main-footer {
-    grid-column: col-start 2 / span 8;
+    grid-column-start: 2;
+    grid-column-end: span 8;
   }
 
   nav ul {
     flex-direction: column;
+  }
+
+  .main-footer .footer-wrapper .footer-box {
+    grid-column: span 4;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      max-height: 100%;
+
+    }
+  }
+
+  .sticky-social {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 100px;
+  }
+
+  .side {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 100px;
   }
 
 }
