@@ -18,7 +18,7 @@
 
   <div class="form-group col-sm-4">
     <%= f.label :tag_list, "Insert Tags(Seperated by comma)", class: "col-form-label-sm"  %>
-    <%= f.text_field :tag_list,class: "form-control form-control-sm autocomplete-tag", data: {autocomplete_source:ActsAsTaggableOn::Tag.order(:name).map(&:name)}
+    <%= f.text_field :tag_list,class: "form-control form-control-sm autocomplete-tag", data: {autocomplete_source: ActsAsTaggableOn::Tag.order(:name).map(&:name)}
     %>
   </div>
 </div>
