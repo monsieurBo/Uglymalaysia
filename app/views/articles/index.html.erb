@@ -80,7 +80,7 @@
                         <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"> <%= tag %> </button>
                       <%end%>
                     </div>
-                    <div class="card-title text-left d-flex row"><%= @latest[1].title %></div>
+                    <h5 class="card-title text-left d-flex row"><%= @latest[1].title %></h5>
                     <div class="stats d-flex justify-content-start mt-auto">
                       <li class="mx-3"><i class="fa fa-eye"></i> <%= @latest[1].impressionist_count(:filter=>:ip_address) %> </li>
                       <li class="mx-3"><i class="fa fa-heart"></i> <%= Vote.where(article_id: @latest[1].id, vote: true).count %></li>
@@ -110,7 +110,7 @@
                         <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"> <%= tag %> </button>
                       <%end%>
                     </div>
-                    <div class="card-title text-left d-flex row"><%= @latest[2].title %></div>
+                    <h5 class="card-title text-left d-flex row"><%= @latest[2].title %></h5>
                     <div class="stats d-flex justify-content-start mt-auto">
                       <li class="mx-3"><i class="fa fa-eye"></i> <%= @latest[2].impressionist_count(:filter=>:ip_address) %> </li>
                       <li class="mx-3"><i class="fa fa-heart"></i> <%= Vote.where(article_id: @latest[2].id, vote: true).count %></li>
@@ -140,7 +140,7 @@
                         <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"> <%= tag %> </button>
                       <%end%>
                     </div>
-                    <div class="card-title text-left d-flex row"><%= @latest[3].title %></div>
+                    <h5 class="card-title text-left d-flex row"><%= @latest[3].title %></h5>
                     <div class="stats d-flex justify-content-start mt-auto">
                       <li class="mx-3"><i class="fa fa-eye"></i> <%= @latest[3].impressionist_count(:filter=>:ip_address) %> </li>
                       <li class="mx-3"><i class="fa fa-heart"></i> <%= Vote.where(article_id: @latest[3].id, vote: true).count %></li>
@@ -203,7 +203,7 @@
                       <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"> <%= tag %> </button>
                     <%end%>
                   </div>
-                  <p class="card-title"><%= @articles[0].title %></p>
+                  <h5 class="card-title"><%= @articles[0].title %></h5>
                   <div class="stats d-flex flex-wrap justify-content-around mt-auto">
                     <li><i class="fa fa-eye"></i> <%= @articles[0].impressionist_count(:filter=>:ip_address) %></li>
                     <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %></li>
@@ -235,7 +235,7 @@
                           <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"> <%= tag %> </button>
                         <%end%>
                       </div>
-                      <p class="card-title"><%= @articles[1].title %></p>
+                      <h5 class="card-title"><%= @articles[1].title %></h5>
                       <div class="stats d-flex flex-wrap justify-content-around mt-auto">
                         <li><i class="fa fa-eye"></i> <%= @articles[1].impressionist_count(:filter=>:ip_address) %></li>
                         <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[1].id, vote: true).count %></li>
@@ -264,7 +264,7 @@
                           <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"> <%= tag %> </button>
                         <%end%>
                       </div>
-                      <p class="card-title"><%= @articles[2].title %></p>
+                      <h5 class="card-title"><%= @articles[2].title %></h5>
                       <div class="stats d-flex flex-wrap justify-content-around mt-auto">
                         <li><i class="fa fa-eye"></i> <%= @articles[2].impressionist_count(:filter=>:ip_address) %></li>
                         <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[2].id, vote: true).count %></li>
@@ -323,7 +323,7 @@
                         <button href="articles/search/<%= tag %>" class="btn btn-sm btn-outline-danger mb-1"> <%= tag %> </button>
                       <%end%>
                     </div>
-                    <p class="card-title"><%= post.title  %></p>
+                    <h5 class="card-title"><%= post.title  %></h5>
                     <div class="stats d-flex flex-wrap justify-content-between mt-auto">
                       <li><i class="fa fa-eye"></i> <%= post.impressionist_count(:filter=>:ip_address) %></p></li>
                       <li><i class="fa fa-heart"></i> <%= Vote.where(article_id: post.id, vote: true).count %></li>

@@ -44,13 +44,13 @@ class ArticlesController < ApplicationController
   end
 
   def most_views
-    @articles = Article.all
-    @output = []
-    @articles.each do |article|
+    @articles = []
+    Article.all.each do |article|
       if article.impressionist_count > 1
-        @output << article
+        @articles << article
       end
     end
+    @output = @articles.sort{ |a,b| a.impressionist_count <=> b.impressionist_count }
   end
 
   # GET /articles
