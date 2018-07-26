@@ -71,7 +71,15 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @articles = Article.left_joins(:votes).group(:id).order('COUNT(vote) DESC')
     tag_list = @article.tag_list
-    @relevant_tag = Article.tagged_with(tag_list, :any => true,:wild => true)
+    relevant = Article.tagged_with(tag_list, :any => true,:wild => true)
+    @relevant_tag = []
+
+    relevant.each do |x|
+      if x.id != @article.id
+        @relevant_tag << x
+      end
+    end
+
     # impressionist(@article)
   end
 

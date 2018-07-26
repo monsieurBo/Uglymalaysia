@@ -213,28 +213,30 @@
 
 
   <div class="footer-wrapper">
-
-      <% @relevant_tag.limit(2).each do |relevant_article| %>
+    <% if @relevant_tag.length != 1 %>
+    <%# byebug %>
+      <% @relevant_tag.take(2).each do |relevant_article| %>
         <a href="<%= relevant_article.id %>">
-         <div class="footer-box">
-          <% if relevant_article.images == nil %>
+          <div class="footer-box">
+            <% if relevant_article.images == nil %>
 
-          <% else %>
-            <img class="footer-image" src="<%= relevant_article.images[0]%>" alt="Card image cap"  height="15" width="15">
-          <% end %>
+            <% else %>
+              <img class="footer-image" src="<%= relevant_article.images[0]%>" alt="Card image cap"  height="15" width="15">
+            <% end %>
 
 
-          <div class="footer-title">
-            <%= relevant_article.title %>
+            <div class="footer-title">
+              <%= relevant_article.title %>
+            </div>
+
+            <div class="footer-desc">
+              <%= relevant_article.description.first(40) %>
+              <p>... read more<p>
+            </div>
           </div>
-
-          <div class="footer-desc">
-            <%= relevant_article.description.first(40) %>
-            <p>... read more<p>
-          </div>
-        </div>
-      </a>
+        </a>
      <% end %>
+    <% end %>
 
   </div>
 
@@ -260,7 +262,7 @@ var disqus_config = function () {
 
 (function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');
-s.src = 'https://uglymy.disqus.com/embed.js';
+s.src = 'https://uglymy-1.disqus.com/embed.js';
 s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
