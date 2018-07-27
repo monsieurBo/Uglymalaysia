@@ -145,9 +145,13 @@
         <%= link_to "DOWNVOTE | #{Vote.where(article_id: @article.id, vote: false).count}", downvote_article_votes_path(@article), class: "btn btn-default btn-sm downvote disabled" , :remote => true%>
       <% end %>
 
-      <%= link_to 'Edit', edit_article_path(@article) %> |
-      <%= link_to 'Back', articles_path %>
-      <a href="http://foo.com/bar.html#disqus_thread">Link</a>
+      <% if current_user.id == @article.user_id%>
+        <%= link_to 'Edit', edit_article_path(@article) %> |
+        <%= link_to 'Back', articles_path %>
+      <% else %>
+        <%= link_to 'Back', articles_path %>
+      <% end %>
+
 
     </article>
     <!-- Article ends -->
