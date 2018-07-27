@@ -16,11 +16,11 @@
     <%= f.text_field :title, class: "form-control form-control-sm" %>
   </div>
 
-  <div class="form-group col-sm-4">
+  <div class="form-group col-sm-4 ui-widget">
     <%= f.label :tag_list, "Insert Tags(Seperated by comma)", class: "col-form-label-sm"  %>
-    <%= f.text_field :tag_list,class: "form-control form-control-sm autocomplete-tag", data: {autocomplete_source: ActsAsTaggableOn::Tag.order(:name).map(&:name)}
-    %>
+    <%= f.text_field :tag_list, id: "tag-search", class: "form-control form-control-sm autocomplete-tag", data: {autocomplete_source: ActsAsTaggableOn::Tag.order(:name).map(&:name)} %>
   </div>
+  <datalist id="list"></datalist>
 </div>
   <div class="form-group col-sm-6">
     <%= f.label :description, class: "col-form-label-sm"  %>

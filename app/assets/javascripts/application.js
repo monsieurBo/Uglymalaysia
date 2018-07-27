@@ -14,6 +14,8 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
+//= require articles
+//= require select2
 //= require bootstrap
 //= require activestorage
 //= require turbolinks
