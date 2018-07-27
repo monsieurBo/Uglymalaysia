@@ -213,37 +213,38 @@
 <!-- sticky ends for right nav -->
 </aside>
 
-<footer class="main-footer">
-  <p>Other stories like this</p>
+<% if @relevant_tag.length != 0 %>
+  <footer class="main-footer">
+    <p>Other stories like this</p>
 
 
-  <div class="footer-wrapper">
-    <% if @relevant_tag.length != 1 %>
-    <%# byebug %>
-      <% @relevant_tag.take(2).each do |relevant_article| %>
-        <a href="<%= relevant_article.id %>">
-          <div class="footer-box">
-            <% if relevant_article.images == nil %>
+    <div class="footer-wrapper">
+      <%# byebug %>
+        <% @relevant_tag.take(2).each do |relevant_article| %>
+          <a href="<%= relevant_article.id %>">
+            <div class="footer-box">
+              <% if relevant_article.images == nil %>
 
-            <% else %>
-              <img class="footer-image" src="<%= relevant_article.images[0]%>" alt="Card image cap"  height="15" width="15">
-            <% end %>
+              <% else %>
+                <img class="footer-image" src="<%= relevant_article.images[0]%>" alt="Card image cap"  height="15" width="15">
+              <% end %>
 
 
-            <div class="footer-title">
-              <%= relevant_article.title %>
+              <div class="footer-title">
+                <%= relevant_article.title %>
+              </div>
+
+              <div class="footer-desc">
+                <p>
+                <%= relevant_article.description.first(40) %>
+                ... read more<p>
+              </div>
             </div>
-
-            <div class="footer-desc">
-              <%= relevant_article.description.first(40) %>
-              <p>... read more<p>
-            </div>
-          </div>
-        </a>
-     <% end %>
-    <% end %>
+          </a>
+       <% end %>
 
   </div>
+<% end %>
 
 
  </footer>
