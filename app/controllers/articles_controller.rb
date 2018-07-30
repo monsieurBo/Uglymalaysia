@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
     @output =  []
     @all.each do |article|
       # change the minimum for views below
-      if article.impressionist_count > 5
+      if article.impressionist_count > 1
         p @articles << article
       end
     end
