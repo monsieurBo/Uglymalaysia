@@ -67,6 +67,11 @@
 
 // SHOW PAGE
 
+.main-head img {
+  object-fit: contain;
+  max-width: 100%;
+}
+
 .show-header {
   text-align: center;
   font-size: $banner-size;
