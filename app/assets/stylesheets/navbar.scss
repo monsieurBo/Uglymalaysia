@@ -1,29 +1,29 @@
  // color variations
- $red: #FF3118;
+ $red: #d81818;
  $red2:  #FF9180;
- $yellow: #FFE900;
- $dark: #0A2343;
+ $yellow: #FF7F06;
+ $dark: #0A2342;
  $green: #2CA58D;
  $light: #FFEDDF;
 
  // font variables
  $title: "Raleway", "Nunito Sans", sans-serif;
  $body: "Source Sans Pro", "Open Sans", "Arial", sans-serif;
-   $banner-size: 40px;
+ $banner-size: 40px;
  $xlarge-size: 34px;
  $large-size: 28px;
  $medium-size: 20px;
  $small-size: 16px;
  $xsmall-size: 14px;
  $tag-size: 12px;
- 
+
 // NAVNAR
 .navbar-light {
   font-family: "Nunito Sans";
   color: $light;
   font-weight: bold;
   font-size: 16px;
-  background: linear-gradient(to right, #FFD998, #FF9180, #FFD998);
+  background: linear-gradient(to right, $yellow, $red, $yellow);
   box-shadow: 0px 4px 6px #dddddd;
   z-index: 100;
 }
@@ -37,7 +37,7 @@
 }
 
 .navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
-  color: $red;
+  color: $dark;
   font-weight: bolder;
 }
 
@@ -54,6 +54,11 @@
     // margin-left: -50px;
     // color: #FFEDDF;
 }
+
+.navbar-brand img{
+    max-width: 70px;
+}
+
 .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
   color: $light;
 }
@@ -80,8 +85,8 @@ li .dropdown-menu a {
 }
 
 .nav-btn .btn-outline-danger {
-  color: $red;
-  border-color: $red;
+  color: $dark;
+  border-color: $dark;
   font-weight: bold;
 
 }

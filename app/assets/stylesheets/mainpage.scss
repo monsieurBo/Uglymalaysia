@@ -9,7 +9,7 @@ $light: #FFEDDF;
 // font variables
 $title: "Raleway", "Nunito Sans", sans-serif;
 $body: "Source Sans Pro", "Open Sans", "Arial", sans-serif;
-  $banner-size: 40px;
+$banner-size: 40px;
 $xlarge-size: 34px;
 $large-size: 28px;
 $medium-size: 20px;
@@ -26,7 +26,7 @@ img {
 }
 
 .background {
-  background-color: $red2;
+  background-color: $red;
   max-width: inherit;
   max-height: 100%;
   padding-top: -50px;

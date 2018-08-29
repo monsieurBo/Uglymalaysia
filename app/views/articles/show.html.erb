@@ -51,7 +51,7 @@
             </a>
         </div>
         <!-- End of show video and image -->
-      <% elsif @article.images.length!= 0%>
+      <% elsif @article.images.length!= 0 %>
         <!-- only for image carousel -->
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
@@ -79,7 +79,6 @@
       <% end %>
     </div>
   <hr>
-
     <div class="show-header">
       <p><%= @article.title  %></p>
     </div>
@@ -151,7 +150,7 @@
       <% else %>
         <%= link_to 'Back', articles_path %>
       <% end %>
-    <% end %>  
+    <% end %>
 
 
     </article>
@@ -179,7 +178,11 @@
             </div>
             <div class="col-4 p-0">
               <div class="img-wrap">
+                <% if post.images? %>
                 <img class="card-img-right pull-right" src="<%= post.images[0].thumb if post.images? %>" alt="Card image cap">
+                <% else %>
+                  <img class="card-img-right pull-right" src="http://via.placeholder.com/85x85" alt="Card image cap">
+                <% end %>
               </div>
             </div>
           </div>
@@ -238,6 +241,9 @@
                 <p>
                 <%= relevant_article.description.first(40) %>
                 ... read more<p>
+              </div>
+              <div class="stats mt-auto">
+                <i class="fa fa-eye"></i> <%= relevant_article.impressionist_count(:filter=>:ip_address) %> <i class="fa fa-heart"></i> <%= Vote.where(article_id: @articles[0].id, vote: true).count %>
               </div>
             </div>
           </a>
