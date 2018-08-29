@@ -26,15 +26,15 @@
  // color variations
  $red: #FF3118;
  $red2:  #FF9180;
- $yellow: #FFE900;
- $dark: #0A2343;
+ $yellow: #FF7F06;
+ $dark: #0A2342;
  $green: #2CA58D;
  $light: #FFEDDF;
 
  // font variables
  $title: "Raleway", "Nunito Sans", sans-serif;
  $body: "Source Sans Pro", "Open Sans", "Arial", sans-serif;
-   $banner-size: 40px;
+ $banner-size: 40px;
  $xlarge-size: 34px;
  $large-size: 28px;
  $medium-size: 20px;
@@ -110,7 +110,7 @@ nav ul {
 .footer-wrapper {
   display: flex;
   display: inline-flex;
-  width: auto;
+  width: 100%;
   grid-column: span 4;
 }
 
@@ -121,6 +121,7 @@ nav ul {
   margin-right: 20px;
   border: 1px solid;
   box-shadow: 2px 7px #D3D3D3;
+  width: 100%;
 }
 
 .disqus {
@@ -133,6 +134,11 @@ nav ul {
   .main-footer .footer-wrapper {
     display: block;
     padding-top: 5px;
+    width: 100%;
+  }
+
+  .footer-wrapper .footer-box .footer-image {
+    width: 100%;
   }
 }
 
@@ -169,12 +175,11 @@ nav ul {
 
   .main-footer .footer-wrapper .footer-box {
     grid-column: span 4;
-
     }
 
   .main-footer .footer-wrapper .footer-box img {
-      object-fit: cover;
-      width: 411px;
+      object-fit: fill;
+      width: 430px;
       height: 250px;
 
 
